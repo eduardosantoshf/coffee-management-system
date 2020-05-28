@@ -1,5 +1,5 @@
 --create Schema Cafes;
-
+/*
 create table Cafes.Cafe(
     NIF	int not null,
     nome	varchar(30) not null,
@@ -87,16 +87,20 @@ create table Cafes.Bartender(
     foreign key(NIF,nome) references Cafes.Pessoa(NIF,nome),
     foreign key(NIF_cafeB) references Cafes.Cafe_Bar(NIF)
 );
+*/
+/*
 create Table Recibo(
     reciboID int not null,
     ClienteNIF  int not null,
     EmpNIF  int not null,
     data_recibo date,
-    valor   int,
+    valor   money,
     primary key(Nrecibo),
     foreign key(EmpNIF) references Cafes.Empregado(NIF),
     foreign key(ClienteNIF) references Cafes.Cliente(NIF)
 );
+*/
+/*
 create table Cafes.C_paga_E(
     Recibo_ID  int not null,
     Data_pagamento    date  not null,
@@ -108,3 +112,19 @@ create table Cafes.C_paga_E(
     foreign key(NIF_C) references Cafes.Cliente(NIF),
     foreign key(Recibo_ID) references Cafes.Recibo(reciboID)
 );
+*/
+
+CREATE TABLE Cafe.Produto(
+    nomeProduto         VARCHAR(15)     NOT NULL,
+    precoProduto        INT           NOT NULL,
+    tipoProduto         INT             NOT NULL,
+    NIF_Fornecedor      INT             NOT NULL,
+    NIF_Cafe            INT             NOT NULL,
+
+    PRIMARY KEY(nomeProduto),
+
+
+);
+
+
+ALTER TABLE Cafe.Recibo DROP COLUMN valor;
