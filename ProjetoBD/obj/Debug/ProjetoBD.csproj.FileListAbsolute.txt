@@ -1,0 +1,10 @@
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\bin\Debug\ProjetoBD.exe.config
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\bin\Debug\ProjetoBD.exe
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\bin\Debug\ProjetoBD.pdb
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.csprojAssemblyReference.cache
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.Form1.resources
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.Properties.Resources.resources
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.csproj.GenerateResource.cache
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.csproj.CoreCompileInputs.cache
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.exe
+C:\Users\Diogo.DESKTOP-B6II5UN\source\repos\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.pdb
