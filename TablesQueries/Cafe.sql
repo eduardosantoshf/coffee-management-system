@@ -32,7 +32,6 @@ create table Cafes.Cafe_Restaurante (
     NIF	int not null,
     nome	varchar(30) not null,
     morada	varchar(30) not null,
-    no_almocos  int,
     primary key(NIF),
     foreign key(NIF,nome,morada) references Cafes.Cafe(NIF,nome,morada)
 );
@@ -99,8 +98,7 @@ create Table Recibo(
     foreign key(EmpNIF) references Cafes.Empregado(NIF),
     foreign key(ClienteNIF) references Cafes.Cliente(NIF)
 );
-*/
-/*
+
 create table Cafes.C_paga_E(
     Recibo_ID  int not null,
     Data_pagamento    date  not null,
@@ -112,9 +110,9 @@ create table Cafes.C_paga_E(
     foreign key(NIF_C) references Cafes.Cliente(NIF),
     foreign key(Recibo_ID) references Cafes.Recibo(reciboID)
 );
-*/
 
-CREATE TABLE Cafe.Produto(
+
+CREATE TABLE Cafes.Produto(
     nomeProduto         VARCHAR(15)     NOT NULL,
     precoProduto        INT           NOT NULL,
     tipoProduto         INT             NOT NULL,
@@ -122,9 +120,6 @@ CREATE TABLE Cafe.Produto(
     NIF_Cafe            INT             NOT NULL,
 
     PRIMARY KEY(nomeProduto),
-
-
+    FOREIGN KEY(NIF_Cafe) REFERENCES Cafes.Cafe
 );
-
-
-ALTER TABLE Cafe.Recibo DROP COLUMN valor;
+*/
