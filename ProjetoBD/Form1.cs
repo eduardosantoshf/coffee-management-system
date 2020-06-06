@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//HAVE ACCESS TO SQL DB
+using System;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
 namespace ProjetoBD
 {
     public partial class Form1 : Form
@@ -15,6 +20,28 @@ namespace ProjetoBD
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+            SqlConnection cnn;
+            cnn = getBDconnection();
+            try
+            {
+                cnn.Open();
+                MessageBox.Show("Connection Open ! ");
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+        }
+
+        private SqlConnection getBDconnection()
+        {
+            return new SqlConnection("Data Source=DESKTOP-B6II5UN;Initial Catalog=ProjetoBD;Integrated Security=True");
+            //return new SqlConnection("data Source=tcp:mednat.ieeta.pt\\SQLSERVER,8101N;initial catalog=p2g1;User id=p2g1;Password=Diogoedu232.");
         }
 
         private void CafeBar_Click(object sender, EventArgs e)
@@ -83,6 +110,21 @@ namespace ProjetoBD
                 comboBoxAlmocos.Visible = true;
                 labelRestauranteAlmocos.Visible = true;
             }
+        }
+
+        private void ButtonBarClose_Click(object sender, EventArgs e)
+        {
+            panelBar.Visible = false;
+        }
+
+        private void buttonRestauranteClose_Click(object sender, EventArgs e)
+        {
+            panelRestaurante.Visible = false;
+        }
+
+        private void buttonPastelariaClose_Click(object sender, EventArgs e)
+        {
+            panelPastelaria.Visible = false;
         }
     }
 }
