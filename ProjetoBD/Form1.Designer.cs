@@ -32,13 +32,13 @@
             this.CafePastelaria = new System.Windows.Forms.Button();
             this.CafeBar = new System.Windows.Forms.Button();
             this.panelBar = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ButtonBarClose = new System.Windows.Forms.Button();
             this.buttonBarRemove = new System.Windows.Forms.Button();
             this.buttonAddBar = new System.Windows.Forms.Button();
             this.labelBarCliente = new System.Windows.Forms.Label();
             this.textBarCliente = new System.Windows.Forms.TextBox();
             this.labelBarEmp = new System.Windows.Forms.Label();
-            this.textBoxBarEmp = new System.Windows.Forms.TextBox();
             this.labelBebidas = new System.Windows.Forms.Label();
             this.comboBoxBarBebidas = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,13 +46,13 @@
             this.labelBarGeral = new System.Windows.Forms.Label();
             this.comboBoxBarGeral = new System.Windows.Forms.ComboBox();
             this.panelPastelaria = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.buttonPastelariaClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.labelPastelariaPasteis = new System.Windows.Forms.Label();
             this.comboBoxPasteis = new System.Windows.Forms.ComboBox();
             this.labelPastelaria = new System.Windows.Forms.Label();
@@ -60,19 +60,20 @@
             this.labelPastelariaGeral = new System.Windows.Forms.Label();
             this.comboBoxPastelariaGeral = new System.Windows.Forms.ComboBox();
             this.panelRestaurante = new System.Windows.Forms.Panel();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.buttonRestauranteClose = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.labelRestauranteAlmocos = new System.Windows.Forms.Label();
             this.comboBoxAlmocos = new System.Windows.Forms.ComboBox();
             this.labelRestaurante = new System.Windows.Forms.Label();
             this.comboBoxRestaurante = new System.Windows.Forms.ComboBox();
             this.labelRestauranteGeral = new System.Windows.Forms.Label();
             this.comboBoxRestauranteGeral = new System.Windows.Forms.ComboBox();
+            this.listBoxRecibos = new System.Windows.Forms.ListBox();
             this.panelBar.SuspendLayout();
             this.panelPastelaria.SuspendLayout();
             this.panelRestaurante.SuspendLayout();
@@ -113,13 +114,13 @@
             // 
             // panelBar
             // 
+            this.panelBar.Controls.Add(this.comboBox1);
             this.panelBar.Controls.Add(this.ButtonBarClose);
             this.panelBar.Controls.Add(this.buttonBarRemove);
             this.panelBar.Controls.Add(this.buttonAddBar);
             this.panelBar.Controls.Add(this.labelBarCliente);
             this.panelBar.Controls.Add(this.textBarCliente);
             this.panelBar.Controls.Add(this.labelBarEmp);
-            this.panelBar.Controls.Add(this.textBoxBarEmp);
             this.panelBar.Controls.Add(this.labelBebidas);
             this.panelBar.Controls.Add(this.comboBoxBarBebidas);
             this.panelBar.Controls.Add(this.label2);
@@ -132,6 +133,14 @@
             this.panelBar.Size = new System.Drawing.Size(740, 520);
             this.panelBar.TabIndex = 3;
             this.panelBar.Visible = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(141, 161);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(182, 24);
+            this.comboBox1.TabIndex = 14;
             // 
             // ButtonBarClose
             // 
@@ -188,13 +197,6 @@
             this.labelBarEmp.Size = new System.Drawing.Size(112, 17);
             this.labelBarEmp.TabIndex = 7;
             this.labelBarEmp.Text = "Empregado(NIF)";
-            // 
-            // textBoxBarEmp
-            // 
-            this.textBoxBarEmp.Location = new System.Drawing.Point(141, 161);
-            this.textBoxBarEmp.Name = "textBoxBarEmp";
-            this.textBoxBarEmp.Size = new System.Drawing.Size(182, 22);
-            this.textBoxBarEmp.TabIndex = 6;
             // 
             // labelBebidas
             // 
@@ -275,25 +277,33 @@
             // 
             // panelPastelaria
             // 
+            this.panelPastelaria.Controls.Add(this.comboBox2);
             this.panelPastelaria.Controls.Add(this.buttonPastelariaClose);
             this.panelPastelaria.Controls.Add(this.button1);
             this.panelPastelaria.Controls.Add(this.button2);
             this.panelPastelaria.Controls.Add(this.label1);
             this.panelPastelaria.Controls.Add(this.textBox1);
             this.panelPastelaria.Controls.Add(this.label3);
-            this.panelPastelaria.Controls.Add(this.textBox2);
             this.panelPastelaria.Controls.Add(this.labelPastelariaPasteis);
             this.panelPastelaria.Controls.Add(this.comboBoxPasteis);
             this.panelPastelaria.Controls.Add(this.labelPastelaria);
             this.panelPastelaria.Controls.Add(this.comboBoxPastelaria);
             this.panelPastelaria.Controls.Add(this.labelPastelariaGeral);
             this.panelPastelaria.Controls.Add(this.comboBoxPastelariaGeral);
-            this.panelPastelaria.Location = new System.Drawing.Point(37, 28);
+            this.panelPastelaria.Location = new System.Drawing.Point(819, 403);
             this.panelPastelaria.Margin = new System.Windows.Forms.Padding(4);
             this.panelPastelaria.Name = "panelPastelaria";
             this.panelPastelaria.Size = new System.Drawing.Size(740, 520);
             this.panelPastelaria.TabIndex = 13;
             this.panelPastelaria.Visible = false;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(141, 154);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(182, 24);
+            this.comboBox2.TabIndex = 16;
             // 
             // buttonPastelariaClose
             // 
@@ -350,13 +360,6 @@
             this.label3.Size = new System.Drawing.Size(112, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Empregado(NIF)";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(141, 154);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(182, 22);
-            this.textBox2.TabIndex = 6;
             // 
             // labelPastelariaPasteis
             // 
@@ -436,13 +439,13 @@
             // 
             // panelRestaurante
             // 
+            this.panelRestaurante.Controls.Add(this.comboBox3);
             this.panelRestaurante.Controls.Add(this.buttonRestauranteClose);
             this.panelRestaurante.Controls.Add(this.button3);
             this.panelRestaurante.Controls.Add(this.button4);
             this.panelRestaurante.Controls.Add(this.label4);
             this.panelRestaurante.Controls.Add(this.textBox3);
             this.panelRestaurante.Controls.Add(this.label5);
-            this.panelRestaurante.Controls.Add(this.textBox4);
             this.panelRestaurante.Controls.Add(this.labelRestauranteAlmocos);
             this.panelRestaurante.Controls.Add(this.comboBoxAlmocos);
             this.panelRestaurante.Controls.Add(this.labelRestaurante);
@@ -455,6 +458,14 @@
             this.panelRestaurante.Size = new System.Drawing.Size(740, 520);
             this.panelRestaurante.TabIndex = 14;
             this.panelRestaurante.Visible = false;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(141, 154);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(182, 24);
+            this.comboBox3.TabIndex = 15;
             // 
             // buttonRestauranteClose
             // 
@@ -511,13 +522,6 @@
             this.label5.Size = new System.Drawing.Size(112, 17);
             this.label5.TabIndex = 7;
             this.label5.Text = "Empregado(NIF)";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(141, 154);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(182, 22);
-            this.textBox4.TabIndex = 6;
             // 
             // labelRestauranteAlmocos
             // 
@@ -595,11 +599,21 @@
             this.comboBoxRestauranteGeral.TabIndex = 0;
             this.comboBoxRestauranteGeral.Visible = false;
             // 
+            // listBoxRecibos
+            // 
+            this.listBoxRecibos.FormattingEnabled = true;
+            this.listBoxRecibos.ItemHeight = 16;
+            this.listBoxRecibos.Location = new System.Drawing.Point(819, 28);
+            this.listBoxRecibos.Name = "listBoxRecibos";
+            this.listBoxRecibos.Size = new System.Drawing.Size(507, 356);
+            this.listBoxRecibos.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1338, 575);
+            this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.Controls.Add(this.listBoxRecibos);
             this.Controls.Add(this.panelPastelaria);
             this.Controls.Add(this.panelBar);
             this.Controls.Add(this.panelRestaurante);
@@ -633,7 +647,6 @@
         private System.Windows.Forms.Label labelBebidas;
         private System.Windows.Forms.ComboBox comboBoxBarBebidas;
         private System.Windows.Forms.Label labelBarEmp;
-        private System.Windows.Forms.TextBox textBoxBarEmp;
         private System.Windows.Forms.Label labelBarCliente;
         private System.Windows.Forms.TextBox textBarCliente;
         private System.Windows.Forms.Button buttonBarRemove;
@@ -644,7 +657,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label labelPastelariaPasteis;
         private System.Windows.Forms.ComboBox comboBoxPasteis;
         private System.Windows.Forms.Label labelPastelaria;
@@ -657,7 +669,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label labelRestauranteAlmocos;
         private System.Windows.Forms.ComboBox comboBoxAlmocos;
         private System.Windows.Forms.Label labelRestaurante;
@@ -667,6 +678,10 @@
         private System.Windows.Forms.Button ButtonBarClose;
         private System.Windows.Forms.Button buttonRestauranteClose;
         private System.Windows.Forms.Button buttonPastelariaClose;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ListBox listBoxRecibos;
     }
 }
 
