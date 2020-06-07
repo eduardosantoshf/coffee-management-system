@@ -340,6 +340,11 @@ namespace ProjetoBD
                 labelGeral.Visible = false;
             }
         }
+
+        private void comboBoxBebidas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

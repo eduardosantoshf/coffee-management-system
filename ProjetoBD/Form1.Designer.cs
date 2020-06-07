@@ -217,6 +217,7 @@
             this.comboBoxBebidas.Size = new System.Drawing.Size(184, 24);
             this.comboBoxBebidas.TabIndex = 18;
             this.comboBoxBebidas.Visible = false;
+            this.comboBoxBebidas.SelectedIndexChanged += new System.EventHandler(this.comboBoxBebidas_SelectedIndexChanged);
             // 
             // comboBoxCafes
             // 
