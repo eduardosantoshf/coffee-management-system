@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxClienteNIF = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelPastelariaPasteis = new System.Windows.Forms.Label();
             this.comboBoxPasteis = new System.Windows.Forms.ComboBox();
@@ -49,6 +49,12 @@
             this.labelBebidas = new System.Windows.Forms.Label();
             this.comboBoxBar = new System.Windows.Forms.ComboBox();
             this.comboBoxRestaurante = new System.Windows.Forms.ComboBox();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxValor = new System.Windows.Forms.TextBox();
+            this.labelValor = new System.Windows.Forms.Label();
+            this.monthCalendarRecibo = new System.Windows.Forms.MonthCalendar();
+            this.buttonAddFood = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox2
@@ -59,23 +65,24 @@
             this.comboBox2.Size = new System.Drawing.Size(182, 24);
             this.comboBox2.TabIndex = 16;
             // 
-            // button1
+            // buttonRemove
             // 
-            this.button1.Location = new System.Drawing.Point(333, 428);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 51);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonRemove.Location = new System.Drawing.Point(333, 597);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(182, 51);
+            this.buttonRemove.TabIndex = 12;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonAdd
             // 
-            this.button2.Location = new System.Drawing.Point(107, 428);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 51);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonAdd.Location = new System.Drawing.Point(107, 597);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(182, 51);
+            this.buttonAdd.TabIndex = 10;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // label1
             // 
@@ -87,12 +94,12 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Cliente(NIF)";
             // 
-            // textBox1
+            // textBoxClienteNIF
             // 
-            this.textBox1.Location = new System.Drawing.Point(333, 292);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 22);
-            this.textBox1.TabIndex = 8;
+            this.textBoxClienteNIF.Location = new System.Drawing.Point(333, 292);
+            this.textBoxClienteNIF.Name = "textBoxClienteNIF";
+            this.textBoxClienteNIF.Size = new System.Drawing.Size(184, 22);
+            this.textBoxClienteNIF.TabIndex = 8;
             // 
             // label3
             // 
@@ -292,11 +299,71 @@
             this.comboBoxRestaurante.Visible = false;
             this.comboBoxRestaurante.SelectedIndexChanged += new System.EventHandler(this.comboBoxRestaurante_SelectedIndexChanged);
             // 
+            // buttonOK
+            // 
+            this.buttonOK.Location = new System.Drawing.Point(107, 654);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(182, 51);
+            this.buttonOK.TabIndex = 25;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Visible = false;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(333, 654);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(182, 51);
+            this.buttonCancel.TabIndex = 26;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Visible = false;
+            // 
+            // textBoxValor
+            // 
+            this.textBoxValor.Location = new System.Drawing.Point(189, 534);
+            this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.Size = new System.Drawing.Size(184, 22);
+            this.textBoxValor.TabIndex = 27;
+            // 
+            // labelValor
+            // 
+            this.labelValor.AutoSize = true;
+            this.labelValor.Location = new System.Drawing.Point(104, 537);
+            this.labelValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelValor.Name = "labelValor";
+            this.labelValor.Size = new System.Drawing.Size(81, 17);
+            this.labelValor.TabIndex = 28;
+            this.labelValor.Text = "Valor Total:";
+            // 
+            // monthCalendarRecibo
+            // 
+            this.monthCalendarRecibo.Location = new System.Drawing.Point(446, 366);
+            this.monthCalendarRecibo.Name = "monthCalendarRecibo";
+            this.monthCalendarRecibo.TabIndex = 29;
+            // 
+            // buttonAddFood
+            // 
+            this.buttonAddFood.Location = new System.Drawing.Point(547, 208);
+            this.buttonAddFood.Name = "buttonAddFood";
+            this.buttonAddFood.Size = new System.Drawing.Size(72, 38);
+            this.buttonAddFood.TabIndex = 30;
+            this.buttonAddFood.Text = "Add";
+            this.buttonAddFood.UseVisualStyleBackColor = true;
+            this.buttonAddFood.Click += new System.EventHandler(this.buttonAddFood_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.Controls.Add(this.buttonAddFood);
+            this.Controls.Add(this.monthCalendarRecibo);
+            this.Controls.Add(this.labelValor);
+            this.Controls.Add(this.textBoxValor);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.comboBoxRestaurante);
             this.Controls.Add(this.comboBoxBar);
             this.Controls.Add(this.labelBebidas);
@@ -306,12 +373,12 @@
             this.Controls.Add(this.comboBoxBebidas);
             this.Controls.Add(this.comboBoxAlmocos);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.listBoxRecibos);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxPastelaria);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxClienteNIF);
             this.Controls.Add(this.labelTodos);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxPasteis);
@@ -328,10 +395,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxClienteNIF;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelPastelariaPasteis;
         private System.Windows.Forms.ComboBox comboBoxPasteis;
@@ -349,6 +416,12 @@
         private System.Windows.Forms.Label labelBebidas;
         private System.Windows.Forms.ComboBox comboBoxBar;
         private System.Windows.Forms.ComboBox comboBoxRestaurante;
+        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.TextBox textBoxValor;
+        private System.Windows.Forms.Label labelValor;
+        private System.Windows.Forms.MonthCalendar monthCalendarRecibo;
+        private System.Windows.Forms.Button buttonAddFood;
     }
 }
 

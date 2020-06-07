@@ -17,6 +17,7 @@ namespace ProjetoBD
     {
         private SqlConnection cn;
         private int currentRecibo;
+        private bool adding;
 
         public Form1()
         {
@@ -88,6 +89,144 @@ namespace ProjetoBD
             txtTel.Text = contact.tel;
             txtFax.Text = contact.FAX;*/       //used to show the information of the Recibo in the corresponding boxes
         }
+        private void SubmitRecibo(Recibo R)
+        {
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "INSERT Cafes.Recibo (reciboID, ClienteNIF, EmpNIF, data_recibo, valor, " + "VALUES (@reciboID, @ClienteNIF, @EmpNIF, @data_recibo, @valor";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@reciboID", R.reciboID);
+            cmd.Parameters.AddWithValue("@ClienteNIF", R.ClienteNIF);
+            cmd.Parameters.AddWithValue("@EmpNIF", R.EmpNIF);
+            cmd.Parameters.AddWithValue("@data_recibo", R.data_recibo);
+            cmd.Connection = cn;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update recibo in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        private void UpdateRecibo(Recibo R)
+        {
+            int rows = 0;
+
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "UPDATE Cafes.Recibo " + "SET reciboID = @reciboID, " + "    ClienteNIF = @ClienteNIF, " + "    EmpNIF = @EmpNIF, " +
+                "    data_recibo = @data_recibo, " + "    valor=@valor, ";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@reciboID", R.reciboID);
+            cmd.Parameters.AddWithValue("@ClienteNIF", R.ClienteNIF);
+            cmd.Parameters.AddWithValue("@EmpNIF", R.EmpNIF);
+            cmd.Parameters.AddWithValue("@data_recibo", R.data_recibo);
+            cmd.Connection = cn;
+
+            try
+            {
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update recibos in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                if (rows == 1)
+                    MessageBox.Show("Update OK");
+                else
+                    MessageBox.Show("Update NOT OK");
+
+                cn.Close();
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            adding = true;
+            //ClearFields();
+            HideButtons();
+            listBoxRecibos.Enabled = false;
+        }
+
+        private void HideButtons() {
+            //UnlockControls(); //used to change the values of selected Recibo
+            buttonAdd.Visible = false;
+            buttonRemove.Visible = false;
+            //buttonEdit.Visible = false;
+            buttonOK.Visible = true;
+            buttonCancel.Visible = true;
+        }
+        public void ShowButtons()
+        {
+            //LockControls();
+            buttonAdd.Visible = true;
+            buttonRemove.Visible = true;
+            //buttonEdit.Visible = true;
+            buttonOK.Visible = false;
+            buttonCancel.Visible = false;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveRecibo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            listBoxRecibos.Enabled = true;
+            //int idx = listBoxRecibos.FindString(txtID.Text);
+            //listBoxRecibos.SelectedIndex = idx;
+            ShowButtons();
+        }
+
+        private bool SaveRecibo()
+        {
+            Recibo R = new Recibo();
+            try
+            {
+                //R.reciboID = txtID.Text;
+                R.ClienteNIF = textBoxClienteNIF.Text;
+                R.EmpNIF = comboBox2.Text;
+                //R.data_recibo = monthCalendarRecibo.DateSelected;
+                R.valor = textBoxValor.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            if (adding)
+            {
+                SubmitRecibo(R);
+                listBoxRecibos.Items.Add(R);
+            }
+            else
+            {
+                UpdateRecibo(R);
+                listBoxRecibos.Items[currentRecibo] = R;
+            }
+            return true;
+        }
+
+        private void buttonAddFood_Click(object sender, EventArgs e)
+        {
+            //vai ser usado para adicionar a comida/bebida ao valor total e ao recibo
+        }
 
         private void listBoxRecibos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -100,6 +239,25 @@ namespace ProjetoBD
 
 
         //
+        //COMBO BOXES   
+        //
+        private void BackToStart()
+        {
+            //changes all visibilities to false
+            comboBoxPastelaria.Visible = false;
+            labelTodos.Visible = false;
+            comboBoxBar.Visible = false;
+            comboBoxRestaurante.Visible = false;
+            comboBoxBebidas.Visible = false;
+            labelBebidas.Visible = false;
+            comboBoxGeral.Visible = false;
+            labelGeral.Visible = false;
+            comboBoxPasteis.Visible = false;
+            labelPastelariaPasteis.Visible = false;
+            comboBoxAlmocos.Visible = false;
+            labelAlmocos.Visible = false;
+        }
+
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxPastelaria.SelectedItem.ToString().Equals("Geral"))
@@ -120,8 +278,9 @@ namespace ProjetoBD
 
         private void comboBoxCafes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            backToStart();
-            if (comboBoxCafes.SelectedItem.ToString().Equals("Cafe Pastelaria")) {
+            BackToStart();
+            if (comboBoxCafes.SelectedItem.ToString().Equals("Cafe Pastelaria"))
+            {
                 comboBoxPastelaria.Visible = true;
                 labelTodos.Visible = true;
                 comboBoxBar.Visible = false;
@@ -178,24 +337,6 @@ namespace ProjetoBD
                 labelGeral.Visible = false;
             }
         }
-
-        private void backToStart()
-        {
-            //changes all visibilities to false
-            comboBoxPastelaria.Visible = false;
-            labelTodos.Visible = false;
-            comboBoxBar.Visible = false;
-            comboBoxRestaurante.Visible = false;
-            comboBoxBebidas.Visible = false;
-            labelBebidas.Visible = false;
-            comboBoxGeral.Visible = false;
-            labelGeral.Visible = false;
-            comboBoxPasteis.Visible = false;
-            labelPastelariaPasteis.Visible = false;
-            comboBoxAlmocos.Visible = false;
-            labelAlmocos.Visible = false;
-        }
-
-        
     }
+
 }
