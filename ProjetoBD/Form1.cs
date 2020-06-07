@@ -85,33 +85,6 @@ namespace ProjetoBD
             txtFax.Text = contact.FAX;*/       //used to show the information of the Recibo in the corresponding boxes
         }
 
-        private void CafeBar_Click(object sender, EventArgs e)
-        {
-            panelBar.Visible = true;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxBar.SelectedItem.ToString().Equals("Geral")){
-                comboBoxBarBebidas.Visible = false;
-                labelBebidas.Visible = false;
-                comboBoxBarGeral.Visible = true;
-                labelBarGeral.Visible = true;
-            }
-            if (comboBoxBar.SelectedItem.ToString().Equals("Bebidas"))
-            {
-                comboBoxBarGeral.Visible = false;
-                labelBarGeral.Visible = false;
-                comboBoxBarBebidas.Visible = true;
-                labelBebidas.Visible = true;
-            }
-        }
-
-        private void CafePastelaria_Click(object sender, EventArgs e)
-        {
-            panelPastelaria.Visible = true;
-        }
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxPastelaria.SelectedItem.ToString().Equals("Geral"))
@@ -130,42 +103,28 @@ namespace ProjetoBD
             }
         }
 
-        private void CafeRestaurante_Click(object sender, EventArgs e)
+        private void comboBoxCafes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panelRestaurante.Visible = true;
-        }
-
-        private void comboBoxRestaurante_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxRestaurante.SelectedItem.ToString().Equals("Geral"))
-            {
-                comboBoxAlmocos.Visible = false;
-                labelRestauranteAlmocos.Visible = false;
-                comboBoxRestauranteGeral.Visible = true;
-                labelRestauranteGeral.Visible = true;
+            if (comboBoxCafes.SelectedItem.ToString().Equals("Cafe Pastelaria")) {
+                comboBoxPastelaria.Visible = true;
+                labelTodos.Visible = true;
+                comboBoxBar.Visible = false;
+                comboBoxRestaurante.Visible = false;
             }
-            if (comboBoxRestaurante.SelectedItem.ToString().Equals("Almocos"))
+            if (comboBoxCafes.SelectedItem.ToString().Equals("Cafe Restaurante"))
             {
-                comboBoxRestauranteGeral.Visible = false;
-                labelRestauranteGeral.Visible = false;
-                comboBoxAlmocos.Visible = true;
-                labelRestauranteAlmocos.Visible = true;
+                comboBoxPastelaria.Visible = false;
+                labelTodos.Visible = true;
+                comboBoxBar.Visible = false;
+                comboBoxRestaurante.Visible = true;
             }
-        }
-
-        private void ButtonBarClose_Click(object sender, EventArgs e)
-        {
-            panelBar.Visible = false;
-        }
-
-        private void buttonRestauranteClose_Click(object sender, EventArgs e)
-        {
-            panelRestaurante.Visible = false;
-        }
-
-        private void buttonPastelariaClose_Click(object sender, EventArgs e)
-        {
-            panelPastelaria.Visible = false;
+            if (comboBoxCafes.SelectedItem.ToString().Equals("Cafe Bar"))
+            {
+                comboBoxPastelaria.Visible = false;
+                labelTodos.Visible = true;
+                comboBoxBar.Visible = true;
+                comboBoxRestaurante.Visible = false;
+            }
         }
     }
 }
