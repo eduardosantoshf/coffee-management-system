@@ -190,6 +190,7 @@
             this.listBoxRecibos.Name = "listBoxRecibos";
             this.listBoxRecibos.Size = new System.Drawing.Size(507, 356);
             this.listBoxRecibos.TabIndex = 15;
+            this.listBoxRecibos.SelectedIndexChanged += new System.EventHandler(this.listBoxRecibos_SelectedIndexChanged);
             // 
             // comboBoxAlmocos
             // 

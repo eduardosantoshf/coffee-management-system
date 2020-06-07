@@ -59,6 +59,10 @@ namespace ProjetoBD
             {
                 Recibo R = new Recibo();
                 R.reciboID = reader["reciboID"].ToString();
+                R.ClienteNIF = reader["ClienteNIF"].ToString();
+                R.EmpNIF = reader["EmpNIF"].ToString();
+                R.data_recibo = reader["data_recibo"].ToString();
+                R.valor = reader["valor"].ToString();
                 listBoxRecibos.Items.Add(R);
             }
             cn.Close();
@@ -85,6 +89,17 @@ namespace ProjetoBD
             txtFax.Text = contact.FAX;*/       //used to show the information of the Recibo in the corresponding boxes
         }
 
+        private void listBoxRecibos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxRecibos.SelectedIndex > 0)
+            {
+                currentRecibo = listBoxRecibos.SelectedIndex;
+                ShowRecibo();
+            }
+        }
+
+
+        //
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxPastelaria.SelectedItem.ToString().Equals("Geral"))
@@ -180,5 +195,7 @@ namespace ProjetoBD
             comboBoxAlmocos.Visible = false;
             labelAlmocos.Visible = false;
         }
+
+        
     }
 }
