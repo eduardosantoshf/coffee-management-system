@@ -91,13 +91,13 @@ namespace ProjetoBD
             {
                 comboBoxPasteis.Visible = false;
                 labelPastelariaPasteis.Visible = false;
-                comboBoxPastelariaGeral.Visible = true;
-                labelPastelariaGeral.Visible = true;
+                comboBoxGeral.Visible = true;
+                labelGeral.Visible = true;
             }
             if (comboBoxPastelaria.SelectedItem.ToString().Equals("Pasteis"))
             {
-                comboBoxPastelariaGeral.Visible = false;
-                labelPastelariaGeral.Visible = false;
+                comboBoxGeral.Visible = false;
+                labelGeral.Visible = false;
                 comboBoxPasteis.Visible = true;
                 labelPastelariaPasteis.Visible = true;
             }
@@ -105,6 +105,7 @@ namespace ProjetoBD
 
         private void comboBoxCafes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            backToStart();
             if (comboBoxCafes.SelectedItem.ToString().Equals("Cafe Pastelaria")) {
                 comboBoxPastelaria.Visible = true;
                 labelTodos.Visible = true;
@@ -125,6 +126,59 @@ namespace ProjetoBD
                 comboBoxBar.Visible = true;
                 comboBoxRestaurante.Visible = false;
             }
+        }
+
+        private void comboBoxBar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxBar.SelectedItem.ToString().Equals("Geral"))
+            {
+                comboBoxBebidas.Visible = false;
+                labelBebidas.Visible = false;
+                comboBoxGeral.Visible = true;
+                labelGeral.Visible = true;
+            }
+            if (comboBoxBar.SelectedItem.ToString().Equals("Bebidas"))
+            {
+                comboBoxBebidas.Visible = true;
+                labelBebidas.Visible = true;
+                comboBoxGeral.Visible = false;
+                labelGeral.Visible = false;
+            }
+        }
+
+        private void comboBoxRestaurante_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxRestaurante.SelectedItem.ToString().Equals("Geral"))
+            {
+                comboBoxAlmocos.Visible = false;
+                labelAlmocos.Visible = false;
+                comboBoxGeral.Visible = true;
+                labelGeral.Visible = true;
+            }
+            if (comboBoxRestaurante.SelectedItem.ToString().Equals("Almocos"))
+            {
+                comboBoxAlmocos.Visible = true;
+                labelAlmocos.Visible = true;
+                comboBoxGeral.Visible = false;
+                labelGeral.Visible = false;
+            }
+        }
+
+        private void backToStart()
+        {
+            //changes all visibilities to false
+            comboBoxPastelaria.Visible = false;
+            labelTodos.Visible = false;
+            comboBoxBar.Visible = false;
+            comboBoxRestaurante.Visible = false;
+            comboBoxBebidas.Visible = false;
+            labelBebidas.Visible = false;
+            comboBoxGeral.Visible = false;
+            labelGeral.Visible = false;
+            comboBoxPasteis.Visible = false;
+            labelPastelariaPasteis.Visible = false;
+            comboBoxAlmocos.Visible = false;
+            labelAlmocos.Visible = false;
         }
     }
 }
