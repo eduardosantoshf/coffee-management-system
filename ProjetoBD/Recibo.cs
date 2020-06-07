@@ -4,19 +4,17 @@ namespace ProjetoBD
 {
     public class Recibo
     {
-        private String  _reciboID;
+        private int  _reciboID;
         private String _ClienteNIF;
         private String _EmpNIF;
         private String _data_recibo;
         private String _valor;
 
-        public Recibo() {}
-
-        public String reciboID
+        public int reciboID
         {
             get { return _reciboID; }
             set {
-                if (value == null | String.IsNullOrEmpty(value))
+                if (value == null )
                 {
                     throw new Exception("Recibo ID can't be null");
                     return;

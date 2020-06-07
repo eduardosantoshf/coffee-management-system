@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,15 +54,8 @@
             this.labelValor = new System.Windows.Forms.Label();
             this.monthCalendarRecibo = new System.Windows.Forms.MonthCalendar();
             this.buttonAddFood = new System.Windows.Forms.Button();
+            this.textBoxEmpNIF = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(107, 290);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(182, 24);
-            this.comboBox2.TabIndex = 16;
             // 
             // buttonRemove
             // 
@@ -345,19 +337,27 @@
             // 
             // buttonAddFood
             // 
-            this.buttonAddFood.Location = new System.Drawing.Point(547, 208);
+            this.buttonAddFood.Location = new System.Drawing.Point(539, 215);
             this.buttonAddFood.Name = "buttonAddFood";
-            this.buttonAddFood.Size = new System.Drawing.Size(72, 38);
+            this.buttonAddFood.Size = new System.Drawing.Size(61, 25);
             this.buttonAddFood.TabIndex = 30;
             this.buttonAddFood.Text = "Add";
             this.buttonAddFood.UseVisualStyleBackColor = true;
             this.buttonAddFood.Click += new System.EventHandler(this.buttonAddFood_Click);
+            // 
+            // textBoxEmpNIF
+            // 
+            this.textBoxEmpNIF.Location = new System.Drawing.Point(105, 292);
+            this.textBoxEmpNIF.Name = "textBoxEmpNIF";
+            this.textBoxEmpNIF.Size = new System.Drawing.Size(184, 22);
+            this.textBoxEmpNIF.TabIndex = 31;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.Controls.Add(this.textBoxEmpNIF);
             this.Controls.Add(this.buttonAddFood);
             this.Controls.Add(this.monthCalendarRecibo);
             this.Controls.Add(this.labelValor);
@@ -372,7 +372,6 @@
             this.Controls.Add(this.comboBoxCafes);
             this.Controls.Add(this.comboBoxBebidas);
             this.Controls.Add(this.comboBoxAlmocos);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.listBoxRecibos);
             this.Controls.Add(this.buttonAdd);
@@ -406,7 +405,6 @@
         private System.Windows.Forms.ComboBox comboBoxPastelaria;
         private System.Windows.Forms.Label labelGeral;
         private System.Windows.Forms.ComboBox comboBoxGeral;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ListBox listBoxRecibos;
         private System.Windows.Forms.ComboBox comboBoxAlmocos;
         private System.Windows.Forms.ComboBox comboBoxBebidas;
@@ -422,6 +420,7 @@
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.MonthCalendar monthCalendarRecibo;
         private System.Windows.Forms.Button buttonAddFood;
+        private System.Windows.Forms.TextBox textBoxEmpNIF;
     }
 }
 

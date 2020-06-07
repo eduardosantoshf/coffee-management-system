@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 //HAVE ACCESS TO SQL DB
 using System.Data.SqlClient;
+using System.Windows.Forms.VisualStyles;
 
 namespace ProjetoBD
 {
@@ -59,7 +60,7 @@ namespace ProjetoBD
             while (reader.Read())
             {
                 Recibo R = new Recibo();
-                R.reciboID = reader["reciboID"].ToString();
+                R.reciboID = int.Parse(reader["reciboID"].ToString());
                 R.ClienteNIF = reader["ClienteNIF"].ToString();
                 R.EmpNIF = reader["EmpNIF"].ToString();
                 R.data_recibo = reader["data_recibo"].ToString();
@@ -91,6 +92,7 @@ namespace ProjetoBD
         }
         private void SubmitRecibo(Recibo R)
         {
+            //CRIAR UMA PROCEDURES PARA ADICIONAR NOVOS RECIBOS (ONDE O reciboID É +1 QUE O ANTERIOR)
             if (!verifyBDConnection())
                 return;
             SqlCommand cmd = new SqlCommand();
@@ -201,7 +203,7 @@ namespace ProjetoBD
             {
                 //R.reciboID = txtID.Text;
                 R.ClienteNIF = textBoxClienteNIF.Text;
-                R.EmpNIF = comboBox2.Text;
+                R.EmpNIF = textBoxEmpNIF.Text;
                 //R.data_recibo = monthCalendarRecibo.DateSelected;
                 R.valor = textBoxValor.Text;
             }
