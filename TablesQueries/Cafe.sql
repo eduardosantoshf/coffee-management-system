@@ -15,6 +15,7 @@ create table Cafes.Pessoa(
 );
 
 
+
 create table Cafes.Empregado(
     NIF int not null,
     NIF_cafe    int not null,
@@ -25,6 +26,7 @@ create table Cafes.Empregado(
     foreign key(NIF,nome) references Cafes.Pessoa(NIF,nome),
     foreign key(NIF_cafe) references Cafes.Cafe(NIF)
 );
+
 
 
 create table Cafes.Cliente(
@@ -68,6 +70,7 @@ create table Cafes.Cafe_Pastelaria (
 );
 
 
+
 create table Cafes.Pasteleiro(
     NIF int not null,
     NIF_cafeP    int not null,
@@ -80,6 +83,7 @@ create table Cafes.Pasteleiro(
 );
 
 
+
 create table Cafes.Cafe_Bar (
     NIF	int not null,
     nome	varchar(30) not null,
@@ -89,12 +93,14 @@ create table Cafes.Cafe_Bar (
 );
 
 
+
 create table Cafes.Bar(
     NIF_cafeB   int not null,
     bebidas int,
     primary key(NIF_CafeB),
     foreign key(NIF_CafeB) references Cafes.Cafe_Bar(NIF)
 );
+
 
 
 create table Cafes.Bartender(
@@ -110,7 +116,7 @@ create table Cafes.Bartender(
 
 
 create Table Cafes.Recibo(
-    reciboID int not null,
+    reciboID INT  not null	IDENTITY(1, 1),
     ClienteNIF  int not null,
     EmpNIF  int not null,
     data_recibo date,
@@ -119,7 +125,6 @@ create Table Cafes.Recibo(
     foreign key(EmpNIF) references Cafes.Empregado(NIF),
     foreign key(ClienteNIF) references Cafes.Cliente(NIF)
 );
-
 
 create table Cafes.C_paga_E(
     Recibo_ID  int not null,
