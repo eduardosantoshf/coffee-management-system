@@ -22,7 +22,8 @@
 
 --ALTER TABLEs
 
---ALTER TABLE Cafes.Recibo ADD valor  MONEY    NOT NULL;
 --ALTER TABLE Cafes.Cafe_Restaurante DROP COLUMN no_almocos;
 --ALTER TABLE Cafes.Cafe_Pastelaria DROP COLUMN no_bolos;
 --ALTER TABLE Cafes.Cafe_Bar DROP COLUMN bebidas;
+--ALTER TABLE Cafes.Recibo DROP COLUMN valor;
+--ALTER TABLE Cafes.Recibo ADD valor float    NOT NULL;
