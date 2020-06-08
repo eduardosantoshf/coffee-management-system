@@ -56,10 +56,10 @@ namespace ProjetoBD
 
             DataTable allPreviousRecibos = new DataTable();
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Cliente", cn)){;
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Recibo", cn)){;
                 SqlDataReader reader = cmd.ExecuteReader();
                 listBoxRecibos.Items.Clear();
-                /*
+                
                 while (reader.Read())
                 {
                     Recibo R = new Recibo();
@@ -69,7 +69,7 @@ namespace ProjetoBD
                     R.valor = float.Parse(reader["valor"].ToString());
                     listBoxRecibos.Items.Add(R);
                 }
-                */
+                
                 allPreviousRecibos.Load(reader);
             }
             cn.Close();
@@ -348,7 +348,7 @@ namespace ProjetoBD
             //execute procedure (readonly no edits)
             if (!verifyBDConnection())
                 return;
-            SqlCommand cmd = new SqlCommand("Procedure", cn);
+            SqlCommand cmd = new SqlCommand("getClientes", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
