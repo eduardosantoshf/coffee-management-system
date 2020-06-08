@@ -52,9 +52,12 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.labelValor = new System.Windows.Forms.Label();
-            this.monthCalendarRecibo = new System.Windows.Forms.MonthCalendar();
             this.buttonAddFood = new System.Windows.Forms.Button();
             this.textBoxEmpNIF = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonDisplayDataGrid = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRemove
@@ -315,7 +318,7 @@
             // 
             // textBoxValor
             // 
-            this.textBoxValor.Location = new System.Drawing.Point(189, 534);
+            this.textBoxValor.Location = new System.Drawing.Point(192, 390);
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(184, 22);
             this.textBoxValor.TabIndex = 27;
@@ -323,18 +326,12 @@
             // labelValor
             // 
             this.labelValor.AutoSize = true;
-            this.labelValor.Location = new System.Drawing.Point(104, 537);
+            this.labelValor.Location = new System.Drawing.Point(104, 393);
             this.labelValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelValor.Name = "labelValor";
             this.labelValor.Size = new System.Drawing.Size(81, 17);
             this.labelValor.TabIndex = 28;
             this.labelValor.Text = "Valor Total:";
-            // 
-            // monthCalendarRecibo
-            // 
-            this.monthCalendarRecibo.Location = new System.Drawing.Point(446, 366);
-            this.monthCalendarRecibo.Name = "monthCalendarRecibo";
-            this.monthCalendarRecibo.TabIndex = 29;
             // 
             // buttonAddFood
             // 
@@ -353,14 +350,44 @@
             this.textBoxEmpNIF.Size = new System.Drawing.Size(184, 22);
             this.textBoxEmpNIF.TabIndex = 31;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(400, 388);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(117, 22);
+            this.dateTimePicker1.TabIndex = 32;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(819, 442);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(507, 292);
+            this.dataGridView1.TabIndex = 33;
+            // 
+            // buttonDisplayDataGrid
+            // 
+            this.buttonDisplayDataGrid.Location = new System.Drawing.Point(738, 711);
+            this.buttonDisplayDataGrid.Name = "buttonDisplayDataGrid";
+            this.buttonDisplayDataGrid.Size = new System.Drawing.Size(75, 23);
+            this.buttonDisplayDataGrid.TabIndex = 34;
+            this.buttonDisplayDataGrid.Text = "Display";
+            this.buttonDisplayDataGrid.UseVisualStyleBackColor = true;
+            this.buttonDisplayDataGrid.Click += new System.EventHandler(this.buttonDisplayDataGrid_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.Controls.Add(this.buttonDisplayDataGrid);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxEmpNIF);
             this.Controls.Add(this.buttonAddFood);
-            this.Controls.Add(this.monthCalendarRecibo);
             this.Controls.Add(this.labelValor);
             this.Controls.Add(this.textBoxValor);
             this.Controls.Add(this.buttonCancel);
@@ -389,6 +416,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,9 +447,11 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxValor;
         private System.Windows.Forms.Label labelValor;
-        private System.Windows.Forms.MonthCalendar monthCalendarRecibo;
         private System.Windows.Forms.Button buttonAddFood;
         private System.Windows.Forms.TextBox textBoxEmpNIF;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonDisplayDataGrid;
     }
 }
 
