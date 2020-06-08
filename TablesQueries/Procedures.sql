@@ -17,7 +17,23 @@ GO
 */
 
 --INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (296969668,241045237,2.7);
---INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (687643810,241045237,3.40)
+--INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (687643810,241045237,3.40);
 
 
 --SELECT reciboID FROM Cafes.Recibo;
+
+--DROP PROCEDURE Cafes.GetEmpregado;
+
+/*
+CREATE PROCEDURE insertRecibo(@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
+AS
+BEGIN
+	INSERT INTO Cafes.recibo(ClienteNIF, EmpNIF, valor)
+	SELECT @ClienteNIF, @EmpNIF, @valor
+END
+*/
+
+
+--drop procedure insertRecibo;
+--EXEC insertRecibo 687643810, 241045237, 3.75;
+--SELECT * FROM Cafes.Recibo;
