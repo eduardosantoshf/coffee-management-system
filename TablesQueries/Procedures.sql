@@ -59,12 +59,11 @@ END
 --SELECT * FROM Cafes.Produto;
 
 /*
-CREATE PROCEDURE [dbo].[removeRecibo](@pID INT)
+CREATE PROCEDURE [dbo].[removeProduto](@pID INT)
 AS
 BEGIN
-	DELETE FROM Cafes.Produto WHERE reciboID = rID
-	SELECT @rID
+	DELETE FROM Cafes.Produto WHERE ID_P = @pID
 END
 */
---EXEC removeRecibo 3;
---SELECT * FROM Cafes.Recibo;
+--EXEC removeProduto 1;
+--SELECT * FROM Cafes.Produto;
