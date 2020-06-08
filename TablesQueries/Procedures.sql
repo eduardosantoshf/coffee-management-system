@@ -33,7 +33,19 @@ BEGIN
 END
 */
 
-
 --drop procedure insertRecibo;
 --EXEC insertRecibo 687643810, 241045237, 3.75;
 --SELECT * FROM Cafes.Recibo;
+/*
+
+CREATE PROCEDURE [dbo].[removeRecibo](@rID INT)
+AS
+BEGIN
+	DELETE FROM Cafes.Recibo WHERE reciboID = 3
+	SELECT @rID
+END
+*/
+--EXEC removeRecibo 3;
+--SELECT * FROM Cafes.Recibo;
+
+
