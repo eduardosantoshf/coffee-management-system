@@ -25,11 +25,11 @@ GO
 --DROP PROCEDURE Cafes.GetEmpregado;
 
 /*
-CREATE PROCEDURE insertRecibo(@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
+ALTER PROCEDURE [dbo].[insertRecibo](@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
 AS
-BEGIN
+BEGIN 
 	INSERT INTO Cafes.recibo(ClienteNIF, EmpNIF, data_recibo, valor)
-	SELECT @ClienteNIF, @EmpNIF,data_recibo,  @valor
+	SELECT @ClienteNIF, @EmpNIF, cast(@data_recibo as date), @valor
 END
 */
 

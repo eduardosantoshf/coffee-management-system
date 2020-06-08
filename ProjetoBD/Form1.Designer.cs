@@ -352,7 +352,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "yyyyMMdd";
+            this.dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(400, 388);
             this.dateTimePicker1.MaxDate = new System.DateTime(2020, 6, 8, 0, 0, 0, 0);

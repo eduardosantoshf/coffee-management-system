@@ -56,21 +56,20 @@ namespace ProjetoBD
 
             DataTable allPreviousRecibos = new DataTable();
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Recibo", cn)){;
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Cliente", cn)){;
                 SqlDataReader reader = cmd.ExecuteReader();
                 listBoxRecibos.Items.Clear();
-
+                /*
                 while (reader.Read())
                 {
                     Recibo R = new Recibo();
-                    R.reciboID = int.Parse(reader["reciboID"].ToString());
                     R.ClienteNIF = int.Parse(reader["ClienteNIF"].ToString());
                     R.EmpNIF = int.Parse(reader["EmpNIF"].ToString());
                     R.data_recibo = DateTime.Parse(reader["data_recibo"].ToString());
                     R.valor = float.Parse(reader["valor"].ToString());
                     listBoxRecibos.Items.Add(R);
                 }
-
+                */
                 allPreviousRecibos.Load(reader);
             }
             cn.Close();
@@ -84,21 +83,15 @@ namespace ProjetoBD
                 return;
             Recibo recibo = new Recibo();
             recibo = (Recibo)listBoxRecibos.Items[currentRecibo];
-            
-            /*txtID.Text = contact.CustomerID;
-            txtCompany.Text = contact.CompanyName;
-            txtContact.Text = contact.ContactName;
-            txtAddress1.Text = contact.Address1;
-            txtCity.Text = contact.City;
-            txtState.Text = contact.State;
-            txtZIP.Text = contact.ZIP;
-            txtCountry.Text = contact.Country;
-            txtTel.Text = contact.tel;
-            txtFax.Text = contact.FAX;*/       //used to show the information of the Recibo in the corresponding boxes
+
+            textBoxClienteNIF.Text = recibo.ClienteNIF.ToString();
+            textBoxEmpNIF.Text = recibo.EmpNIF.ToString();
+            textBoxValor.Text = recibo.valor.ToString();
+            dateTimePicker1.Value = recibo.data_recibo;
+            //used to show the information of the Recibo in the corresponding boxes
         }
         private void SubmitRecibo(Recibo R)
         {
-            //CRIAR UMA PROCEDURES PARA ADICIONAR NOVOS RECIBOS (ONDE O reciboID É +1 QUE O ANTERIOR)
             if (!verifyBDConnection())
                 return;
             SqlCommand cmd = new SqlCommand("insertRecibo", cn);
@@ -130,10 +123,9 @@ namespace ProjetoBD
                 return;
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "UPDATE Cafes.Recibo " + "SET reciboID = @reciboID, " + "    ClienteNIF = @ClienteNIF, " + "    EmpNIF = @EmpNIF, " +
+            cmd.CommandText = "UPDATE Cafes.Recibo " + "SET ClienteNIF = @ClienteNIF, " + "    EmpNIF = @EmpNIF, " +
                 "    data_recibo = @data_recibo, " + "    valor=@valor, ";
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@reciboID", R.reciboID);
             cmd.Parameters.AddWithValue("@ClienteNIF", R.ClienteNIF);
             cmd.Parameters.AddWithValue("@EmpNIF", R.EmpNIF);
             cmd.Parameters.AddWithValue("@data_recibo", R.data_recibo);
@@ -205,7 +197,6 @@ namespace ProjetoBD
             Recibo R = new Recibo();
             try
             {
-                //R.reciboID = txtID.Text;
                 R.ClienteNIF = int.Parse(textBoxClienteNIF.Text);
                 R.EmpNIF = int.Parse(textBoxEmpNIF.Text);
                 R.data_recibo = dateTimePicker1.Value.Date;
