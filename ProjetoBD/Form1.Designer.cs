@@ -62,16 +62,17 @@
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Location = new System.Drawing.Point(333, 597);
+            this.buttonRemove.Location = new System.Drawing.Point(357, 597);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(182, 51);
             this.buttonRemove.TabIndex = 12;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Visible = false;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(107, 597);
+            this.buttonAdd.Location = new System.Drawing.Point(152, 597);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(182, 51);
             this.buttonAdd.TabIndex = 10;
@@ -297,7 +298,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(107, 597);
+            this.buttonOK.Location = new System.Drawing.Point(152, 654);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(182, 51);
             this.buttonOK.TabIndex = 25;
@@ -308,13 +309,14 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(333, 597);
+            this.buttonCancel.Location = new System.Drawing.Point(357, 654);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(182, 51);
             this.buttonCancel.TabIndex = 26;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Visible = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxValor
             // 

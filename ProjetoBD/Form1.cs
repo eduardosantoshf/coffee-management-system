@@ -54,7 +54,6 @@ namespace ProjetoBD
             if (!verifyBDConnection())
                 return;
 
-            DataTable allPreviousRecibos = new DataTable();
 
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Recibo", cn)){;
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -69,13 +68,9 @@ namespace ProjetoBD
                     R.valor = float.Parse(reader["valor"].ToString());
                     listBoxRecibos.Items.Add(R);
                 }
-                
-                allPreviousRecibos.Load(reader);
             }
             cn.Close();
-
             currentRecibo = 0;
-            ShowRecibo();
         }
         public void ShowRecibo()
         {   //shows information of Recibo
@@ -92,6 +87,7 @@ namespace ProjetoBD
         }
         private void SubmitRecibo(Recibo R)
         {
+            //used to add a new recibo to the database
             if (!verifyBDConnection())
                 return;
             SqlCommand cmd = new SqlCommand("insertRecibo", cn);
@@ -115,65 +111,12 @@ namespace ProjetoBD
                 cn.Close();
             }
         }
-        private void UpdateRecibo(Recibo R)
-        {
-            int rows = 0;
-
-            if (!verifyBDConnection())
-                return;
-            SqlCommand cmd = new SqlCommand();
-
-            cmd.CommandText = "UPDATE Cafes.Recibo " + "SET ClienteNIF = @ClienteNIF, " + "    EmpNIF = @EmpNIF, " +
-                "    data_recibo = @data_recibo, " + "    valor=@valor, ";
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@ClienteNIF", R.ClienteNIF);
-            cmd.Parameters.AddWithValue("@EmpNIF", R.EmpNIF);
-            cmd.Parameters.AddWithValue("@data_recibo", R.data_recibo);
-            cmd.Connection = cn;
-
-            try
-            {
-                rows = cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Failed to update recibos in database. \n ERROR MESSAGE: \n" + ex.Message);
-            }
-            finally
-            {
-                if (rows == 1)
-                    MessageBox.Show("Update OK");
-                else
-                    MessageBox.Show("Update NOT OK");
-
-                cn.Close();
-            }
-        }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             adding = true;
-            //ClearFields();
             HideButtons();
             listBoxRecibos.Enabled = false;
-        }
-
-        private void HideButtons() {
-            //UnlockControls(); //used to change the values of selected Recibo
-            buttonAdd.Visible = false;
-            buttonRemove.Visible = false;
-            //buttonEdit.Visible = false;
-            buttonOK.Visible = true;
-            buttonCancel.Visible = true;
-        }
-        public void ShowButtons()
-        {
-            //LockControls();
-            buttonAdd.Visible = true;
-            buttonRemove.Visible = true;
-            //buttonEdit.Visible = true;
-            buttonOK.Visible = false;
-            buttonCancel.Visible = false;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -187,9 +130,16 @@ namespace ProjetoBD
                 MessageBox.Show(ex.Message);
             }
             listBoxRecibos.Enabled = true;
-            //int idx = listBoxRecibos.FindString(txtID.Text);
-            //listBoxRecibos.SelectedIndex = idx;
+            ClearFields();
             ShowButtons();
+            UnlockControls();
+        }
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            listBoxRecibos.Enabled = true;
+            ClearFields();
+            ShowButtons();
+            UnlockControls();
         }
 
         private bool SaveRecibo()
@@ -212,11 +162,6 @@ namespace ProjetoBD
                 SubmitRecibo(R);
                 listBoxRecibos.Items.Add(R);
             }
-            else
-            {
-                UpdateRecibo(R);
-                listBoxRecibos.Items[currentRecibo] = R;
-            }
             return true;
         }
 
@@ -228,14 +173,54 @@ namespace ProjetoBD
 
         private void listBoxRecibos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxRecibos.SelectedIndex > 0)
+            if (listBoxRecibos.SelectedIndex >= 0)
             {
                 currentRecibo = listBoxRecibos.SelectedIndex;
                 ShowRecibo();
+                LockControls();
+                ShowButtonsChosenIdx();
             }
         }
 
-
+        public void ClearFields()
+        {
+            textBoxClienteNIF.Text = "";
+            textBoxEmpNIF.Text = "";
+            textBoxValor.Text = "";
+        }
+        public void LockControls()
+        {
+            textBoxClienteNIF.ReadOnly = true;
+            textBoxEmpNIF.ReadOnly = true;
+            textBoxValor.ReadOnly = true;
+        }
+        public void UnlockControls()
+        {
+            textBoxClienteNIF.ReadOnly = false;
+            textBoxEmpNIF.ReadOnly = false;
+            textBoxValor.ReadOnly = false;
+        }
+        public void ShowButtons() 
+        {
+            buttonAdd.Visible = true;
+            buttonRemove.Visible = false;
+            buttonOK.Visible = false;
+            buttonCancel.Visible = false;
+        }
+        public void ShowButtonsChosenIdx() 
+        {
+            buttonRemove.Visible = true;
+            buttonAdd.Visible = false;
+            buttonCancel.Visible = true;
+            buttonOK.Visible = false;
+        }
+        public void HideButtons()
+        {
+            buttonRemove.Visible = false;
+            buttonAdd.Visible = false;
+            buttonOK.Visible = true;
+            buttonCancel.Visible = true;
+        }
         //
         //COMBO BOXES   
         //
