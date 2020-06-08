@@ -36,16 +36,35 @@ END
 --drop procedure insertRecibo;
 --EXEC insertRecibo 687643810, 241045237, 3.75;
 --SELECT * FROM Cafes.Recibo;
-/*
 
-CREATE PROCEDURE [dbo].[removeRecibo](@rID INT)
+/*
+ALTER PROCEDURE [dbo].[removeRecibo](@rID INT)
 AS
 BEGIN
-	DELETE FROM Cafes.Recibo WHERE reciboID = 3
+	DELETE FROM Cafes.Recibo WHERE reciboID = @rID
+END
+*/
+--EXEC removeRecibo 4;
+--SELECT * FROM Cafes.Recibo;
+
+/*
+CREATE PROCEDURE [dbo].[addProduto](@nomeP VARCHAR(20), @precoP FLOAT, @tipoP INT)
+AS
+BEGIN
+	INSERT INTO Cafes.Produto(nomeP, precoP, tipoP)
+	SELECT @nomeP, @precoP, @tipoP
+END
+*/
+--EXEC addProduto café, 0.65, 1;
+--SELECT * FROM Cafes.Produto;
+
+/*
+CREATE PROCEDURE [dbo].[removeRecibo](@pID INT)
+AS
+BEGIN
+	DELETE FROM Cafes.Produto WHERE reciboID = rID
 	SELECT @rID
 END
 */
 --EXEC removeRecibo 3;
 --SELECT * FROM Cafes.Recibo;
-
-
