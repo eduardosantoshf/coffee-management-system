@@ -28,8 +28,8 @@ GO
 CREATE PROCEDURE insertRecibo(@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
 AS
 BEGIN
-	INSERT INTO Cafes.recibo(ClienteNIF, EmpNIF, valor)
-	SELECT @ClienteNIF, @EmpNIF, @valor
+	INSERT INTO Cafes.recibo(ClienteNIF, EmpNIF, data_recibo, valor)
+	SELECT @ClienteNIF, @EmpNIF,data_recibo,  @valor
 END
 */
 
