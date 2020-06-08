@@ -54,21 +54,25 @@ namespace ProjetoBD
             if (!verifyBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Recibo", cn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            listBoxRecibos.Items.Clear();
+            DataTable allPreviousRecibos = new DataTable();
 
-            while (reader.Read())
-            {
-                Recibo R = new Recibo();
-                R.reciboID = int.Parse(reader["reciboID"].ToString());
-                R.ClienteNIF = int.Parse(reader["ClienteNIF"].ToString());
-                R.EmpNIF = int.Parse(reader["EmpNIF"].ToString());
-                R.data_recibo = DateTime.Parse(reader["data_recibo"].ToString());
-                R.valor = float.Parse(reader["valor"].ToString());
-                listBoxRecibos.Items.Add(R);
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Recibo", cn)){;
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBoxRecibos.Items.Clear();
+
+                while (reader.Read())
+                {
+                    Recibo R = new Recibo();
+                    R.reciboID = int.Parse(reader["reciboID"].ToString());
+                    R.ClienteNIF = int.Parse(reader["ClienteNIF"].ToString());
+                    R.EmpNIF = int.Parse(reader["EmpNIF"].ToString());
+                    R.data_recibo = DateTime.Parse(reader["data_recibo"].ToString());
+                    R.valor = float.Parse(reader["valor"].ToString());
+                    listBoxRecibos.Items.Add(R);
+                }
+
+                allPreviousRecibos.Load(reader);
             }
-
             cn.Close();
 
             currentRecibo = 0;
