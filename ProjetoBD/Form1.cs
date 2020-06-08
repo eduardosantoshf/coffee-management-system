@@ -328,7 +328,8 @@ namespace ProjetoBD
 
 
         //working tests
-        private void buttonDisplayDataGrid_Click(object sender, EventArgs e)
+
+        private void buttonDisplayClientes_Click(object sender, EventArgs e)
         {
             //execute procedure (readonly no edits)
             if (!verifyBDConnection())
@@ -337,8 +338,21 @@ namespace ProjetoBD
             cmd.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
-            dataGridView1.DataSource = dt;
-            dataGridView1.ReadOnly = true; //readOnly so no edits occur
+            dataGridViewClientes.DataSource = dt;
+            dataGridViewClientes.ReadOnly = true; //readOnly so no edits occur
+        }
+
+        private void buttonDisplayEmp_Click(object sender, EventArgs e)
+        {
+            //execute procedure (readonly no edits)
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("getEmps", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            dataGridViewEmps.DataSource = dt;
+            dataGridViewEmps.ReadOnly = true; //readOnly so no edits occur
         }
     }
 

@@ -55,9 +55,12 @@
             this.buttonAddFood = new System.Windows.Forms.Button();
             this.textBoxEmpNIF = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonDisplayDataGrid = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
+            this.buttonDisplayClientes = new System.Windows.Forms.Button();
+            this.buttonDisplayEmp = new System.Windows.Forms.Button();
+            this.dataGridViewEmps = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmps)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRemove
@@ -363,33 +366,55 @@
             this.dateTimePicker1.TabIndex = 32;
             this.dateTimePicker1.Value = new System.DateTime(2020, 6, 8, 0, 0, 0, 0);
             // 
-            // dataGridView1
+            // dataGridViewClientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(830, 442);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(496, 292);
-            this.dataGridView1.TabIndex = 33;
+            this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClientes.Location = new System.Drawing.Point(830, 393);
+            this.dataGridViewClientes.Name = "dataGridViewClientes";
+            this.dataGridViewClientes.RowHeadersWidth = 51;
+            this.dataGridViewClientes.RowTemplate.Height = 24;
+            this.dataGridViewClientes.Size = new System.Drawing.Size(496, 187);
+            this.dataGridViewClientes.TabIndex = 33;
             // 
-            // buttonDisplayDataGrid
+            // buttonDisplayClientes
             // 
-            this.buttonDisplayDataGrid.Location = new System.Drawing.Point(749, 701);
-            this.buttonDisplayDataGrid.Name = "buttonDisplayDataGrid";
-            this.buttonDisplayDataGrid.Size = new System.Drawing.Size(75, 33);
-            this.buttonDisplayDataGrid.TabIndex = 34;
-            this.buttonDisplayDataGrid.Text = "Display";
-            this.buttonDisplayDataGrid.UseVisualStyleBackColor = true;
-            this.buttonDisplayDataGrid.Click += new System.EventHandler(this.buttonDisplayDataGrid_Click);
+            this.buttonDisplayClientes.Location = new System.Drawing.Point(709, 535);
+            this.buttonDisplayClientes.Name = "buttonDisplayClientes";
+            this.buttonDisplayClientes.Size = new System.Drawing.Size(115, 45);
+            this.buttonDisplayClientes.TabIndex = 34;
+            this.buttonDisplayClientes.Text = "Display Clients";
+            this.buttonDisplayClientes.UseVisualStyleBackColor = true;
+            this.buttonDisplayClientes.Click += new System.EventHandler(this.buttonDisplayClientes_Click);
+            // 
+            // buttonDisplayEmp
+            // 
+            this.buttonDisplayEmp.Location = new System.Drawing.Point(709, 728);
+            this.buttonDisplayEmp.Name = "buttonDisplayEmp";
+            this.buttonDisplayEmp.Size = new System.Drawing.Size(115, 45);
+            this.buttonDisplayEmp.TabIndex = 36;
+            this.buttonDisplayEmp.Text = "Display Empregados";
+            this.buttonDisplayEmp.UseVisualStyleBackColor = true;
+            this.buttonDisplayEmp.Click += new System.EventHandler(this.buttonDisplayEmp_Click);
+            // 
+            // dataGridViewEmps
+            // 
+            this.dataGridViewEmps.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmps.Location = new System.Drawing.Point(830, 586);
+            this.dataGridViewEmps.Name = "dataGridViewEmps";
+            this.dataGridViewEmps.RowHeadersWidth = 51;
+            this.dataGridViewEmps.RowTemplate.Height = 24;
+            this.dataGridViewEmps.Size = new System.Drawing.Size(496, 187);
+            this.dataGridViewEmps.TabIndex = 35;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1338, 822);
-            this.Controls.Add(this.buttonDisplayDataGrid);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonDisplayEmp);
+            this.Controls.Add(this.dataGridViewEmps);
+            this.Controls.Add(this.buttonDisplayClientes);
+            this.Controls.Add(this.dataGridViewClientes);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxEmpNIF);
             this.Controls.Add(this.buttonAddFood);
@@ -421,7 +446,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmps)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,8 +481,10 @@
         private System.Windows.Forms.Button buttonAddFood;
         private System.Windows.Forms.TextBox textBoxEmpNIF;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonDisplayDataGrid;
+        private System.Windows.Forms.DataGridView dataGridViewClientes;
+        private System.Windows.Forms.Button buttonDisplayClientes;
+        private System.Windows.Forms.Button buttonDisplayEmp;
+        private System.Windows.Forms.DataGridView dataGridViewEmps;
     }
 }
 
