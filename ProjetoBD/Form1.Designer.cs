@@ -188,9 +188,9 @@
             // 
             this.listBoxRecibos.FormattingEnabled = true;
             this.listBoxRecibos.ItemHeight = 16;
-            this.listBoxRecibos.Location = new System.Drawing.Point(819, 28);
+            this.listBoxRecibos.Location = new System.Drawing.Point(749, 28);
             this.listBoxRecibos.Name = "listBoxRecibos";
-            this.listBoxRecibos.Size = new System.Drawing.Size(507, 356);
+            this.listBoxRecibos.Size = new System.Drawing.Size(577, 356);
             this.listBoxRecibos.TabIndex = 15;
             this.listBoxRecibos.SelectedIndexChanged += new System.EventHandler(this.listBoxRecibos_SelectedIndexChanged);
             // 
@@ -352,27 +352,30 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.CustomFormat = "yyyyMMdd";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(400, 388);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2020, 6, 8, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(117, 22);
             this.dateTimePicker1.TabIndex = 32;
+            this.dateTimePicker1.Value = new System.DateTime(2020, 6, 8, 0, 0, 0, 0);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(819, 442);
+            this.dataGridView1.Location = new System.Drawing.Point(830, 442);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(507, 292);
+            this.dataGridView1.Size = new System.Drawing.Size(496, 292);
             this.dataGridView1.TabIndex = 33;
             // 
             // buttonDisplayDataGrid
             // 
-            this.buttonDisplayDataGrid.Location = new System.Drawing.Point(738, 711);
+            this.buttonDisplayDataGrid.Location = new System.Drawing.Point(749, 701);
             this.buttonDisplayDataGrid.Name = "buttonDisplayDataGrid";
-            this.buttonDisplayDataGrid.Size = new System.Drawing.Size(75, 23);
+            this.buttonDisplayDataGrid.Size = new System.Drawing.Size(75, 33);
             this.buttonDisplayDataGrid.TabIndex = 34;
             this.buttonDisplayDataGrid.Text = "Display";
             this.buttonDisplayDataGrid.UseVisualStyleBackColor = true;

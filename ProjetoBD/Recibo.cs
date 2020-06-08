@@ -5,10 +5,10 @@ namespace ProjetoBD
     public class Recibo
     {
         private int  _reciboID;
-        private String _ClienteNIF;
-        private String _EmpNIF;
-        private String _data_recibo;
-        private String _valor;
+        private int _ClienteNIF;
+        private int _EmpNIF;
+        private DateTime _data_recibo;
+        private float _valor;
 
         public int reciboID
         {
@@ -22,11 +22,11 @@ namespace ProjetoBD
                 _reciboID = value; 
             }
         }
-        public String ClienteNIF
+        public int ClienteNIF
         {
             get { return _ClienteNIF; }
             set {
-                if (value == null | String.IsNullOrEmpty(value))
+                if (value == null )
                 {
                     throw new Exception("´Cliente NIF can't be null");
                     return;
@@ -34,11 +34,11 @@ namespace ProjetoBD
                 _ClienteNIF = value; 
             }
         }
-        public String EmpNIF
+        public int EmpNIF
         {
             get { return _ClienteNIF; }
             set {
-                if (value == null | String.IsNullOrEmpty(value))
+                if (value == null )
                 {
                     throw new Exception("Empregado NIF can't be null");
                     return;
@@ -46,12 +46,12 @@ namespace ProjetoBD
                 _ClienteNIF = value;
             }
         }
-        public String data_recibo
+        public DateTime data_recibo
         {
-            get { return _ClienteNIF; }
-            set { _ClienteNIF = value; }
+            get { return _data_recibo; }
+            set { _data_recibo = value; }
         }
-        public String valor
+        public float valor
         {
             get { return _valor; }
             set { _valor = value; }

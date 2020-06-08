@@ -62,12 +62,13 @@ namespace ProjetoBD
             {
                 Recibo R = new Recibo();
                 R.reciboID = int.Parse(reader["reciboID"].ToString());
-                R.ClienteNIF = reader["ClienteNIF"].ToString();
-                R.EmpNIF = reader["EmpNIF"].ToString();
-                R.data_recibo = reader["data_recibo"].ToString();
-                R.valor = reader["valor"].ToString();
+                R.ClienteNIF = int.Parse(reader["ClienteNIF"].ToString());
+                R.EmpNIF = int.Parse(reader["EmpNIF"].ToString());
+                R.data_recibo = DateTime.Parse(reader["data_recibo"].ToString());
+                R.valor = float.Parse(reader["valor"].ToString());
                 listBoxRecibos.Items.Add(R);
             }
+
             cn.Close();
 
             currentRecibo = 0;
@@ -96,15 +97,13 @@ namespace ProjetoBD
             //CRIAR UMA PROCEDURES PARA ADICIONAR NOVOS RECIBOS (ONDE O reciboID É +1 QUE O ANTERIOR)
             if (!verifyBDConnection())
                 return;
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand("insertRecibo", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.CommandText = "INSERT Cafes.Recibo (reciboID, ClienteNIF, EmpNIF, data_recibo, valor, " + "VALUES (@reciboID, @ClienteNIF, @EmpNIF, @data_recibo, @valor";
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@reciboID", R.reciboID);
-            cmd.Parameters.AddWithValue("@ClienteNIF", R.ClienteNIF);
-            cmd.Parameters.AddWithValue("@EmpNIF", R.EmpNIF);
-            cmd.Parameters.AddWithValue("@data_recibo", R.data_recibo);
-            cmd.Connection = cn;
+            cmd.Parameters.Add("@valor", SqlDbType.Float).Value = R.valor;
+            cmd.Parameters.Add("@ClienteNIF", SqlDbType.Int).Value = R.ClienteNIF;
+            cmd.Parameters.Add("@EmpNIF", SqlDbType.Int).Value = R.EmpNIF;
+            cmd.Parameters.Add("@data_recibo", SqlDbType.Date).Value = R.data_recibo;
 
             try
             {
@@ -203,10 +202,10 @@ namespace ProjetoBD
             try
             {
                 //R.reciboID = txtID.Text;
-                R.ClienteNIF = textBoxClienteNIF.Text;
-                R.EmpNIF = textBoxEmpNIF.Text;
-                //R.data_recibo = monthCalendarRecibo.DateSelected;
-                R.valor = textBoxValor.Text;
+                R.ClienteNIF = int.Parse(textBoxClienteNIF.Text);
+                R.EmpNIF = int.Parse(textBoxEmpNIF.Text);
+                R.data_recibo = dateTimePicker1.Value.Date;
+                R.valor = float.Parse(textBoxValor.Text);
             }
             catch (Exception ex)
             {
@@ -347,6 +346,8 @@ namespace ProjetoBD
 
         }
 
+
+        //working tests
         private void buttonDisplayDataGrid_Click(object sender, EventArgs e)
         {
             //execute procedure (readonly no edits)
