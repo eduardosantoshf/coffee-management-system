@@ -137,4 +137,21 @@ create table Cafes.C_paga_E(
     foreign key(NIF_C) references Cafes.Cliente(NIF),
     foreign key(Recibo_ID) references Cafes.Recibo(reciboID)
 );
+
+
+CREATE TABLE Cafes.Produto(
+	nomeP	VARCHAR(20)		NOT NULL,
+	ID_P	INT				NOT NULL,
+	precoP	FLOAT			NOT NULL,
+	tipoP	INT				NOT NULL,
+	PRIMARY KEY(ID_P)
+);
+
+CREATE TABLE Cafes.Compra(
+	Recibo_ID	INT		NOT NULL,
+	Produto_ID	INT		NOT NULL,
+	PRIMARY KEY(Recibo_ID, Produto_ID),
+	FOREIGN KEY(Recibo_ID) REFERENCES Cafes.Recibo(reciboID),
+	FOREIGN KEY(Produto_ID) REFERENCES Cafes.Produto(ID_P)
+);
 */
