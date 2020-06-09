@@ -20,6 +20,7 @@ namespace ProjetoBD
         private SqlConnection cn;
         private int currentRecibo;
         private bool adding;
+        private bool removing;
 
         public Form1()
         {
@@ -63,6 +64,7 @@ namespace ProjetoBD
                 while (reader.Read())
                 {
                     Recibo R = new Recibo();
+                    R.reciboID = int.Parse(reader["reciboID"].ToString());
                     R.ClienteNIF = int.Parse(reader["ClienteNIF"].ToString());
                     R.EmpNIF = int.Parse(reader["EmpNIF"].ToString());
                     R.data_recibo = DateTime.Parse(reader["data_recibo"].ToString());
@@ -99,6 +101,36 @@ namespace ProjetoBD
             cmd.Parameters.Add("@EmpNIF", SqlDbType.Int).Value = R.EmpNIF;
             cmd.Parameters.Add("@data_recibo", SqlDbType.Date).Value = R.data_recibo;
 
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+
+                cmd = new SqlCommand("getLastReciboID", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@lastID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                cmd.ExecuteNonQuery();
+                R.reciboID = (int)cmd.Parameters["@lastID"].Value;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update recibo in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        private void RemoveRecibo(Recibo R)
+        {
+            //used to add a new recibo to the database
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("removeRecibo", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@rID", SqlDbType.Int).Value = R.reciboID;
+
             try
             {
                 cmd.ExecuteNonQuery();
@@ -116,6 +148,12 @@ namespace ProjetoBD
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             adding = true;
+            HideButtons();
+            listBoxRecibos.Enabled = false;
+        }
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            removing = true;
             HideButtons();
             listBoxRecibos.Enabled = false;
         }
@@ -142,34 +180,42 @@ namespace ProjetoBD
             ShowButtons();
             UnlockControls();
         }
+        private void buttonAddFood_Click(object sender, EventArgs e)
+        {
+            //vai ser usado para adicionar a comida/bebida ao valor total e ao recibo
+
+        }
 
         private bool SaveRecibo()
         {
             Recibo R = new Recibo();
-            try
-            {
-                R.ClienteNIF = int.Parse(textBoxClienteNIF.Text);
-                R.EmpNIF = int.Parse(textBoxEmpNIF.Text);
-                R.data_recibo = dateTimePicker1.Value.Date;
-                R.valor = float.Parse(textBoxValor.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
             if (adding)
             {
+                try
+                {
+                    R.ClienteNIF = int.Parse(textBoxClienteNIF.Text);
+                    R.EmpNIF = int.Parse(textBoxEmpNIF.Text);
+                    R.data_recibo = dateTimePicker1.Value.Date;
+                    R.valor = float.Parse(textBoxValor.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            
                 SubmitRecibo(R);
                 listBoxRecibos.Items.Add(R);
+                adding = false;
+            }
+            if (removing)
+            {
+                R = (Recibo)listBoxRecibos.Items[currentRecibo];
+                RemoveRecibo(R);
+                listBoxRecibos.Items.Remove(R);
+                removing=false;
             }
             return true;
-        }
-
-        private void buttonAddFood_Click(object sender, EventArgs e)
-        {
-            //vai ser usado para adicionar a comida/bebida ao valor total e ao recibo
-            
         }
 
         private void listBoxRecibos_SelectedIndexChanged(object sender, EventArgs e)

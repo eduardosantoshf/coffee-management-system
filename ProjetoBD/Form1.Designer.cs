@@ -73,6 +73,7 @@
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
             this.buttonRemove.Visible = false;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // buttonAdd
             // 
@@ -415,7 +416,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Info;
-            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button1.Location = new System.Drawing.Point(13, 13);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 33);
