@@ -73,30 +73,13 @@ PRINT @lastID;
 
 --EXEC getLastReciboID
 
-
-
-
 /*
-CREATE PROCEDURE [dbo].[encryptPassword](@pwd VARCHAR(30), @encrypted_pwd VARBINARY(36) OUTPUT)
+CREATE PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30))
 AS
 BEGIN
-	SET @encrypted_pwd = HASHBYTES('MD5', @pwd);
+	INSERT INTO Cafes.Administrador([username],[pwd]) VALUES ('Admin', HASHBYTES('MD5', @pwd));
 END;
 */
 
---DECLARE @encrypted_pwd VARBINARY(36);
-EXEC [dbo].[encryptPassword] 'teste', @encrypted_pwd;
-PRINT @encrypted_pwd;
-
-
-
-
---EXEC encryptPassword 'palavra';
-
-
---SELECT ENCRYPTBYPASSPHRASE('I am not going to tell you what my password is!', 'ABC123');
-
---INSERT INTO Cafes.Administrador([username],[pwd]) VALUES ('nome', ENCRYPTBYPASSPHRASE('thisisthepwd', 'key@yo'));
---select * from Cafes.Administrador;
---INSERT INTO Cafes.Administrador([username],[pwd]) VALUES ('nome', HASHBYTES('MD5', 'pwd123'));
---select * from Cafes.Administrador WHERE pwd = HASHBYTES('MD5', 'pwd123');
+--EXEC insertAdministrador 'Admin', 'palavrapasse';
+--SELECT * FROM Cafes.Administrador;
