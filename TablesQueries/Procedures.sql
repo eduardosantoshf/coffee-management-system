@@ -31,34 +31,34 @@ BEGIN
 	INSERT INTO Cafes.recibo(ClienteNIF, EmpNIF, data_recibo, valor)
 	SELECT @ClienteNIF, @EmpNIF, cast(@data_recibo as date), @valor
 END
-*/
+
 
 --drop procedure insertRecibo;
 --EXEC insertRecibo 687643810, 241045237, 3.75;
 --SELECT * FROM Cafes.Recibo;
 
-/*
-ALTER PROCEDURE [dbo].[removeRecibo](@rID INT)
+GO
+Create PROCEDURE [dbo].[removeRecibo](@rID INT)
 AS
 BEGIN
 	DELETE FROM Cafes.Recibo WHERE reciboID = @rID
 END
-*/
+
 --EXEC removeRecibo 4;
 --SELECT * FROM Cafes.Recibo;
 
-/*
+GO
 CREATE PROCEDURE [dbo].[addProduto](@nomeP VARCHAR(20), @precoP FLOAT, @tipoP INT)
 AS
 BEGIN
 	INSERT INTO Cafes.Produto(nomeP, precoP, tipoP)
 	SELECT @nomeP, @precoP, @tipoP
 END
-*/
+
 --EXEC addProduto café, 0.65, 1;
 --SELECT * FROM Cafes.Produto;
 
-/*
+GO
 CREATE PROCEDURE [dbo].[removeProduto](@pID INT)
 AS
 BEGIN
