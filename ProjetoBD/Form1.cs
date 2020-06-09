@@ -11,6 +11,7 @@ using System.Windows.Forms;
 //HAVE ACCESS TO SQL DB
 using System.Data.SqlClient;
 using System.Windows.Forms.VisualStyles;
+using System.Security.Cryptography;
 
 namespace ProjetoBD
 {
@@ -193,12 +194,14 @@ namespace ProjetoBD
             textBoxClienteNIF.ReadOnly = true;
             textBoxEmpNIF.ReadOnly = true;
             textBoxValor.ReadOnly = true;
+            dateTimePicker1.Enabled = false;
         }
         public void UnlockControls()
         {
             textBoxClienteNIF.ReadOnly = false;
             textBoxEmpNIF.ReadOnly = false;
             textBoxValor.ReadOnly = false;
+            dateTimePicker1.Enabled = true;
         }
         public void ShowButtons() 
         {
@@ -353,6 +356,13 @@ namespace ProjetoBD
             dt.Load(cmd.ExecuteReader());
             dataGridViewEmps.DataSource = dt;
             dataGridViewEmps.ReadOnly = true; //readOnly so no edits occur
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+            this.Hide();
         }
     }
 

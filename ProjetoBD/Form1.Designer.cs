@@ -59,6 +59,7 @@
             this.buttonDisplayClientes = new System.Windows.Forms.Button();
             this.buttonDisplayEmp = new System.Windows.Forms.Button();
             this.dataGridViewEmps = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmps)).BeginInit();
             this.SuspendLayout();
@@ -346,6 +347,7 @@
             this.buttonAddFood.TabIndex = 30;
             this.buttonAddFood.Text = "Add";
             this.buttonAddFood.UseVisualStyleBackColor = true;
+            this.buttonAddFood.Visible = false;
             this.buttonAddFood.Click += new System.EventHandler(this.buttonAddFood_Click);
             // 
             // textBoxEmpNIF
@@ -378,22 +380,26 @@
             // 
             // buttonDisplayClientes
             // 
+            this.buttonDisplayClientes.BackColor = System.Drawing.SystemColors.Info;
+            this.buttonDisplayClientes.ForeColor = System.Drawing.SystemColors.GrayText;
             this.buttonDisplayClientes.Location = new System.Drawing.Point(709, 535);
             this.buttonDisplayClientes.Name = "buttonDisplayClientes";
             this.buttonDisplayClientes.Size = new System.Drawing.Size(115, 45);
             this.buttonDisplayClientes.TabIndex = 34;
             this.buttonDisplayClientes.Text = "Display Clients";
-            this.buttonDisplayClientes.UseVisualStyleBackColor = true;
+            this.buttonDisplayClientes.UseVisualStyleBackColor = false;
             this.buttonDisplayClientes.Click += new System.EventHandler(this.buttonDisplayClientes_Click);
             // 
             // buttonDisplayEmp
             // 
+            this.buttonDisplayEmp.BackColor = System.Drawing.SystemColors.Info;
+            this.buttonDisplayEmp.ForeColor = System.Drawing.SystemColors.GrayText;
             this.buttonDisplayEmp.Location = new System.Drawing.Point(709, 728);
             this.buttonDisplayEmp.Name = "buttonDisplayEmp";
             this.buttonDisplayEmp.Size = new System.Drawing.Size(115, 45);
             this.buttonDisplayEmp.TabIndex = 36;
             this.buttonDisplayEmp.Text = "Display Empregados";
-            this.buttonDisplayEmp.UseVisualStyleBackColor = true;
+            this.buttonDisplayEmp.UseVisualStyleBackColor = false;
             this.buttonDisplayEmp.Click += new System.EventHandler(this.buttonDisplayEmp_Click);
             // 
             // dataGridViewEmps
@@ -406,11 +412,27 @@
             this.dataGridViewEmps.Size = new System.Drawing.Size(496, 187);
             this.dataGridViewEmps.TabIndex = 35;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Info;
+            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button1.Location = new System.Drawing.Point(13, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(78, 33);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Admin";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDisplayEmp);
             this.Controls.Add(this.dataGridViewEmps);
             this.Controls.Add(this.buttonDisplayClientes);
@@ -485,6 +507,7 @@
         private System.Windows.Forms.Button buttonDisplayClientes;
         private System.Windows.Forms.Button buttonDisplayEmp;
         private System.Windows.Forms.DataGridView dataGridViewEmps;
+        private System.Windows.Forms.Button button1;
     }
 }
 

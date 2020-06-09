@@ -28,3 +28,4 @@ C:\Users\eduri\Desktop\BDProject\ProjetoBD\obj\Debug\ProjetoBD.pdb
 C:\Users\eduri\Desktop\BDProject\ProjetoBD\bin\Debug\ProjetoBD.exe.config
 C:\Users\eduri\Desktop\BDProject\ProjetoBD\bin\Debug\ProjetoBD.exe
 C:\Users\eduri\Desktop\BDProject\ProjetoBD\bin\Debug\ProjetoBD.pdb
+C:\Users\Diogo.DESKTOP-B6II5UN\OneDrive\Ambiente de Trabalho\ProjetoBD\ProjetoBD\obj\Debug\ProjetoBD.Form2.resources
