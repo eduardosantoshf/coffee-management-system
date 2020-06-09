@@ -1,20 +1,3 @@
-/*
-BEGIN
-	PRINT 'Teste'
-	RETURN
-END
-*/
-/*
-GO
-CREATE PROCEDURE Cafes.GetEmpregado
-AS
-	SET NOCOUNT ON; 
-	SELECT nome
-	FROM Cafes.Empregado AS nn
-	print nn
-RETURN
-GO
-*/
 
 --INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (296969668,241045237,2.7);
 --INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (687643810,241045237,3.40);
@@ -82,7 +65,7 @@ END
 */
 --DROP PROCEDURE [dbo].[getLastReciboID]
 
-/*
+/*l
 DECLARE @lastID INT;
 EXEC getLastReciboID @lastID OUTPUT;
 PRINT @lastID;
@@ -90,3 +73,30 @@ PRINT @lastID;
 
 --EXEC getLastReciboID
 
+
+
+
+/*
+CREATE PROCEDURE [dbo].[encryptPassword](@pwd VARCHAR(30), @encrypted_pwd VARBINARY(36) OUTPUT)
+AS
+BEGIN
+	SET @encrypted_pwd = HASHBYTES('MD5', @pwd);
+END;
+*/
+
+--DECLARE @encrypted_pwd VARBINARY(36);
+EXEC [dbo].[encryptPassword] 'teste', @encrypted_pwd;
+PRINT @encrypted_pwd;
+
+
+
+
+--EXEC encryptPassword 'palavra';
+
+
+--SELECT ENCRYPTBYPASSPHRASE('I am not going to tell you what my password is!', 'ABC123');
+
+--INSERT INTO Cafes.Administrador([username],[pwd]) VALUES ('nome', ENCRYPTBYPASSPHRASE('thisisthepwd', 'key@yo'));
+--select * from Cafes.Administrador;
+--INSERT INTO Cafes.Administrador([username],[pwd]) VALUES ('nome', HASHBYTES('MD5', 'pwd123'));
+--select * from Cafes.Administrador WHERE pwd = HASHBYTES('MD5', 'pwd123');
