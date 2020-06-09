@@ -60,12 +60,14 @@
             this.buttonDisplayEmp = new System.Windows.Forms.Button();
             this.dataGridViewEmps = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.listBoxProdutosRecibo = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmps)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRemove
             // 
+            this.buttonRemove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRemove.Location = new System.Drawing.Point(357, 597);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(182, 51);
@@ -77,6 +79,7 @@
             // 
             // buttonAdd
             // 
+            this.buttonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAdd.Location = new System.Drawing.Point(152, 597);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(182, 51);
@@ -194,9 +197,9 @@
             // 
             this.listBoxRecibos.FormattingEnabled = true;
             this.listBoxRecibos.ItemHeight = 16;
-            this.listBoxRecibos.Location = new System.Drawing.Point(749, 28);
+            this.listBoxRecibos.Location = new System.Drawing.Point(1044, 38);
             this.listBoxRecibos.Name = "listBoxRecibos";
-            this.listBoxRecibos.Size = new System.Drawing.Size(577, 356);
+            this.listBoxRecibos.Size = new System.Drawing.Size(282, 276);
             this.listBoxRecibos.TabIndex = 15;
             this.listBoxRecibos.SelectedIndexChanged += new System.EventHandler(this.listBoxRecibos_SelectedIndexChanged);
             // 
@@ -303,6 +306,7 @@
             // 
             // buttonOK
             // 
+            this.buttonOK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonOK.Location = new System.Drawing.Point(152, 654);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(182, 51);
@@ -314,6 +318,7 @@
             // 
             // buttonCancel
             // 
+            this.buttonCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancel.Location = new System.Drawing.Point(357, 654);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(182, 51);
@@ -342,6 +347,7 @@
             // 
             // buttonAddFood
             // 
+            this.buttonAddFood.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAddFood.Location = new System.Drawing.Point(539, 215);
             this.buttonAddFood.Name = "buttonAddFood";
             this.buttonAddFood.Size = new System.Drawing.Size(61, 25);
@@ -372,18 +378,19 @@
             // dataGridViewClientes
             // 
             this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClientes.Location = new System.Drawing.Point(830, 393);
+            this.dataGridViewClientes.Location = new System.Drawing.Point(830, 320);
             this.dataGridViewClientes.Name = "dataGridViewClientes";
             this.dataGridViewClientes.RowHeadersWidth = 51;
             this.dataGridViewClientes.RowTemplate.Height = 24;
-            this.dataGridViewClientes.Size = new System.Drawing.Size(496, 187);
+            this.dataGridViewClientes.Size = new System.Drawing.Size(496, 215);
             this.dataGridViewClientes.TabIndex = 33;
             // 
             // buttonDisplayClientes
             // 
             this.buttonDisplayClientes.BackColor = System.Drawing.SystemColors.Info;
+            this.buttonDisplayClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonDisplayClientes.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.buttonDisplayClientes.Location = new System.Drawing.Point(709, 535);
+            this.buttonDisplayClientes.Location = new System.Drawing.Point(709, 490);
             this.buttonDisplayClientes.Name = "buttonDisplayClientes";
             this.buttonDisplayClientes.Size = new System.Drawing.Size(115, 45);
             this.buttonDisplayClientes.TabIndex = 34;
@@ -394,8 +401,9 @@
             // buttonDisplayEmp
             // 
             this.buttonDisplayEmp.BackColor = System.Drawing.SystemColors.Info;
+            this.buttonDisplayEmp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonDisplayEmp.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.buttonDisplayEmp.Location = new System.Drawing.Point(709, 728);
+            this.buttonDisplayEmp.Location = new System.Drawing.Point(709, 711);
             this.buttonDisplayEmp.Name = "buttonDisplayEmp";
             this.buttonDisplayEmp.Size = new System.Drawing.Size(115, 45);
             this.buttonDisplayEmp.TabIndex = 36;
@@ -406,16 +414,17 @@
             // dataGridViewEmps
             // 
             this.dataGridViewEmps.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmps.Location = new System.Drawing.Point(830, 586);
+            this.dataGridViewEmps.Location = new System.Drawing.Point(830, 541);
             this.dataGridViewEmps.Name = "dataGridViewEmps";
             this.dataGridViewEmps.RowHeadersWidth = 51;
             this.dataGridViewEmps.RowTemplate.Height = 24;
-            this.dataGridViewEmps.Size = new System.Drawing.Size(496, 187);
+            this.dataGridViewEmps.Size = new System.Drawing.Size(496, 215);
             this.dataGridViewEmps.TabIndex = 35;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Info;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.button1.Location = new System.Drawing.Point(13, 13);
             this.button1.Name = "button1";
@@ -425,6 +434,15 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // listBoxProdutosRecibo
+            // 
+            this.listBoxProdutosRecibo.FormattingEnabled = true;
+            this.listBoxProdutosRecibo.ItemHeight = 16;
+            this.listBoxProdutosRecibo.Location = new System.Drawing.Point(709, 38);
+            this.listBoxProdutosRecibo.Name = "listBoxProdutosRecibo";
+            this.listBoxProdutosRecibo.Size = new System.Drawing.Size(329, 276);
+            this.listBoxProdutosRecibo.TabIndex = 38;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -433,6 +451,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.Controls.Add(this.listBoxProdutosRecibo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDisplayEmp);
             this.Controls.Add(this.dataGridViewEmps);
@@ -509,6 +528,7 @@
         private System.Windows.Forms.Button buttonDisplayEmp;
         private System.Windows.Forms.DataGridView dataGridViewEmps;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBoxProdutosRecibo;
     }
 }
 
