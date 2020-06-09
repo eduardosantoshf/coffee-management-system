@@ -67,3 +67,26 @@ END
 */
 --EXEC removeProduto 1;
 --SELECT * FROM Cafes.Produto;
+
+
+--This selects the last (max) ID from products' table
+--SELECT MAX(ID_P) FROM Cafes.Produto;
+
+
+/*
+CREATE PROCEDURE [dbo].[getLastReciboID](@lastID INT OUTPUT)
+AS
+BEGIN
+	SELECT @lastID = MAX(reciboID) FROM Cafes.Recibo;
+END
+*/
+--DROP PROCEDURE [dbo].[getLastReciboID]
+
+/*
+DECLARE @lastID INT;
+EXEC getLastReciboID @lastID OUTPUT;
+PRINT @lastID;
+*/
+
+--EXEC getLastReciboID
+
