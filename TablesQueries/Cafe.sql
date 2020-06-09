@@ -1,4 +1,12 @@
 --create Schema Cafes;
+
+/*
+CREATE TABLE Cafes.Administrador(
+	username	VARCHAR(30)		NOT NULL,
+	pwd			VARBINARY(36)		NOT NULL,
+);
+*/
+
 /*
 create table Cafes.Cafe(
     NIF	int not null,
@@ -155,3 +163,4 @@ CREATE TABLE Cafes.Compra(
 	FOREIGN KEY(Produto_ID) REFERENCES Cafes.Produto(ID_P)
 );
 */
+--
