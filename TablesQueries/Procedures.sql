@@ -1,11 +1,20 @@
 /*
-ALTER PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30))
+--Procedure to insert new administrator, hashing the password before inserting the hash into the password column 
+--on the table Cafes.Administrador
+
+CREATE PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30))
 AS
-BEGIN
-	INSERT INTO Cafes.Administrador([username],[pwd]) VALUES (@username, HASHBYTES('MD5', @pwd));
-END;
-*/
-/*
+	BEGIN
+		INSERT INTO Cafes.Administrador([username],[pwd]) VALUES (@username, HASHBYTES('MD5', @pwd));
+	END
+GO
+
+--------------------------------------------------------
+
+--Procedure to verify login, first verifying if the username exists in the database,if it does verify the pwd, 
+--and because we cannot "unhash" the password, we hash the inserted pwd at the login and check if the new hash 
+--is the same as the stored password hash, if this is true, the procedure returns 1, meaning "success"
+
 CREATE PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pass VARCHAR(30))
 AS
 BEGIN
@@ -19,102 +28,69 @@ BEGIN
     END
     return @flag
 GO
-*/
-/*
-DECLARE @flag2 INT;
-EXEC verifyLogin 'ola', 'palavrachave', @flag2 OUTPUT;
-PRINT @flag2;
-*/
 
-
-/*
 CREATE PROCEDURE [dbo].[insertRecibo](@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
 AS
-BEGIN 
-	INSERT INTO Cafes.Recibo(ClienteNIF, EmpNIF, data_recibo, valor)
-	SELECT @ClienteNIF, @EmpNIF, cast(@data_recibo as date), @valor
-END
-
-
---drop procedure insertRecibo;
---EXEC insertRecibo 687643810, 241045237, 3.75;
---SELECT * FROM Cafes.Recibo; 
-
+	BEGIN 
+		INSERT INTO Cafes.Recibo(ClienteNIF, EmpNIF, data_recibo, valor)
+		SELECT @ClienteNIF, @EmpNIF, cast(@data_recibo as date), @valor
+	END
 GO
+
 Create PROCEDURE [dbo].[removeRecibo](@rID INT)
 AS
-BEGIN
-	DELETE FROM Cafes.Recibo WHERE reciboID = @rID
-END
-
---EXEC removeRecibo 4;
---SELECT * FROM Cafes.Recibo;
-
+	BEGIN
+		DELETE FROM Cafes.Recibo WHERE reciboID = @rID
+	END
 GO
+
+
 CREATE PROCEDURE [dbo].[addProduto](@nomeP VARCHAR(20), @precoP FLOAT, @tipoP INT)
 AS
-BEGIN
-	INSERT INTO Cafes.Produto(nomeP, precoP, tipoP)
-	SELECT @nomeP, @precoP, @tipoP
-END
-*/
---EXEC addProduto café, 0.65, 1;
---SELECT * FROM Cafes.Produto;
-/*
+	BEGIN
+		INSERT INTO Cafes.Produto(nomeP, precoP, tipoP)
+		SELECT @nomeP, @precoP, @tipoP
+	END
 GO
+
 CREATE PROCEDURE [dbo].[removeProduto](@pID INT)
 AS
-BEGIN
-	DELETE FROM Cafes.Produto WHERE ID_P = @pID
-END
-*/
---EXEC removeProduto 3;
---SELECT * FROM Cafes.Produto;
-/*
-
---This selects the last (max) ID from products' table
---SELECT MAX(ID_P) FROM Cafes.Produto;
-
-
+	BEGIN
+		DELETE FROM Cafes.Produto WHERE ID_P = @pID
+	END
+GO
 
 CREATE PROCEDURE [dbo].[getLastReciboID](@lastID INT OUTPUT)
 AS
-BEGIN
-	SELECT @lastID = MAX(reciboID) FROM Cafes.Recibo;
-END
+	BEGIN
+		SELECT @lastID = MAX(reciboID) FROM Cafes.Recibo;
+	END
+GO
 
---DROP PROCEDURE [dbo].[getLastReciboID]
+--------------------------------------------------------
 
 
-DECLARE @lastID INT;
-EXEC getLastReciboID @lastID OUTPUT;
-PRINT @lastID;
+--To get the ID from the last invoice, 
 
 CREATE PROCEDURE [dbo].[getLastProdutoID]
 AS
-BEGIN
-    declare @lastID integer;
-    SET @lastID = (Select MAX(ID_P) FROM Cafes.Produto);
-    return @lastID
-END
+	BEGIN
+		declare @lastID integer;
+		SET @lastID = (Select MAX(ID_P) FROM Cafes.Produto);
+		return @lastID
+	END
+GO
 
 
---EXEC getLastReciboID
-*/
-/*
+
 CREATE PROCEDURE [dbo].[insertCompra](@reciboID INT, @produtoID INT)
 AS
-BEGIN
-	INSERT INTO Cafes.Compra([Recibo_ID],[Produto_ID]) VALUES (@reciboID, @produtoID);
-END
+	BEGIN
+		INSERT INTO Cafes.Compra([Recibo_ID],[Produto_ID]) VALUES (@reciboID, @produtoID);
+	END
+GO
 
---SELECT * FROM Cafes.Recibo;
---SELECT * FROM Cafes.Produto;
---EXEC insertCompra 1, 2;
---SELECT * FROM Cafes.Compra;
-
-
-ALTER PROCEDURE [dbo].[getBebidas]
+CREATE PROCEDURE [dbo].[getBebidas]
 AS
 	BEGIN
 		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 1;
@@ -122,29 +98,27 @@ AS
 GO
 
 
-ALTER PROCEDURE [dbo].[getAlcool]
+CREATE PROCEDURE [dbo].[getAlcool]
 AS
 	BEGIN
 		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 2;
 	END
 GO
 
-ALTER PROCEDURE [dbo].[getAlmocos]
+CREATE PROCEDURE [dbo].[getAlmocos]
 AS
 	BEGIN
 		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 3;
 	END
 GO
 
-ALTER PROCEDURE [dbo].[getPasteis]
+CREATE PROCEDURE [dbo].[getPasteis]
 AS
 	BEGIN
 		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 4;
 	END
 GO
-*/
 
-/*
 CREATE PROCEDURE editProduto(@ID_P INT, @precoP FLOAT)
 AS
 	BEGIN
@@ -154,6 +128,12 @@ AS
 GO
 */
 
+CREATE PROCEDURE insertEmpregado(@NIF INT, @NIF_cafe INT, @idade INT, @nome VARCHAR(30), @data_inic_contrato DATE)
+AS
+	BEGIN
+		INSERT INTO Cafes.Empregado([NIF],[NIF_cafe],[idade],[nome],[data_inic_contrato]) VALUES(@NIF, @NIF_cafe, @idade, @nome, @data_inic_contrato);
+	END
+GO
 
 
 		
