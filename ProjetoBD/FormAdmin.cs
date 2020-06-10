@@ -227,7 +227,7 @@ namespace ProjetoBD
             comboBoxProdTipo.SelectedItem = comboBoxProdTipo.Items[prod.tipo-1]; //tipo de produto(bebidas-1,alcool-2,almocos-3,pasteis-4)
             //used to show the information of the Produto in the corresponding boxes
         }
-        private bool SaveProduto() 
+        private bool SaveProduto(object sender, EventArgs e) 
         {
             Produto P = new Produto();
             if (adding)
@@ -254,17 +254,29 @@ namespace ProjetoBD
                 {
                     P = (Produto)listBoxProds.Items[currentProd];
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(ex.Message);
                     return false;
                 }
                 RemoveProduto(P);
                 listBoxProds.Items.Remove(P);
                 removing = false;
             }
-            else { 
+            else {
                 //edit produto
+                try
+                {
+                    P = (Produto)listBoxProds.Items[currentProd];
+                    P.preco = float.Parse(textBoxProdPreco.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+                EditProduto(P);
+                loadProdutos(sender,e);
             }
             return true;
         }
@@ -309,6 +321,30 @@ namespace ProjetoBD
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@pID", SqlDbType.Int).Value = P.ID;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update produto in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        private void EditProduto(Produto P)
+        {
+            //used to edit a produto in the database
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("editProduto", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ID_P", SqlDbType.Int).Value = P.ID;
+            cmd.Parameters.Add("@precoP", SqlDbType.Float).Value = P.preco;
 
             try
             {
@@ -494,11 +530,17 @@ namespace ProjetoBD
             HideButtonsProd();
             listBoxProds.Enabled = false;
         }
+        private void buttonEditProd_Click(object sender, EventArgs e)
+        {
+            HideButtonsProd();
+            textBoxProdPreco.ReadOnly = false;
+            listBoxProds.Enabled = false;
+        }
         private void buttonOkProd_Click(object sender, EventArgs e)
         {
             try
             {
-                SaveProduto();
+                SaveProduto(sender,e);
             }
             catch (Exception ex)
             {

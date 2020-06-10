@@ -283,6 +283,7 @@
             this.buttonEditProd.Text = "Edit Produto";
             this.buttonEditProd.UseVisualStyleBackColor = true;
             this.buttonEditProd.Visible = false;
+            this.buttonEditProd.Click += new System.EventHandler(this.buttonEditProd_Click);
             // 
             // label1
             // 
