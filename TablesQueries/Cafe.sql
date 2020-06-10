@@ -50,7 +50,6 @@ create table Cafes.Cafe_Restaurante (
     NIF	int not null,
     nome	varchar(30) not null,
     morada	varchar(30) not null,
-    no_almocos  int,
     primary key(NIF),
     foreign key(NIF) references Cafes.Cafe(NIF)
 );
@@ -72,7 +71,6 @@ create table Cafes.Cafe_Pastelaria (
     NIF	int not null,
     nome	varchar(30) not null,
     morada	varchar(30) not null,
-    no_bolos  int,
     primary key(NIF),
     foreign key(NIF) references Cafes.Cafe(NIF)
 );
@@ -104,7 +102,6 @@ create table Cafes.Cafe_Bar (
 
 create table Cafes.Bar(
     NIF_cafeB   int not null,
-    bebidas int,
     primary key(NIF_CafeB),
     foreign key(NIF_CafeB) references Cafes.Cafe_Bar(NIF)
 );
