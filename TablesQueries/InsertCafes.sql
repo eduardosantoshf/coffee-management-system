@@ -27,3 +27,7 @@
 --ALTER TABLE Cafes.Cafe_Bar DROP COLUMN bebidas;
 --ALTER TABLE Cafes.Recibo DROP COLUMN valor;
 --ALTER TABLE Cafes.Recibo ADD valor float    NOT NULL;
+
+--Insert recibos
+--INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (296969668,241045237,2.7);
+--INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (687643810,241045237,3.40);
