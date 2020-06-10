@@ -202,7 +202,6 @@ namespace ProjetoBD
             HideButtons();
             listBoxRecibos.Enabled = false;
         }
-
         private void buttonOK_Click(object sender, EventArgs e)
         {
             try
@@ -231,6 +230,7 @@ namespace ProjetoBD
 
         }
         //end of buttons
+
         private bool SaveRecibo()
         {
             Recibo R = new Recibo();

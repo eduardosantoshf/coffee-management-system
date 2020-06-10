@@ -48,6 +48,9 @@
             this.textBoxEmpNIF = new System.Windows.Forms.TextBox();
             this.listBoxEmpregados = new System.Windows.Forms.ListBox();
             this.panelProd = new System.Windows.Forms.Panel();
+            this.buttonEditProd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxProdTipo = new System.Windows.Forms.ComboBox();
             this.buttonOkProd = new System.Windows.Forms.Button();
             this.buttonCancelProd = new System.Windows.Forms.Button();
             this.buttonAddProd = new System.Windows.Forms.Button();
@@ -57,10 +60,7 @@
             this.labelProdutoNome = new System.Windows.Forms.Label();
             this.textBoxProdNome = new System.Windows.Forms.TextBox();
             this.listBoxProds = new System.Windows.Forms.ListBox();
-            this.comboBoxProdTipo = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.buttonEditProd = new System.Windows.Forms.Button();
             this.panelAddEmp.SuspendLayout();
             this.panelProd.SuspendLayout();
             this.SuspendLayout();
@@ -274,6 +274,38 @@
             this.panelProd.TabIndex = 44;
             this.panelProd.Visible = false;
             // 
+            // buttonEditProd
+            // 
+            this.buttonEditProd.Location = new System.Drawing.Point(238, 231);
+            this.buttonEditProd.Name = "buttonEditProd";
+            this.buttonEditProd.Size = new System.Drawing.Size(142, 42);
+            this.buttonEditProd.TabIndex = 46;
+            this.buttonEditProd.Text = "Edit Produto";
+            this.buttonEditProd.UseVisualStyleBackColor = true;
+            this.buttonEditProd.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(193, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 17);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Produto Tipo";
+            // 
+            // comboBoxProdTipo
+            // 
+            this.comboBoxProdTipo.FormattingEnabled = true;
+            this.comboBoxProdTipo.Items.AddRange(new object[] {
+            "Bebidas",
+            "Alcool",
+            "Pasteis",
+            "Almocos"});
+            this.comboBoxProdTipo.Location = new System.Drawing.Point(196, 36);
+            this.comboBoxProdTipo.Name = "comboBoxProdTipo";
+            this.comboBoxProdTipo.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxProdTipo.TabIndex = 44;
+            // 
             // buttonOkProd
             // 
             this.buttonOkProd.Location = new System.Drawing.Point(158, 279);
@@ -283,6 +315,7 @@
             this.buttonOkProd.Text = "OK";
             this.buttonOkProd.UseVisualStyleBackColor = true;
             this.buttonOkProd.Visible = false;
+            this.buttonOkProd.Click += new System.EventHandler(this.buttonOkProd_Click);
             // 
             // buttonCancelProd
             // 
@@ -293,6 +326,7 @@
             this.buttonCancelProd.Text = "Cancel";
             this.buttonCancelProd.UseVisualStyleBackColor = true;
             this.buttonCancelProd.Visible = false;
+            this.buttonCancelProd.Click += new System.EventHandler(this.buttonCancelProd_Click);
             // 
             // buttonAddProd
             // 
@@ -302,6 +336,7 @@
             this.buttonAddProd.TabIndex = 41;
             this.buttonAddProd.Text = "Add Produto";
             this.buttonAddProd.UseVisualStyleBackColor = true;
+            this.buttonAddProd.Click += new System.EventHandler(this.buttonAddProd_Click);
             // 
             // buttonRemoveProd
             // 
@@ -312,6 +347,7 @@
             this.buttonRemoveProd.Text = "Remove Produto";
             this.buttonRemoveProd.UseVisualStyleBackColor = true;
             this.buttonRemoveProd.Visible = false;
+            this.buttonRemoveProd.Click += new System.EventHandler(this.buttonRemoveProd_Click);
             // 
             // labelProdutoPreco
             // 
@@ -354,38 +390,6 @@
             this.listBoxProds.Size = new System.Drawing.Size(411, 292);
             this.listBoxProds.TabIndex = 0;
             this.listBoxProds.SelectedIndexChanged += new System.EventHandler(this.listBoxProds_SelectedIndexChanged);
-            // 
-            // comboBoxProdTipo
-            // 
-            this.comboBoxProdTipo.FormattingEnabled = true;
-            this.comboBoxProdTipo.Items.AddRange(new object[] {
-            "Bebidas",
-            "Alcool",
-            "Pasteis",
-            "Almocos"});
-            this.comboBoxProdTipo.Location = new System.Drawing.Point(196, 36);
-            this.comboBoxProdTipo.Name = "comboBoxProdTipo";
-            this.comboBoxProdTipo.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxProdTipo.TabIndex = 44;
-            this.comboBoxProdTipo.SelectedIndexChanged += new System.EventHandler(this.comboBoxProdTipo_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(193, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 17);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "Produto Tipo";
-            // 
-            // buttonEditProd
-            // 
-            this.buttonEditProd.Location = new System.Drawing.Point(238, 231);
-            this.buttonEditProd.Name = "buttonEditProd";
-            this.buttonEditProd.Size = new System.Drawing.Size(142, 42);
-            this.buttonEditProd.TabIndex = 46;
-            this.buttonEditProd.Text = "Edit Produto";
-            this.buttonEditProd.UseVisualStyleBackColor = true;
             // 
             // FormAdmin
             // 

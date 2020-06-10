@@ -18,7 +18,6 @@ namespace ProjetoBD
         private int currentEmp;     //to track current Empregado
         private int currentCliente; //to track current Client
         private int currentProd;    //to track current Produto
-        private int prodTipo;       //para saber o tipo de produto(bebidas-1,alcool-2,almocos-3,pasteis-4)
         private bool adding;
         private bool removing;
 
@@ -76,7 +75,7 @@ namespace ProjetoBD
         }
         private void SubmitEmpregado(Empregado E)
         {
-            //used to add a new recibo to the database
+            //used to add a new empregado to the database
             if (!verifyBDConnection())
                 return;
             SqlCommand cmd = new SqlCommand("insertEmpregado", cn);
@@ -103,7 +102,7 @@ namespace ProjetoBD
         }
         private void RemoveEmpregado(Empregado E)
         {
-            //used to add a new recibo to the database
+            //used to remove a empregado from the database
             if (!verifyBDConnection())
                 return;
             SqlCommand cmd = new SqlCommand("removeEmpregado", cn);
@@ -117,7 +116,7 @@ namespace ProjetoBD
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to update recibo in database. \n ERROR MESSAGE: \n" + ex.Message);
+                throw new Exception("Failed to update empregado in database. \n ERROR MESSAGE: \n" + ex.Message);
             }
             finally
             {
@@ -200,7 +199,7 @@ namespace ProjetoBD
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Produto", cn))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
-                listBoxEmpregados.Items.Clear();
+                listBoxProds.Items.Clear();
 
                 while (reader.Read())
                 {
@@ -225,8 +224,104 @@ namespace ProjetoBD
 
             textBoxProdNome.Text = prod.nome;
             textBoxProdPreco.Text = prod.preco.ToString();
-            comboBoxProdTipo.SelectedItem = comboBoxProdTipo.Items[(int)prodTipo];
+            comboBoxProdTipo.SelectedItem = comboBoxProdTipo.Items[prod.tipo-1]; //tipo de produto(bebidas-1,alcool-2,almocos-3,pasteis-4)
             //used to show the information of the Produto in the corresponding boxes
+        }
+        private bool SaveProduto() 
+        {
+            Produto P = new Produto();
+            if (adding)
+            {
+                try
+                {
+                    P.nome = textBoxProdNome.Text;
+                    P.preco = float.Parse(textBoxProdPreco.Text);
+                    P.tipo = int.Parse(comboBoxProdTipo.SelectedIndex.ToString())+1;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+
+                SubmitProduto(P);
+                listBoxProds.Items.Add(P);
+                adding = false;
+            }
+            else if (removing)
+            {
+                try
+                {
+                    P = (Produto)listBoxProds.Items[currentProd];
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+                RemoveProduto(P);
+                listBoxProds.Items.Remove(P);
+                removing = false;
+            }
+            else { 
+                //edit produto
+            }
+            return true;
+        }
+        private void SubmitProduto(Produto P)
+        {
+            //used to add a new produto to the database
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("addProduto", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@nomeP", SqlDbType.VarChar).Value = P.nome;
+            cmd.Parameters.Add("@precoP", SqlDbType.Int).Value = P.preco;
+            cmd.Parameters.Add("@tipoP", SqlDbType.Int).Value = P.tipo;        
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+
+                cmd = new SqlCommand("getLastProdutoID", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@lastID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                
+                cmd.ExecuteNonQuery();
+                P.ID = (int)cmd.Parameters["@lastID"].Value;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update produto in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        private void RemoveProduto(Produto P)
+        {
+            //used to remove a produto from the database
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("removeProduto", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@pID", SqlDbType.Int).Value = P.ID;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update produto in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
 
         private void listBoxProds_SelectedIndexChanged(object sender, EventArgs e)
@@ -286,12 +381,19 @@ namespace ProjetoBD
             textBoxEmpNome.Text = "";
             textBoxEmpIdade.Text = "";
         }
-        //hide/show empregados
+
+        //hide/show Produtos
         public void LockControlsProd()
         {
             textBoxProdNome.ReadOnly = true;
             textBoxProdPreco.ReadOnly = true;
             comboBoxProdTipo.Enabled = false;
+        }
+        public void UnlockControlsProd()
+        {
+            textBoxProdNome.ReadOnly = false;
+            textBoxProdPreco.ReadOnly = false;
+            comboBoxProdTipo.Enabled = true;
         }
         public void ShowButtonsChosenIdxProd()
         {
@@ -300,6 +402,27 @@ namespace ProjetoBD
             buttonEditProd.Visible = true;
             buttonCancelProd.Visible = true;
             buttonOkProd.Visible = false;
+        }
+        public void ShowButtonsProd()
+        {
+            buttonRemoveProd.Visible = false;
+            buttonAddProd.Visible = true;
+            buttonEditProd.Visible = false;
+            buttonOkProd.Visible = false;
+            buttonCancelProd.Visible = false;
+        }
+        public void HideButtonsProd()
+        {
+            buttonRemoveProd.Visible = false;
+            buttonAddProd.Visible = false;
+            buttonEditProd.Visible = false;
+            buttonOkProd.Visible = true;
+            buttonCancelProd.Visible = true;
+        }
+        public void ClearFieldsProd()
+        {
+            textBoxProdNome.Text = "";
+            textBoxProdPreco.Text = "";
         }
 
         //buttons
@@ -352,17 +475,39 @@ namespace ProjetoBD
             panelAddEmp.Visible = false;
             loadProdutos(sender,e);
         }
-
-        private void comboBoxProdTipo_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonCancelProd_Click(object sender, EventArgs e)
         {
-            switch (comboBoxProdTipo.SelectedIndex.ToString())
+            listBoxProds.Enabled = true;
+            ClearFieldsProd();
+            ShowButtonsProd();
+            UnlockControlsProd();
+        }
+        private void buttonAddProd_Click(object sender, EventArgs e)
+        {
+            adding = true;
+            HideButtonsProd();
+            listBoxProds.Enabled = false;
+        }
+        private void buttonRemoveProd_Click(object sender, EventArgs e)
+        {
+            removing = true;
+            HideButtonsProd();
+            listBoxProds.Enabled = false;
+        }
+        private void buttonOkProd_Click(object sender, EventArgs e)
+        {
+            try
             {
-                case "Bebidas": prodTipo = 1; break;
-                case "Alcool": prodTipo = 2; break;
-                case "Almocos": prodTipo = 3; break;
-                case "Pasteis": prodTipo = 4; break;
-                default: break;
+                SaveProduto();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            listBoxProds.Enabled = true;
+            ClearFieldsProd();
+            ShowButtonsProd();
+            UnlockControlsProd();
         }
 
         //form changes
