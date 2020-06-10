@@ -129,10 +129,6 @@
             // comboBoxPasteis
             // 
             this.comboBoxPasteis.FormattingEnabled = true;
-            this.comboBoxPasteis.Items.AddRange(new object[] {
-            "Bolo Rei",
-            "Tranca",
-            "Donut"});
             this.comboBoxPasteis.Location = new System.Drawing.Point(333, 216);
             this.comboBoxPasteis.Name = "comboBoxPasteis";
             this.comboBoxPasteis.Size = new System.Drawing.Size(184, 24);
@@ -198,10 +194,6 @@
             // comboBoxAlmocos
             // 
             this.comboBoxAlmocos.FormattingEnabled = true;
-            this.comboBoxAlmocos.Items.AddRange(new object[] {
-            "Panados",
-            "Prego no Prato",
-            "Peixe com Batatas"});
             this.comboBoxAlmocos.Location = new System.Drawing.Point(333, 216);
             this.comboBoxAlmocos.Name = "comboBoxAlmocos";
             this.comboBoxAlmocos.Size = new System.Drawing.Size(184, 24);
@@ -211,11 +203,6 @@
             // comboBoxAlcool
             // 
             this.comboBoxAlcool.FormattingEnabled = true;
-            this.comboBoxAlcool.Items.AddRange(new object[] {
-            "Vodka",
-            "Liquor",
-            "Cerveja",
-            "Whisky"});
             this.comboBoxAlcool.Location = new System.Drawing.Point(333, 216);
             this.comboBoxAlcool.Name = "comboBoxAlcool";
             this.comboBoxAlcool.Size = new System.Drawing.Size(184, 24);
@@ -361,7 +348,7 @@
             this.dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(400, 388);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2020, 6, 8, 0, 0, 0, 0);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2999, 6, 8, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(117, 22);
             this.dateTimePicker1.TabIndex = 32;
@@ -442,7 +429,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.ClientSize = new System.Drawing.Size(1342, 813);
             this.Controls.Add(this.labelAlmocos);
             this.Controls.Add(this.listBoxProdutosRecibo);
             this.Controls.Add(this.button1);

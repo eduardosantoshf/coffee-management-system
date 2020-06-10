@@ -64,7 +64,7 @@ namespace ProjetoBD
             comboBoxAlmocos.Items.Clear();
             while (reader.Read())
             {
-                comboBoxAlmocos.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+                comboBoxAlmocos.Items.Add(reader["nomeP"].ToString() + "  " + reader["preco"].ToString());
             }
 
             cmd = new SqlCommand("getBebidas", cn);
@@ -73,7 +73,7 @@ namespace ProjetoBD
             comboBoxBebidasGeral.Items.Clear();
             while (reader.Read())
             {
-                comboBoxBebidasGeral.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+                comboBoxBebidasGeral.Items.Add(reader["nomeP"].ToString() + "  " + reader["preco"].ToString());
             }
 
             cmd = new SqlCommand("getPasteis", cn);
@@ -82,7 +82,7 @@ namespace ProjetoBD
             comboBoxPasteis.Items.Clear();
             while (reader.Read())
             {
-                comboBoxPasteis.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+                comboBoxPasteis.Items.Add(reader["nomeP"].ToString() +"  "+ reader["preco"].ToString());
             }
 
             cmd = new SqlCommand("getAlcool", cn);
@@ -91,7 +91,7 @@ namespace ProjetoBD
             comboBoxAlcool.Items.Clear();
             while (reader.Read())
             {
-                comboBoxAlcool.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+                comboBoxAlcool.Items.Add(reader["nomeP"].ToString() + "  " + reader["preco"].ToString());
             }
         }
 
@@ -189,7 +189,7 @@ namespace ProjetoBD
                 cn.Close();
             }
         }
-
+        //buttons
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             adding = true;
@@ -230,7 +230,7 @@ namespace ProjetoBD
             //vai ser usado para adicionar a comida/bebida ao valor total e ao recibo
 
         }
-
+        //end of buttons
         private bool SaveRecibo()
         {
             Recibo R = new Recibo();
@@ -255,10 +255,18 @@ namespace ProjetoBD
             }
             if (removing)
             {
-                R = (Recibo)listBoxRecibos.Items[currentRecibo];
+                try
+                {
+                    R = (Recibo)listBoxRecibos.Items[currentRecibo];
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
                 RemoveRecibo(R);
                 listBoxRecibos.Items.Remove(R);
-                removing=false;
+                removing = false;
             }
             return true;
         }

@@ -57,7 +57,7 @@ namespace ProjetoBD
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
-                cmd.Parameters.AddWithValue("@pwd", textBoxPassword.Text);
+                cmd.Parameters.AddWithValue("@pass", textBoxPassword.Text);
                 cmd.Parameters.Add("@flag", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
                
                 cmd.ExecuteNonQuery();
