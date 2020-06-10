@@ -104,7 +104,7 @@ GO
 CREATE PROCEDURE [dbo].[getBebidas]
 AS
 	BEGIN
-		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 1;
+		SELECT * FROM Cafes.Produto WHERE tipoP = 1;
 	END
 GO
 
@@ -113,7 +113,7 @@ GO
 CREATE PROCEDURE [dbo].[getAlcool]
 AS
 	BEGIN
-		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 2;
+		SELECT * FROM Cafes.Produto WHERE tipoP = 2;
 	END
 GO
 
@@ -122,7 +122,7 @@ GO
 CREATE PROCEDURE [dbo].[getAlmocos]
 AS
 	BEGIN
-		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 3;
+		SELECT * FROM Cafes.Produto WHERE tipoP = 3;
 	END
 GO
 
@@ -131,7 +131,7 @@ GO
 CREATE PROCEDURE [dbo].[getPasteis]
 AS
 	BEGIN
-		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 4;
+		SELECT * FROM Cafes.Produto WHERE tipoP = 4;
 	END
 GO
 
@@ -169,10 +169,6 @@ AS
 	END
 GO
 */
-		
-			
-			
-		
 
 
 
