@@ -7,15 +7,17 @@ END;
 */
 
 /*
-CREATE PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pwd VARCHAR(30), @flag INT OUTPUT)
+ALTER PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pwd VARCHAR(30))
 AS
 BEGIN
-	DECLARE @temp_pwd VARBINARY(36);
-	SET @temp_pwd = (SELECT pwd FROM Cafes.Administrador)
-	IF (HASHBYTES('MD5', @pwd) = @temp_pwd)
-		SET @flag = 1
-	ELSE
-		SET @flag = 0
+    DECLARE @flag INT;
+    DECLARE @temp_pwd VARBINARY(36);
+    SET @temp_pwd = (SELECT pwd FROM Cafes.Administrador)
+    IF (HASHBYTES('MD5', @pwd) = @temp_pwd)
+        SET @flag = 1
+    ELSE
+        SET @flag = 0
+    RETURN @flag
 END
 */
 
@@ -99,42 +101,48 @@ AS
 BEGIN
 	INSERT INTO Cafes.Compra([Recibo_ID],[Produto_ID]) VALUES (@reciboID, @produtoID);
 END
-*/
+
 --SELECT * FROM Cafes.Recibo;
 --SELECT * FROM Cafes.Produto;
 --EXEC insertCompra 1, 2;
 --SELECT * FROM Cafes.Compra;
-/*
+
+
 ALTER PROCEDURE [dbo].[getBebidas]
 AS
 	BEGIN
-		SELECT * FROM Cafes.Produto WHERE tipoP = 1;
-	END
-GO
-*(
-
-CREATE PROCEDURE [dbo].[getAlcool]
-AS
-	BEGIN
-		SELECT * FROM Cafes.Produto WHERE tipoP = 2;
+		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 1;
 	END
 GO
 
-CREATE PROCEDURE [dbo].[getAlmocos]
+
+ALTER PROCEDURE [dbo].[getAlcool]
 AS
 	BEGIN
-		SELECT * FROM Cafes.Produto WHERE tipoP = 3;
+		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 2;
+	END
+GO
+
+ALTER PROCEDURE [dbo].[getAlmocos]
+AS
+	BEGIN
+		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 3;
+	END
+GO
+
+ALTER PROCEDURE [dbo].[getPasteis]
+AS
+	BEGIN
+		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 4;
 	END
 GO
 */
-CREATE PROCEDURE [dbo].[getPasteis]
-AS
-	BEGIN
-		SELECT * FROM Cafes.Produto WHERE tipoP = 4;
-	END
-GO
+EXEC getBebidas;
+EXEC getAlcool;
+EXEC getAlmocos;
+EXEC getPasteis;
 
---EXEC getBebidas;
+
 
 
 
