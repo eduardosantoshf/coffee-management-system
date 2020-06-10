@@ -8,8 +8,3 @@ AS
 	END
 GO
 */
-/*
-DECLARE @r INT;
-SET @r = [dbo].[checkPessoa](132063497, 'Megan Wise');
-PRINT @r
-*/
