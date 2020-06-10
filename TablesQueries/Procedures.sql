@@ -170,6 +170,12 @@ AS
 GO
 */
 
+CREATE PROCEDURE getProdutosInRecibo(@reciboID INT)
+AS
+	BEGIN
+		SELECT FROM Cafes.Compra WHERE reciboID = @reciboID;
+	END
+GO
 
 
 
