@@ -18,4 +18,21 @@ AS
 			END
 	END
 GO
+
+CREATE TRIGGER Cafes.checkCliente ON Cafes.Cliente
+INSTEAD OF INSERT
+AS
+	BEGIN
+		DECLARE @NIF INT;
+		DECLARE @nome VARCHAR(30);;
+		SELECT @NIF = NIF, @nome = nome FROM inserted;
+		IF ([dbo].[checkPessoa](@NIF, @nome) = 1)
+			RAISERROR('Já existe',16,1);
+		ELSE
+			BEGIN
+				INSERT INTO Cafes.Pessoa([NIF], [nome]) VALUES (@NIF, @nome);
+				INSERT INTO Cafes.Cliente([NIF], [nome]) VALUES (@NIF, @nome);
+			END
+	END
+GO
 */
