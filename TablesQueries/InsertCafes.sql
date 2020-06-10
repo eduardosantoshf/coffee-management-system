@@ -21,4 +21,14 @@
 --INSERT INTO Cafes.Bartender([NIF],[NIF_cafeB],[idade],[nome],[data_inic_contrato]) VALUES (513696290,577791382,24,'John Franklin','2016-05-28'),(235889530,577791382,28,'Iris Greene','2017-05-12'),(799631594,577791382,41,'Alana Tyson','2016-08-12'),(429529859,577791382,43,'Roth Holcomb', '2017-06-26'),(894940017,577791382,47,'Cameron Nieves','2020-03-01'),(629328443,577791382,26,'Beau Phillips','2018-04-17'),(294939603,577791382,28,'Chastity Gay','2016-05-30'),(332426721,577791382,19,'Ginger Mclaughlin', '2018-01-03'),(874054574,577791382,46,'Medge Frost','2019-04-16'),(455491867,577791382,21,'Yvonne Lowery','2019-03-11');
 
 
+--INSERT admins
+/*
+EXEC insertAdministrador 'admin1', 'palavrachave1';
+EXEC insertAdministrador 'admin2', 'palavrachave2';
+EXEC insertAdministrador 'admin3', 'palavrachave3';
+EXEC insertAdministrador 'admin3', 'palavrachave3';
+EXEC insertAdministrador 'admin3', 'palavrachave3';
+*/
+
+
 
