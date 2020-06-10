@@ -5,23 +5,21 @@ BEGIN
 	INSERT INTO Cafes.Administrador([username],[pwd]) VALUES (@username, HASHBYTES('MD5', @pwd));
 END;
 */
-
 /*
-CREATE PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pass VARCHAR(30), @flag INT OUTPUT)
+CREATE PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pass VARCHAR(30))
 AS
 BEGIN
-
-	DECLARE @temp_username VARCHAR(30);
-	SET @temp_username = (SELECT username FROM Cafes.Administrador WHERE username = @username AND [pwd] = HASHBYTES('MD5', @pass))
+    declare @flag int;
+    DECLARE @temp_username VARCHAR(30);
+    SET @temp_username = (SELECT username FROM Cafes.Administrador WHERE username = @username AND [pwd] = HASHBYTES('MD5', @pass))
     IF (@temp_username IS NULL)
-		SET @flag = 0
-	ELSE
-		SET @flag = 1
-	END
+        SET @flag = 0
+    ELSE
+        SET @flag = 1
+    END
+    return @flag
 GO
 */
-
-
 /*
 DECLARE @flag2 INT;
 EXEC verifyLogin 'ola', 'palavrachave', @flag2 OUTPUT;

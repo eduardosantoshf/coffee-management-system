@@ -26,8 +26,8 @@
 EXEC insertAdministrador 'admin1', 'palavrachave1';
 EXEC insertAdministrador 'admin2', 'palavrachave2';
 EXEC insertAdministrador 'admin3', 'palavrachave3';
-EXEC insertAdministrador 'admin3', 'palavrachave3';
-EXEC insertAdministrador 'admin3', 'palavrachave3';
+EXEC insertAdministrador 'admin4', 'palavrachave4';
+EXEC insertAdministrador 'admin5', 'palavrachave5';
 */
 
 
