@@ -103,5 +103,39 @@ END
 --SELECT * FROM Cafes.Recibo;
 --SELECT * FROM Cafes.Produto;
 --EXEC insertCompra 1, 2;
-SELECT * FROM Cafes.Compra;
+--SELECT * FROM Cafes.Compra;
+/*
+ALTER PROCEDURE [dbo].[getBebidas]
+AS
+	BEGIN
+		SELECT * FROM Cafes.Produto WHERE tipoP = 1;
+	END
+GO
+*(
+
+CREATE PROCEDURE [dbo].[getAlcool]
+AS
+	BEGIN
+		SELECT * FROM Cafes.Produto WHERE tipoP = 2;
+	END
+GO
+
+CREATE PROCEDURE [dbo].[getAlmocos]
+AS
+	BEGIN
+		SELECT * FROM Cafes.Produto WHERE tipoP = 3;
+	END
+GO
+*/
+CREATE PROCEDURE [dbo].[getPasteis]
+AS
+	BEGIN
+		SELECT * FROM Cafes.Produto WHERE tipoP = 4;
+	END
+GO
+
+--EXEC getBebidas;
+
+
+
 
