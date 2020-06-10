@@ -146,7 +146,7 @@ create table Cafes.C_paga_E(
 
 CREATE TABLE Cafes.Produto(
 	nomeP	VARCHAR(20)		NOT NULL,
-	ID_P	INT				NOT NULL	IDENTITY(1,1),
+	ID_P	INT				NOT NULL IDENTITY(1,1),
 	precoP	FLOAT			NOT NULL,
 	tipoP	INT				NOT NULL,
 	PRIMARY KEY(ID_P)
