@@ -143,11 +143,16 @@ AS
 	END
 GO
 */
---EXEC getBebidas;
---EXEC getAlcool;
---EXEC getAlmocos;
---EXEC getPasteis;
 
+/*
+CREATE PROCEDURE editProduto(@ID_P INT, @precoP FLOAT)
+AS
+	BEGIN
+		UPDATE Cafes.Produto
+		SET  [precoP] = @precoP WHERE [ID_P] = @ID_P;
+	END
+GO
+*/
 
 
 
