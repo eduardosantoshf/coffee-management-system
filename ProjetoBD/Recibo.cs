@@ -4,6 +4,7 @@ namespace ProjetoBD
 {
     public class Recibo
     {
+        private int _reciboID;
         private int _ClienteNIF;
         private int _EmpNIF;
         private DateTime _data_recibo;
@@ -15,7 +16,7 @@ namespace ProjetoBD
             set {
                 if (value == null )
                 {
-                    throw new Exception("´Cliente NIF can't be null");
+                    throw new Exception("Cliente NIF can't be null");
                     return;
                 }
                 _ClienteNIF = value; 
@@ -42,6 +43,22 @@ namespace ProjetoBD
         {
             get { return _valor; }
             set { _valor = value; }
+        }
+        public int reciboID
+        {
+            get { return _reciboID; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new Exception("reciboID can't be null");
+                    return;
+                }
+                _reciboID = value;
+            }
+        }
+        public override string ToString() {
+            return "Recibo: "+_reciboID;
         }
     }
 }
