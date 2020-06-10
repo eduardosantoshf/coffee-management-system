@@ -20,14 +20,5 @@
 --INSERT INTO Cafes.Pasteleiro([NIF],[NIF_cafeP],[idade],[nome],[data_inic_contrato]) VALUES (513196871,358222851,43,'Jared Berg','2016-07-17'),(321972703,358222851,50,'Jacob Guy','2016-09-10'),(900541552,358222851,46,'Walker Fox','2018-11-19'),(369024440,358222851,28,'Bruce Hines', '2020-10-04'),(593505493,358222851,55,'Shad Gill','2020-03-01'),(766186809,358222851,41,'Joan Guthrie','2020-11-08'),(225537635,358222851,40,'Fuller Glass','2016-10-08'),(949597097,358222851,21,'Libby Francis','2016-08-01'),(268189127,358222851,33,'Dylan Maynard','2019-04-27'),(323856495,358222851,51,'Aaron Valdez', '2016-08-23');
 --INSERT INTO Cafes.Bartender([NIF],[NIF_cafeB],[idade],[nome],[data_inic_contrato]) VALUES (513696290,577791382,24,'John Franklin','2016-05-28'),(235889530,577791382,28,'Iris Greene','2017-05-12'),(799631594,577791382,41,'Alana Tyson','2016-08-12'),(429529859,577791382,43,'Roth Holcomb', '2017-06-26'),(894940017,577791382,47,'Cameron Nieves','2020-03-01'),(629328443,577791382,26,'Beau Phillips','2018-04-17'),(294939603,577791382,28,'Chastity Gay','2016-05-30'),(332426721,577791382,19,'Ginger Mclaughlin', '2018-01-03'),(874054574,577791382,46,'Medge Frost','2019-04-16'),(455491867,577791382,21,'Yvonne Lowery','2019-03-11');
 
---ALTER TABLEs
 
---ALTER TABLE Cafes.Cafe_Restaurante DROP COLUMN no_almocos;
---ALTER TABLE Cafes.Cafe_Pastelaria DROP COLUMN no_bolos;
---ALTER TABLE Cafes.Cafe_Bar DROP COLUMN bebidas;
---ALTER TABLE Cafes.Recibo DROP COLUMN valor;
---ALTER TABLE Cafes.Recibo ADD valor float    NOT NULL;
 
---Insert recibos
---INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (296969668,241045237,2.7);
---INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (687643810,241045237,3.40);
