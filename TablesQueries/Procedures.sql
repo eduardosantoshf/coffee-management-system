@@ -1,14 +1,5 @@
-
---INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (296969668,241045237,2.7);
---INSERT INTO Cafes.recibo([ClienteNIF],[EmpNIF],[valor]) VALUES (687643810,241045237,3.40);
-
-
---SELECT reciboID FROM Cafes.Recibo;
-
---DROP PROCEDURE Cafes.GetEmpregado;
-
 /*
-ALTER PROCEDURE [dbo].[insertRecibo](@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
+CREATE PROCEDURE [dbo].[insertRecibo](@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
 AS
 BEGIN 
 	INSERT INTO Cafes.recibo(ClienteNIF, EmpNIF, data_recibo, valor)
@@ -18,7 +9,7 @@ END
 
 --drop procedure insertRecibo;
 --EXEC insertRecibo 687643810, 241045237, 3.75;
---SELECT * FROM Cafes.Recibo;
+--SELECT * FROM Cafes.Recibo; 
 
 GO
 Create PROCEDURE [dbo].[removeRecibo](@rID INT)
@@ -47,7 +38,7 @@ AS
 BEGIN
 	DELETE FROM Cafes.Produto WHERE ID_P = @pID
 END
-*/
+
 --EXEC removeProduto 1;
 --SELECT * FROM Cafes.Produto;
 
@@ -56,30 +47,47 @@ END
 --SELECT MAX(ID_P) FROM Cafes.Produto;
 
 
-/*
+
 CREATE PROCEDURE [dbo].[getLastReciboID](@lastID INT OUTPUT)
 AS
 BEGIN
 	SELECT @lastID = MAX(reciboID) FROM Cafes.Recibo;
 END
-*/
+
 --DROP PROCEDURE [dbo].[getLastReciboID]
 
-/*l
+
 DECLARE @lastID INT;
 EXEC getLastReciboID @lastID OUTPUT;
 PRINT @lastID;
-*/
+
 
 --EXEC getLastReciboID
 
-/*
-CREATE PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30))
+
+ALTER PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30))
 AS
 BEGIN
-	INSERT INTO Cafes.Administrador([username],[pwd]) VALUES ('Admin', HASHBYTES('MD5', @pwd));
+	INSERT INTO Cafes.Administrador([username],[pwd]) VALUES (@username, HASHBYTES('MD5', @pwd));
 END;
 */
 
---EXEC insertAdministrador 'Admin', 'palavrapasse';
---SELECT * FROM Cafes.Administrador;
+
+
+/*
+CREATE PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pwd VARCHAR(30), @flag INT OUTPUT)
+AS
+BEGIN
+	DECLARE @temp_pwd VARBINARY(36);
+	SET @temp_pwd = (SELECT pwd FROM Cafes.Administrador)
+	IF (HASHBYTES('MD5', @pwd) = @temp_pwd)
+		SET @flag = 1
+	ELSE
+		SET @flag = 0
+END
+*/
+
+--EXEC insertAdministrador 'administrador', 'palavrachave';
+DECLARE @flag2 INT;
+EXEC verifyLogin 'ola', 'palavrachave', @flag2 OUTPUT; --Should return 1
+PRINT @flag2;
