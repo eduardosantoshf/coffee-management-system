@@ -14,17 +14,14 @@ namespace ProjetoBD
     public partial class Form2 : Form
     {
         private SqlConnection cn;
+        private Form1 f1;
 
-        public Form2()
+        public Form2(Form1 f1)
         {
+            this.f1 = f1;
             InitializeComponent();
         }
 
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form1 f1 = new Form1();
-            f1.Show();
-        }
         private SqlConnection getBDConnection()
         {
             return new SqlConnection("Data Source=DESKTOP-B6II5UN;Initial Catalog=ProjetoBD;Integrated Security=True");
@@ -42,19 +39,40 @@ namespace ProjetoBD
             return cn.State == ConnectionState.Open;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
+            /* cmd = new SqlCommand("getLastReciboID", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@lastID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                cmd.ExecuteNonQuery();
+                R.reciboID = (int)cmd.Parameters["@lastID"].Value;
+                */
+            int correctLogin=0;
             try
             {
-                if(!verifyBDConnection())
+                if (!verifyBDConnection())
                     return;
-                SqlCommand commandSelect = new SqlCommand("select * from Cafes.Admin where username='"+textBoxUsername.Text+"' and password='"+textBoxPassword.Text+"' ;",cn);
 
-                SqlDataReader reader;
-                reader = commandSelect.ExecuteReader();
-                int count = 0;
-                while (reader.Read()) { count += 1;}
-                if (count == 1) { MessageBox.Show("Username and password is correct!"); }
+                SqlCommand cmd = new SqlCommand("verifyLogin", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
+                cmd.Parameters.AddWithValue("@pwd", textBoxPassword.Text);
+                cmd.Parameters.Add("@flag", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+               
+                cmd.ExecuteNonQuery();
+                correctLogin = (int)cmd.Parameters["@flag"].Value;
+
+                if (correctLogin == 1) {
+                    new FormAdmin(f1).Show();
+                    this.Close();
+                    f1.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Login");
+                    textBoxPassword.Clear();
+                }
             }
             catch (Exception ex)
             {

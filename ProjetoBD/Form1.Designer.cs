@@ -37,15 +37,15 @@
             this.comboBoxPasteis = new System.Windows.Forms.ComboBox();
             this.labelTodos = new System.Windows.Forms.Label();
             this.comboBoxPastelaria = new System.Windows.Forms.ComboBox();
-            this.labelGeral = new System.Windows.Forms.Label();
-            this.comboBoxGeral = new System.Windows.Forms.ComboBox();
+            this.labelBebidasGeral = new System.Windows.Forms.Label();
+            this.comboBoxBebidasGeral = new System.Windows.Forms.ComboBox();
             this.listBoxRecibos = new System.Windows.Forms.ListBox();
             this.comboBoxAlmocos = new System.Windows.Forms.ComboBox();
-            this.comboBoxBebidas = new System.Windows.Forms.ComboBox();
+            this.comboBoxAlcool = new System.Windows.Forms.ComboBox();
             this.comboBoxCafes = new System.Windows.Forms.ComboBox();
             this.labelCafe = new System.Windows.Forms.Label();
             this.labelAlmocos = new System.Windows.Forms.Label();
-            this.labelBebidas = new System.Windows.Forms.Label();
+            this.labelAlcool = new System.Windows.Forms.Label();
             this.comboBoxBar = new System.Windows.Forms.ComboBox();
             this.comboBoxRestaurante = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -118,7 +118,7 @@
             // labelPastelariaPasteis
             // 
             this.labelPastelariaPasteis.AutoSize = true;
-            this.labelPastelariaPasteis.Location = new System.Drawing.Point(330, 195);
+            this.labelPastelariaPasteis.Location = new System.Drawing.Point(330, 196);
             this.labelPastelariaPasteis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPastelariaPasteis.Name = "labelPastelariaPasteis";
             this.labelPastelariaPasteis.Size = new System.Drawing.Size(54, 17);
@@ -154,9 +154,9 @@
             // 
             this.comboBoxPastelaria.FormattingEnabled = true;
             this.comboBoxPastelaria.Items.AddRange(new object[] {
-            "Geral",
+            "Bebidas Geral",
             "Pasteis"});
-            this.comboBoxPastelaria.Location = new System.Drawing.Point(107, 216);
+            this.comboBoxPastelaria.Location = new System.Drawing.Point(105, 216);
             this.comboBoxPastelaria.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPastelaria.Name = "comboBoxPastelaria";
             this.comboBoxPastelaria.Size = new System.Drawing.Size(182, 24);
@@ -164,34 +164,26 @@
             this.comboBoxPastelaria.Visible = false;
             this.comboBoxPastelaria.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // labelGeral
+            // labelBebidasGeral
             // 
-            this.labelGeral.AutoSize = true;
-            this.labelGeral.Location = new System.Drawing.Point(330, 196);
-            this.labelGeral.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelGeral.Name = "labelGeral";
-            this.labelGeral.Size = new System.Drawing.Size(43, 17);
-            this.labelGeral.TabIndex = 1;
-            this.labelGeral.Text = "Geral";
-            this.labelGeral.Visible = false;
+            this.labelBebidasGeral.AutoSize = true;
+            this.labelBebidasGeral.Location = new System.Drawing.Point(330, 196);
+            this.labelBebidasGeral.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelBebidasGeral.Name = "labelBebidasGeral";
+            this.labelBebidasGeral.Size = new System.Drawing.Size(59, 17);
+            this.labelBebidasGeral.TabIndex = 1;
+            this.labelBebidasGeral.Text = "Bebidas";
+            this.labelBebidasGeral.Visible = false;
             // 
-            // comboBoxGeral
+            // comboBoxBebidasGeral
             // 
-            this.comboBoxGeral.FormattingEnabled = true;
-            this.comboBoxGeral.Items.AddRange(new object[] {
-            "Tosta Mista",
-            "Torrada",
-            "Croissant",
-            "Croissant Misto",
-            "Croissant com Manteiga",
-            "Cafe",
-            "Sumo Laranja Natural"});
-            this.comboBoxGeral.Location = new System.Drawing.Point(333, 216);
-            this.comboBoxGeral.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxGeral.Name = "comboBoxGeral";
-            this.comboBoxGeral.Size = new System.Drawing.Size(184, 24);
-            this.comboBoxGeral.TabIndex = 0;
-            this.comboBoxGeral.Visible = false;
+            this.comboBoxBebidasGeral.FormattingEnabled = true;
+            this.comboBoxBebidasGeral.Location = new System.Drawing.Point(333, 216);
+            this.comboBoxBebidasGeral.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBebidasGeral.Name = "comboBoxBebidasGeral";
+            this.comboBoxBebidasGeral.Size = new System.Drawing.Size(184, 24);
+            this.comboBoxBebidasGeral.TabIndex = 0;
+            this.comboBoxBebidasGeral.Visible = false;
             // 
             // listBoxRecibos
             // 
@@ -216,20 +208,20 @@
             this.comboBoxAlmocos.TabIndex = 17;
             this.comboBoxAlmocos.Visible = false;
             // 
-            // comboBoxBebidas
+            // comboBoxAlcool
             // 
-            this.comboBoxBebidas.FormattingEnabled = true;
-            this.comboBoxBebidas.Items.AddRange(new object[] {
+            this.comboBoxAlcool.FormattingEnabled = true;
+            this.comboBoxAlcool.Items.AddRange(new object[] {
             "Vodka",
             "Liquor",
             "Cerveja",
             "Whisky"});
-            this.comboBoxBebidas.Location = new System.Drawing.Point(333, 216);
-            this.comboBoxBebidas.Name = "comboBoxBebidas";
-            this.comboBoxBebidas.Size = new System.Drawing.Size(184, 24);
-            this.comboBoxBebidas.TabIndex = 18;
-            this.comboBoxBebidas.Visible = false;
-            this.comboBoxBebidas.SelectedIndexChanged += new System.EventHandler(this.comboBoxBebidas_SelectedIndexChanged);
+            this.comboBoxAlcool.Location = new System.Drawing.Point(333, 216);
+            this.comboBoxAlcool.Name = "comboBoxAlcool";
+            this.comboBoxAlcool.Size = new System.Drawing.Size(184, 24);
+            this.comboBoxAlcool.TabIndex = 18;
+            this.comboBoxAlcool.Visible = false;
+            this.comboBoxAlcool.SelectedIndexChanged += new System.EventHandler(this.comboBoxBebidas_SelectedIndexChanged);
             // 
             // comboBoxCafes
             // 
@@ -258,7 +250,7 @@
             // labelAlmocos
             // 
             this.labelAlmocos.AutoSize = true;
-            this.labelAlmocos.Location = new System.Drawing.Point(330, 196);
+            this.labelAlmocos.Location = new System.Drawing.Point(330, 195);
             this.labelAlmocos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAlmocos.Name = "labelAlmocos";
             this.labelAlmocos.Size = new System.Drawing.Size(61, 17);
@@ -266,24 +258,24 @@
             this.labelAlmocos.Text = "Almocos";
             this.labelAlmocos.Visible = false;
             // 
-            // labelBebidas
+            // labelAlcool
             // 
-            this.labelBebidas.AutoSize = true;
-            this.labelBebidas.Location = new System.Drawing.Point(330, 196);
-            this.labelBebidas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelBebidas.Name = "labelBebidas";
-            this.labelBebidas.Size = new System.Drawing.Size(59, 17);
-            this.labelBebidas.TabIndex = 22;
-            this.labelBebidas.Text = "Bebidas";
-            this.labelBebidas.Visible = false;
+            this.labelAlcool.AutoSize = true;
+            this.labelAlcool.Location = new System.Drawing.Point(330, 196);
+            this.labelAlcool.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAlcool.Name = "labelAlcool";
+            this.labelAlcool.Size = new System.Drawing.Size(46, 17);
+            this.labelAlcool.TabIndex = 22;
+            this.labelAlcool.Text = "Alcool";
+            this.labelAlcool.Visible = false;
             // 
             // comboBoxBar
             // 
             this.comboBoxBar.FormattingEnabled = true;
             this.comboBoxBar.Items.AddRange(new object[] {
-            "Geral",
+            "Bebidas Geral",
             "Bebidas"});
-            this.comboBoxBar.Location = new System.Drawing.Point(107, 216);
+            this.comboBoxBar.Location = new System.Drawing.Point(105, 216);
             this.comboBoxBar.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxBar.Name = "comboBoxBar";
             this.comboBoxBar.Size = new System.Drawing.Size(182, 24);
@@ -295,9 +287,9 @@
             // 
             this.comboBoxRestaurante.FormattingEnabled = true;
             this.comboBoxRestaurante.Items.AddRange(new object[] {
-            "Geral",
+            "Bebidas Geral",
             "Almocos"});
-            this.comboBoxRestaurante.Location = new System.Drawing.Point(107, 216);
+            this.comboBoxRestaurante.Location = new System.Drawing.Point(105, 216);
             this.comboBoxRestaurante.Name = "comboBoxRestaurante";
             this.comboBoxRestaurante.Size = new System.Drawing.Size(182, 24);
             this.comboBoxRestaurante.TabIndex = 24;
@@ -451,6 +443,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(1338, 822);
+            this.Controls.Add(this.labelAlmocos);
             this.Controls.Add(this.listBoxProdutosRecibo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDisplayEmp);
@@ -466,11 +459,10 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.comboBoxRestaurante);
             this.Controls.Add(this.comboBoxBar);
-            this.Controls.Add(this.labelBebidas);
-            this.Controls.Add(this.labelAlmocos);
+            this.Controls.Add(this.labelAlcool);
             this.Controls.Add(this.labelCafe);
             this.Controls.Add(this.comboBoxCafes);
-            this.Controls.Add(this.comboBoxBebidas);
+            this.Controls.Add(this.comboBoxAlcool);
             this.Controls.Add(this.comboBoxAlmocos);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.listBoxRecibos);
@@ -481,9 +473,9 @@
             this.Controls.Add(this.labelTodos);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxPasteis);
-            this.Controls.Add(this.comboBoxGeral);
+            this.Controls.Add(this.comboBoxBebidasGeral);
             this.Controls.Add(this.labelPastelariaPasteis);
-            this.Controls.Add(this.labelGeral);
+            this.Controls.Add(this.labelBebidasGeral);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -505,15 +497,15 @@
         private System.Windows.Forms.ComboBox comboBoxPasteis;
         private System.Windows.Forms.Label labelTodos;
         private System.Windows.Forms.ComboBox comboBoxPastelaria;
-        private System.Windows.Forms.Label labelGeral;
-        private System.Windows.Forms.ComboBox comboBoxGeral;
+        private System.Windows.Forms.Label labelBebidasGeral;
+        private System.Windows.Forms.ComboBox comboBoxBebidasGeral;
         private System.Windows.Forms.ListBox listBoxRecibos;
         private System.Windows.Forms.ComboBox comboBoxAlmocos;
-        private System.Windows.Forms.ComboBox comboBoxBebidas;
+        private System.Windows.Forms.ComboBox comboBoxAlcool;
         private System.Windows.Forms.ComboBox comboBoxCafes;
         private System.Windows.Forms.Label labelCafe;
         private System.Windows.Forms.Label labelAlmocos;
-        private System.Windows.Forms.Label labelBebidas;
+        private System.Windows.Forms.Label labelAlcool;
         private System.Windows.Forms.ComboBox comboBoxBar;
         private System.Windows.Forms.ComboBox comboBoxRestaurante;
         private System.Windows.Forms.Button buttonOK;

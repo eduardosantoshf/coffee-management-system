@@ -32,6 +32,7 @@ namespace ProjetoBD
             
             cn = getBDConnection(); //gets the connection to the DB
             loadRecibos(sender, e); //loads all Recibos from DB and opens the connection
+            //loadProdutos(sender, e);
         }
 
         private SqlConnection getBDConnection()
@@ -49,6 +50,49 @@ namespace ProjetoBD
                 cn.Open();
 
             return cn.State == ConnectionState.Open;
+        }
+
+        private void loadProdutos(object sender, EventArgs e) 
+        {
+            //loads all Produtos to the respective boxes
+            if (!verifyBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("getAlmocos", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = cmd.ExecuteReader();
+            comboBoxAlmocos.Items.Clear();
+            while (reader.Read())
+            {
+                comboBoxAlmocos.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+            }
+
+            cmd = new SqlCommand("getBebidas", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            reader = cmd.ExecuteReader();
+            comboBoxBebidasGeral.Items.Clear();
+            while (reader.Read())
+            {
+                comboBoxBebidasGeral.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+            }
+
+            cmd = new SqlCommand("getPasteis", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            reader = cmd.ExecuteReader();
+            comboBoxPasteis.Items.Clear();
+            while (reader.Read())
+            {
+                comboBoxPasteis.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+            }
+
+            cmd = new SqlCommand("getAlcool", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            reader = cmd.ExecuteReader();
+            comboBoxAlcool.Items.Clear();
+            while (reader.Read())
+            {
+                comboBoxAlcool.Items.Add(reader["nomeP"].ToString() + reader["preco"].ToString());
+            }
         }
 
         private void loadRecibos(object sender, EventArgs e)
@@ -75,6 +119,7 @@ namespace ProjetoBD
             cn.Close();
             currentRecibo = 0;
         }
+
         public void ShowRecibo()
         {   //shows information of Recibo
             if (listBoxRecibos.Items.Count == 0 | currentRecibo < 0)
@@ -88,6 +133,7 @@ namespace ProjetoBD
             dateTimePicker1.Value = recibo.data_recibo;
             //used to show the information of the Recibo in the corresponding boxes
         }
+
         private void SubmitRecibo(Recibo R)
         {
             //used to add a new recibo to the database
@@ -100,7 +146,6 @@ namespace ProjetoBD
             cmd.Parameters.Add("@ClienteNIF", SqlDbType.Int).Value = R.ClienteNIF;
             cmd.Parameters.Add("@EmpNIF", SqlDbType.Int).Value = R.EmpNIF;
             cmd.Parameters.Add("@data_recibo", SqlDbType.Date).Value = R.data_recibo;
-
 
             try
             {
@@ -280,10 +325,10 @@ namespace ProjetoBD
             labelTodos.Visible = false;
             comboBoxBar.Visible = false;
             comboBoxRestaurante.Visible = false;
-            comboBoxBebidas.Visible = false;
-            labelBebidas.Visible = false;
-            comboBoxGeral.Visible = false;
-            labelGeral.Visible = false;
+            comboBoxAlcool.Visible = false;
+            labelAlcool.Visible = false;
+            comboBoxBebidasGeral.Visible = false;
+            labelBebidasGeral.Visible = false;
             comboBoxPasteis.Visible = false;
             labelPastelariaPasteis.Visible = false;
             comboBoxAlmocos.Visible = false;
@@ -296,13 +341,13 @@ namespace ProjetoBD
             {
                 comboBoxPasteis.Visible = false;
                 labelPastelariaPasteis.Visible = false;
-                comboBoxGeral.Visible = true;
-                labelGeral.Visible = true;
+                comboBoxBebidasGeral.Visible = true;
+                labelBebidasGeral.Visible = true;
             }
             if (comboBoxPastelaria.SelectedItem.ToString().Equals("Pasteis"))
             {
-                comboBoxGeral.Visible = false;
-                labelGeral.Visible = false;
+                comboBoxBebidasGeral.Visible = false;
+                labelBebidasGeral.Visible = false;
                 comboBoxPasteis.Visible = true;
                 labelPastelariaPasteis.Visible = true;
             }
@@ -338,17 +383,17 @@ namespace ProjetoBD
         {
             if (comboBoxBar.SelectedItem.ToString().Equals("Geral"))
             {
-                comboBoxBebidas.Visible = false;
-                labelBebidas.Visible = false;
-                comboBoxGeral.Visible = true;
-                labelGeral.Visible = true;
+                comboBoxAlcool.Visible = false;
+                labelAlcool.Visible = false;
+                comboBoxBebidasGeral.Visible = true;
+                labelBebidasGeral.Visible = true;
             }
             if (comboBoxBar.SelectedItem.ToString().Equals("Bebidas"))
             {
-                comboBoxBebidas.Visible = true;
-                labelBebidas.Visible = true;
-                comboBoxGeral.Visible = false;
-                labelGeral.Visible = false;
+                comboBoxAlcool.Visible = true;
+                labelAlcool.Visible = true;
+                comboBoxBebidasGeral.Visible = false;
+                labelBebidasGeral.Visible = false;
             }
         }
 
@@ -358,15 +403,15 @@ namespace ProjetoBD
             {
                 comboBoxAlmocos.Visible = false;
                 labelAlmocos.Visible = false;
-                comboBoxGeral.Visible = true;
-                labelGeral.Visible = true;
+                comboBoxBebidasGeral.Visible = true;
+                labelBebidasGeral.Visible = true;
             }
             if (comboBoxRestaurante.SelectedItem.ToString().Equals("Almocos"))
             {
                 comboBoxAlmocos.Visible = true;
                 labelAlmocos.Visible = true;
-                comboBoxGeral.Visible = false;
-                labelGeral.Visible = false;
+                comboBoxBebidasGeral.Visible = false;
+                labelBebidasGeral.Visible = false;
             }
         }
 
@@ -406,9 +451,8 @@ namespace ProjetoBD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
+            Form2 f2 = new Form2(this);
             f2.Show();
-            this.Hide();
         }
     }
 
