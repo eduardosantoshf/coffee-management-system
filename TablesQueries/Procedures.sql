@@ -7,24 +7,24 @@ END;
 */
 
 /*
-ALTER PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pwd VARCHAR(30))
+CREATE PROCEDURE [dbo].[verifyLogin](@username VARCHAR(30), @pass VARCHAR(30), @flag INT OUTPUT)
 AS
 BEGIN
-    DECLARE @flag INT;
-    DECLARE @temp_pwd VARBINARY(36);
-    SET @temp_pwd = (SELECT pwd FROM Cafes.Administrador)
-    IF (HASHBYTES('MD5', @pwd) = @temp_pwd)
-        SET @flag = 1
-    ELSE
-        SET @flag = 0
-    RETURN @flag
-END
+
+	DECLARE @temp_username VARCHAR(30);
+	SET @temp_username = (SELECT username FROM Cafes.Administrador WHERE username = @username AND [pwd] = HASHBYTES('MD5', @pass))
+    IF (@temp_username IS NULL)
+		SET @flag = 0
+	ELSE
+		SET @flag = 1
+	END
+GO
 */
 
---EXEC insertAdministrador 'administrador', 'palavrachave';
+
 /*
 DECLARE @flag2 INT;
-EXEC verifyLogin 'ola', 'palavrachave', @flag2 OUTPUT; --Should return 1
+EXEC verifyLogin 'ola', 'palavrachave', @flag2 OUTPUT;
 PRINT @flag2;
 */
 
@@ -137,10 +137,10 @@ AS
 	END
 GO
 */
-EXEC getBebidas;
-EXEC getAlcool;
-EXEC getAlmocos;
-EXEC getPasteis;
+--EXEC getBebidas;
+--EXEC getAlcool;
+--EXEC getAlmocos;
+--EXEC getPasteis;
 
 
 
