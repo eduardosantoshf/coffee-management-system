@@ -90,6 +90,14 @@ DECLARE @lastID INT;
 EXEC getLastReciboID @lastID OUTPUT;
 PRINT @lastID;
 
+CREATE PROCEDURE [dbo].[getLastProdutoID]
+AS
+BEGIN
+    declare @lastID integer;
+    SET @lastID = (Select MAX(ID_P) FROM Cafes.Produto);
+    return @lastID
+END
+
 
 --EXEC getLastReciboID
 */
@@ -140,28 +148,8 @@ GO
 --EXEC getAlmocos;
 --EXEC getPasteis;
 
-/*
-ALTER TRIGGER Cafes.checkEmpregado ON Cafes.Empregado
-INSTEAD OF INSERT
-AS
-	BEGIN
-		DECLARE @NIF INT;
-		DECLARE @NIF_cafe INT;
-		DECLARE @idade INT;
-		DECLARE @nome VARCHAR(30);
-		DECLARE @data_inic_contrato DATE;
-		SELECT @NIF = NIF, @nome = nome, @NIF_cafe = NIF_cafe, @idade = idade, @nome = nome, @data_inic_contrato = data_inic_contrato  FROM inserted;
-		IF ([dbo].[checkPessoa](@NIF, @nome) = 1)
-			RAISERROR('Já existe',16,1);
-		ELSE
-			INSERT INTO Cafes.Pessoa([NIF], [nome]) VALUES (@NIF, @nome);
-			INSERT INTO Cafes.Empregado([NIF], [NIF_cafe], [idade], [nome], [data_inic_contrato]) VALUES (@NIF, @NIF_cafe, @idade, @nome, @data_inic_contrato);
-	END
-GO
-*/
---DROP TRIGGER Cafes.checkEmpregado;
 
-INSERT INTO Cafes.Empregado([NIF],[NIF_cafe],[idade],[nome],[data_inic_contrato]) VALUES(241055237,211327138,81,'Winifred Walter','2016-01-20')
+
 
 		
 			
