@@ -29,6 +29,8 @@ BEGIN
     return @flag
 GO
 
+--------------------------------------------------------
+
 CREATE PROCEDURE [dbo].[insertRecibo](@ClienteNIF INT, @EmpNIF INT, @data_recibo DATE, @valor FLOAT)
 AS
 	BEGIN 
@@ -44,6 +46,7 @@ AS
 	END
 GO
 
+--------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[addProduto](@nomeP VARCHAR(20), @precoP FLOAT, @tipoP INT)
 AS
@@ -52,6 +55,7 @@ AS
 		SELECT @nomeP, @precoP, @tipoP
 	END
 GO
+--------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[removeProduto](@pID INT)
 AS
@@ -59,6 +63,11 @@ AS
 		DELETE FROM Cafes.Produto WHERE ID_P = @pID
 	END
 GO
+
+--------------------------------------------------------
+
+--To get the ID from the last invoice, and because with each new inserted
+--the ID is the anterior ID +1, we only have to get the max ID
 
 CREATE PROCEDURE [dbo].[getLastReciboID](@lastID INT OUTPUT)
 AS
@@ -69,8 +78,8 @@ GO
 
 --------------------------------------------------------
 
-
---To get the ID from the last invoice, 
+--To get the ID from the last product, and because with each new inserted
+--the ID is the anterior ID +1, we only have to get the max ID
 
 CREATE PROCEDURE [dbo].[getLastProdutoID]
 AS
@@ -81,7 +90,7 @@ AS
 	END
 GO
 
-
+--------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[insertCompra](@reciboID INT, @produtoID INT)
 AS
@@ -90,6 +99,8 @@ AS
 	END
 GO
 
+--------------------------------------------------------
+
 CREATE PROCEDURE [dbo].[getBebidas]
 AS
 	BEGIN
@@ -97,6 +108,7 @@ AS
 	END
 GO
 
+--------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[getAlcool]
 AS
@@ -105,12 +117,16 @@ AS
 	END
 GO
 
+--------------------------------------------------------
+
 CREATE PROCEDURE [dbo].[getAlmocos]
 AS
 	BEGIN
 		SELECT nomeP, precoP FROM Cafes.Produto WHERE tipoP = 3;
 	END
 GO
+
+--------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[getPasteis]
 AS
@@ -119,6 +135,8 @@ AS
 	END
 GO
 
+--------------------------------------------------------
+
 CREATE PROCEDURE editProduto(@ID_P INT, @precoP FLOAT)
 AS
 	BEGIN
@@ -126,7 +144,11 @@ AS
 		SET  [precoP] = @precoP WHERE [ID_P] = @ID_P;
 	END
 GO
-*/
+
+--------------------------------------------------------
+
+--When this procedure is called, it calls the trigger Cafes.checkEmpregado, wich checks if the Empregado to be added is
+--already on the database (on the table Pessoa), and, if not, adds it to the table Pessoa and then to the table Empregado
 
 CREATE PROCEDURE insertEmpregado(@NIF INT, @NIF_cafe INT, @idade INT, @nome VARCHAR(30), @data_inic_contrato DATE)
 AS
@@ -135,7 +157,18 @@ AS
 	END
 GO
 
+--------------------------------------------------------
 
+--When this procedure is called, it calls the trigger Cafes.checkCliente, wich checks if the Cliente to be added is
+--already on the database (on the table Pessoa), and, if not, adds it to the table Pessoa and then to the table Cliente
+
+CREATE PROCEDURE insertCliente(@NIF INT, @nome VARCHAR(30))
+AS
+	BEGIN
+		INSERT INTO Cafes.Cliente([NIF], [nome]) VALUES (@NIF, @nome);
+	END
+GO
+*/
 		
 			
 			
