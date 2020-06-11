@@ -35,8 +35,18 @@ AS
 			END
 	END
 GO
+*/
 
-CREATE TRIGGER [Cafes].[checkInsertProduto] ON [Cafes].[Compra]
+
+
+
+
+
+
+
+
+/*
+ALTER TRIGGER [Cafes].[checkInsertProduto] ON [Cafes].[Compra]
 INSTEAD OF INSERT
 AS
     BEGIN
@@ -44,17 +54,40 @@ AS
         DECLARE @Produto_ID INT;
         DECLARE @newQuantidade INT;
         SELECT @Recibo_ID = Recibo_ID, @Produto_ID = Produto_ID FROM INSERTED;
-        IF ([dbo].[checkQuantidadeProduto](@Produto_ID) = 0)
+        IF ([dbo].[checkQuantidadeProduto](@Produto_ID, @Recibo_ID) = 0)
                 INSERT INTO Cafes.Compra([Recibo_ID], [Produto_ID], [quantidade]) VALUES (@Recibo_ID, @Produto_ID, 1);
         ELSE
             BEGIN
-                SET @newQuantidade = [dbo].[getProdutoQuantidade](@Produto_ID) + 1;
                 UPDATE Cafes.Compra
-                SET [quantidade] = @newQuantidade;
+                SET [quantidade] = ([dbo].[getProdutoQuantidade](@Produto_ID, @Recibo_ID) + 1) WHERE ([Produto_ID] = @Produto_ID AND [Recibo_ID] = @Recibo_ID);
             END
     END
 GO
+*/
 
+--EXEC addProduto 'cafe', 1.5, 1;
+--EXEC addProduto 'vodka', 4, 2;
+--EXEC addProduto 'sumo', 2.4, 1;
+--EXEC insertCompra 1, 7;
+--EXEC insertRecibo 547916021, 259143494, '2019-04-05', 3.7;
+--SELECT * FROM Cafes.Produto;
+--SELECT * FROM Cafes.Recibo;
+EXEC insertCompra 10, 2;
+SELECT * FROM Cafes.Compra;
+--EXEC insertCompra
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 CREATE TRIGGER Cafes.checkRemoveRecibo ON Cafes.Recibo
 INSTEAD OF DELETE
 AS
