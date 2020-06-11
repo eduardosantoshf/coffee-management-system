@@ -40,7 +40,6 @@ create table Cafes.Empregado(
 create table Cafes.Cliente(
     NIF int not null,
     nome    varchar(30) not null,
-    no_mesa int,
     primary key(NIF),
     foreign key(NIF,nome) references Cafes.Pessoa(NIF,nome)
 );
@@ -155,9 +154,9 @@ CREATE TABLE Cafes.Produto(
 CREATE TABLE Cafes.Compra(
 	Recibo_ID	INT		NOT NULL,
 	Produto_ID	INT		NOT NULL,
+	quantidade	INT,
 	PRIMARY KEY(Recibo_ID, Produto_ID),
 	FOREIGN KEY(Recibo_ID) REFERENCES Cafes.Recibo(reciboID),
 	FOREIGN KEY(Produto_ID) REFERENCES Cafes.Produto(ID_P)
 );
 */
---
