@@ -198,4 +198,15 @@ AS
 		DELETE FROM Cafes.Cliente WHERE NIF = @ClienteNIF
 	END
 GO
+
+--------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[getProdutoQ](@ID_P INT)
+AS
+    BEGIN
+        DECLARE @quantidade INT;
+        SET @quantidade = (SELECT [quantidade] FROM Cafes.Compra WHERE [Produto_ID] = @ID_P);
+        RETURN @quantidade;
+    END
+GO
 */
