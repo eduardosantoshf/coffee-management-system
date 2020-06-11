@@ -1,4 +1,3 @@
-/*
 CREATE TRIGGER Cafes.checkEmpregado ON Cafes.Empregado
 INSTEAD OF INSERT
 AS
@@ -10,7 +9,10 @@ AS
 		DECLARE @data_inic_contrato DATE;
 		SELECT @NIF = NIF, @nome = nome, @NIF_cafe = NIF_cafe, @idade = idade, @nome = nome, @data_inic_contrato = data_inic_contrato  FROM inserted;
 		IF ([dbo].[checkPessoa](@NIF, @nome) = 1)
-			RAISERROR('Já existe',16,1);
+			IF (([dbo].[checkEmp](@NIF, @nome) = 0) AND ([dbo].[checkCl](@NIF, @nome) = 0))
+				INSERT INTO Cafes.Empregado([NIF], [NIF_cafe], [idade], [nome], [data_inic_contrato]) VALUES (@NIF, @NIF_cafe, @idade, @nome, @data_inic_contrato);;
+			ELSE
+				RAISERROR('Já existe!', 16, 1);
 		ELSE
 			BEGIN
 				INSERT INTO Cafes.Pessoa([NIF], [nome]) VALUES (@NIF, @nome);
@@ -27,7 +29,10 @@ AS
 		DECLARE @nome VARCHAR(30);;
 		SELECT @NIF = NIF, @nome = nome FROM inserted;
 		IF ([dbo].[checkPessoa](@NIF, @nome) = 1)
-			RAISERROR('Já existe',16,1);
+			IF (([dbo].[checkEmp](@NIF, @nome) = 0) AND ([dbo].[checkCl](@NIF, @nome) = 0))
+				INSERT INTO Cafes.Cliente([NIF], [nome]) VALUES (@NIF, @nome);
+			ELSE
+				RAISERROR('Já existe!',16,1);
 		ELSE
 			BEGIN
 				INSERT INTO Cafes.Pessoa([NIF], [nome]) VALUES (@NIF, @nome);
@@ -35,18 +40,8 @@ AS
 			END
 	END
 GO
-*/
 
-
-
-
-
-
-
-
-
-/*
-ALTER TRIGGER [Cafes].[checkInsertProduto] ON [Cafes].[Compra]
+CREATE TRIGGER Cafes.checkInsertProduto ON [Cafes].[Compra]
 INSTEAD OF INSERT
 AS
     BEGIN
@@ -63,31 +58,7 @@ AS
             END
     END
 GO
-*/
 
---EXEC addProduto 'cafe', 1.5, 1;
---EXEC addProduto 'vodka', 4, 2;
---EXEC addProduto 'sumo', 2.4, 1;
---EXEC insertCompra 1, 7;
---EXEC insertRecibo 547916021, 259143494, '2019-04-05', 3.7;
---SELECT * FROM Cafes.Produto;
---SELECT * FROM Cafes.Recibo;
-EXEC insertCompra 10, 2;
-SELECT * FROM Cafes.Compra;
---EXEC insertCompra
-
-
-
-
-
-
-
-
-
-
-
-
-/*
 CREATE TRIGGER Cafes.checkRemoveRecibo ON Cafes.Recibo
 INSTEAD OF DELETE
 AS
@@ -106,5 +77,3 @@ AS
 			END
 	END
 GO
-*/
-

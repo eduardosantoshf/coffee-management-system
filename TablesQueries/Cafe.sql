@@ -1,4 +1,3 @@
-/*
 create table Cafes.Cafe(
     NIF	int not null,
     nome	varchar(30) not null,
@@ -16,8 +15,9 @@ CREATE TABLE Cafes.Administrador(
 	username	VARCHAR(30)			NOT NULL,
 	pwd			VARBINARY(36)		NOT NULL,
 	NIF			INT					NOT NULL,
-	PRIMARY KEY(NIF, username),
-	FOREIGN KEY(NIF, username) REFERENCES Cafes.Pessoa(NIF, nome)
+	nome		VARCHAR(30)			NOT NULL,
+	PRIMARY KEY(NIF, nome),
+	FOREIGN KEY(NIF, nome) REFERENCES Cafes.Pessoa(NIF, nome)
 );
 
 create table Cafes.Empregado(
@@ -122,4 +122,4 @@ CREATE TABLE Cafes.Compra(
 	FOREIGN KEY(Recibo_ID) REFERENCES Cafes.Recibo(reciboID),
 	FOREIGN KEY(Produto_ID) REFERENCES Cafes.Produto(ID_P)
 );
-*/
+

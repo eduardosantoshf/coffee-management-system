@@ -1,11 +1,11 @@
 
 --Procedure to insert new administrator, hashing the password before inserting the hash into the password column 
 --on the table Cafes.Administrador
-/*
-ALTER PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30), @NIF INT)
+
+CREATE PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30), @NIF INT, @nome VARCHAR(30))
 AS
 	BEGIN
-		INSERT INTO Cafes.Administrador([username],[pwd],[NIF]) VALUES (@username, HASHBYTES('MD5', @pwd), @NIF);
+		INSERT INTO Cafes.Administrador([username],[pwd],[NIF],[nome]) VALUES (@username, HASHBYTES('MD5', @pwd), @NIF, @nome);
 	END
 GO
 
@@ -72,7 +72,7 @@ GO
 --To get the ID from the last invoice, and because with each new inserted
 --the ID is the anterior ID +1, we only have to get the max ID
 
-ALTER PROCEDURE [dbo].[getLastReciboID]
+CREATE PROCEDURE [dbo].[getLastReciboID]
 AS
 	BEGIN
 		declare @lastID integer;
@@ -227,4 +227,3 @@ AS
 		RETURN
 	END
 GO
-*/
