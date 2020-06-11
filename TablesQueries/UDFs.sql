@@ -7,6 +7,23 @@ AS
 	END
 GO
 
+CREATE FUNCTION [dbo].[checkCl](@NIF INT, @nome VARCHAR(30)) RETURNS INT
+AS
+	BEGIN
+		IF EXISTS(SELECT * FROM Cafes.Cliente AS P WHERE P.NIF = @NIF AND P.nome = @nome)
+			RETURN 1;
+		RETURN 0;
+	END
+GO
+
+CREATE FUNCTION [dbo].[checkEmp](@NIF INT, @nome VARCHAR(30)) RETURNS INT
+AS
+	BEGIN
+		IF EXISTS(SELECT * FROM Cafes.Empregado AS P WHERE P.NIF = @NIF AND P.nome = @nome)
+			RETURN 1;
+		RETURN 0;
+	END
+GO
 
 CREATE FUNCTION [dbo].[checkQuantidadeProduto](@Produto_ID INT, @Recibo_ID INT) RETURNS INT
 AS
@@ -44,5 +61,3 @@ AS
 		RETURN 0;
 	END
 GO
-
-
