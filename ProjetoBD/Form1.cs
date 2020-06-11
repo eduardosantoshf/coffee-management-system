@@ -270,7 +270,8 @@ namespace ProjetoBD
                 {
                     cmd = new SqlCommand("getProdutoQ", cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID_P", prod.ID);
+                    cmd.Parameters.AddWithValue("@Produto_ID", prod.ID);
+                    cmd.Parameters.AddWithValue("@recibo_ID", R.reciboID);
                     cmd.Parameters.Add("@prodQ", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
                     cmd.ExecuteNonQuery();
                     prod.quantidade = (int)cmd.Parameters["@prodQ"].Value;
