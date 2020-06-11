@@ -55,6 +55,7 @@ AS
 		SELECT @nomeP, @precoP, @tipoP
 	END
 GO
+
 --------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[removeProduto](@pID INT)
@@ -176,6 +177,23 @@ AS
         Select Produto. * from Cafes.Compra join Cafes.Recibo on Cafes.Compra.Recibo_ID = Cafes.Recibo.reciboID Join Cafes.Produto on Cafes.Produto.ID_P = Cafes.Compra.Produto_ID where Cafes.Recibo.reciboID = @reciboID
     END
 GO
-*/
 
+--------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[removeEmpregado](@EmpNIF INT)
+AS
+	BEGIN
+		DELETE FROM Cafes.Empregado WHERE NIF = @EmpNIF
+	END
+GO
+
+--------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[removeCliente](@ClienteNIF INT)
+AS
+	BEGIN
+		DELETE FROM Cafes.Cliente WHERE NIF = @ClienteNIF
+	END
+GO
+*/
 
