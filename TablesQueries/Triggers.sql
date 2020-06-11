@@ -35,6 +35,7 @@ AS
 	END
 GO
 
+
 CREATE TRIGGER Cafes.checkInsertProduto ON [Cafes].[Compra]
 INSTEAD OF INSERT
 AS
@@ -54,7 +55,8 @@ AS
 GO
 
 
-ALTER TRIGGER Cafes.checkRemoveRecibo ON Cafes.Recibo
+
+CREATE TRIGGER Cafes.checkRemoveRecibo ON Cafes.Recibo
 INSTEAD OF DELETE
 AS
 	BEGIN
@@ -72,6 +74,4 @@ AS
 			END
 	END
 GO
-
-
 
