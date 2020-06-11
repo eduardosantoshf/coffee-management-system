@@ -312,8 +312,8 @@
             this.comboBoxProdTipo.Items.AddRange(new object[] {
             "Bebidas",
             "Alcool",
-            "Pasteis",
-            "Almocos"});
+            "Almocos",
+            "Pasteis"});
             this.comboBoxProdTipo.Location = new System.Drawing.Point(196, 36);
             this.comboBoxProdTipo.Name = "comboBoxProdTipo";
             this.comboBoxProdTipo.Size = new System.Drawing.Size(121, 24);
@@ -511,12 +511,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1342, 813);
-            this.Controls.Add(this.panelClientes);
             this.Controls.Add(this.buttonProd);
             this.Controls.Add(this.buttonCliente);
             this.Controls.Add(this.buttonEmp);
-            this.Controls.Add(this.panelAddEmp);
             this.Controls.Add(this.panelProd);
+            this.Controls.Add(this.panelClientes);
+            this.Controls.Add(this.panelAddEmp);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdmin_FormClosed);

@@ -236,7 +236,7 @@ namespace ProjetoBD
                 {
                     P.nome = textBoxProdNome.Text;
                     P.preco = float.Parse(textBoxProdPreco.Text);
-                    P.tipo = int.Parse(comboBoxProdTipo.SelectedIndex.ToString())+1;
+                    P.tipo = int.Parse(comboBoxProdTipo.SelectedIndex.ToString())+1; //tipo de produto(bebidas-1,alcool-2,almocos-3,pasteis-4)
                 }
                 catch (Exception ex)
                 {
@@ -289,7 +289,7 @@ namespace ProjetoBD
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@nomeP", SqlDbType.VarChar).Value = P.nome;
-            cmd.Parameters.Add("@precoP", SqlDbType.Int).Value = P.preco;
+            cmd.Parameters.Add("@precoP", SqlDbType.Float).Value = P.preco;
             cmd.Parameters.Add("@tipoP", SqlDbType.Int).Value = P.tipo;        
 
             try
@@ -758,7 +758,7 @@ namespace ProjetoBD
             {
                 MessageBox.Show(ex.Message);
             }
-            listBoxEmpregados.Enabled = true;
+            listBoxClientes.Enabled = true;
             ClearFieldsCliente();
             ShowButtonsCliente();
             UnlockControlsCliente();

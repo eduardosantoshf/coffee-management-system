@@ -28,7 +28,7 @@ namespace ProjetoBD
             }
             public override string ToString()
             {
-                return _clienteNIF+" "+_clienteNome;
+                return (String)String.Format("{0,-20} {1 ,-40}", "NIF: " + _clienteNIF, "Nome: " + _clienteNome);
             }
 
         }

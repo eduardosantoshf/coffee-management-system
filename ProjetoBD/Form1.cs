@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-//HAVE ACCESS TO SQL DB
 using System.Data.SqlClient;
 using System.Windows.Forms.VisualStyles;
 using System.Security.Cryptography;
@@ -34,8 +32,8 @@ namespace ProjetoBD
         {
             
             cn = getBDConnection(); //gets the connection to the DB
-            loadRecibos(sender, e); //loads all Recibos from DB and opens the connection
-            loadProdutos(sender, e);
+            loadRecibos(); //loads all Recibos from DB and opens the connection
+            loadProdutos();
         }
 
         private SqlConnection getBDConnection()
@@ -55,7 +53,7 @@ namespace ProjetoBD
             return cn.State == ConnectionState.Open;
         }
 
-        private void loadProdutos(object sender, EventArgs e) 
+        private void loadProdutos() 
         {
             //loads all Produtos to the respective boxes
             if (!verifyBDConnection())
@@ -122,7 +120,7 @@ namespace ProjetoBD
             reader.Close();
         }
 
-        private void loadRecibos(object sender, EventArgs e)
+        private void loadRecibos()
         {   //loads all Recibos from the DB
             if (!verifyBDConnection())
                 return;
@@ -309,6 +307,7 @@ namespace ProjetoBD
             }
             finally
             {
+                listBoxProdutosRecibo.Items.Clear();
                 cn.Close();
             }
         }

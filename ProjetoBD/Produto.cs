@@ -46,7 +46,7 @@ namespace ProjetoBD
         }
         public override string ToString()
         {
-            return (String)String.Format("[ ID:"+_prodID + " ] " + _prodNome + " {0:0.00}  Qty:"+_prodQuantidade, _prodPreco);
+            return (String)String.Format("[ ID:"+_prodID + " ] " + _prodNome + " {0:0.00}€   Qty:"+_prodQuantidade, _prodPreco);
         }
 
     }
