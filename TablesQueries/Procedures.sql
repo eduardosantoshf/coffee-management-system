@@ -174,10 +174,10 @@ GO
 
 --------------------------------------------------------
 
-CREATE PROCEDURE getProdutosInRecibo(@reciboID INT)
+CREATE PROCEDURE [dbo].[getProdutosInRecibo](@reciboID INT)
 AS
     BEGIN
-        Select Produto. * from Cafes.Compra join Cafes.Recibo on Cafes.Compra.Recibo_ID = Cafes.Recibo.reciboID Join Cafes.Produto on Cafes.Produto.ID_P = Cafes.Compra.Produto_ID where Cafes.Recibo.reciboID = @reciboID
+        Select Produto.*,Cafes.Compra.[quantidade] from Cafes.Compra join Cafes.Recibo on Cafes.Compra.Recibo_ID = Cafes.Recibo.reciboID Join Cafes.Produto on Cafes.Produto.ID_P = Cafes.Compra.Produto_ID where Cafes.Recibo.reciboID = @reciboID
     END
 GO
 
