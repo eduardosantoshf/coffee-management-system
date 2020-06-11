@@ -61,8 +61,19 @@
             this.textBoxProdNome = new System.Windows.Forms.TextBox();
             this.listBoxProds = new System.Windows.Forms.ListBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonOkCliente = new System.Windows.Forms.Button();
+            this.buttonCancelCliente = new System.Windows.Forms.Button();
+            this.buttonAddCliente = new System.Windows.Forms.Button();
+            this.buttonRemoveCliente = new System.Windows.Forms.Button();
+            this.labelClienteNome = new System.Windows.Forms.Label();
+            this.textBoxClienteNome = new System.Windows.Forms.TextBox();
+            this.labelClienteNIF = new System.Windows.Forms.Label();
+            this.textBoxClienteNIF = new System.Windows.Forms.TextBox();
+            this.listBoxClientes = new System.Windows.Forms.ListBox();
             this.panelAddEmp.SuspendLayout();
             this.panelProd.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonEmp
@@ -392,16 +403,114 @@
             this.listBoxProds.TabIndex = 0;
             this.listBoxProds.SelectedIndexChanged += new System.EventHandler(this.listBoxProds_SelectedIndexChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonOkCliente);
+            this.panel1.Controls.Add(this.buttonCancelCliente);
+            this.panel1.Controls.Add(this.buttonAddCliente);
+            this.panel1.Controls.Add(this.buttonRemoveCliente);
+            this.panel1.Controls.Add(this.labelClienteNome);
+            this.panel1.Controls.Add(this.textBoxClienteNome);
+            this.panel1.Controls.Add(this.labelClienteNIF);
+            this.panel1.Controls.Add(this.textBoxClienteNIF);
+            this.panel1.Controls.Add(this.listBoxClientes);
+            this.panel1.Location = new System.Drawing.Point(45, 513);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1255, 327);
+            this.panel1.TabIndex = 44;
+            this.panel1.Visible = false;
+            // 
+            // buttonOkCliente
+            // 
+            this.buttonOkCliente.Location = new System.Drawing.Point(90, 279);
+            this.buttonOkCliente.Name = "buttonOkCliente";
+            this.buttonOkCliente.Size = new System.Drawing.Size(142, 42);
+            this.buttonOkCliente.TabIndex = 43;
+            this.buttonOkCliente.Text = "OK";
+            this.buttonOkCliente.UseVisualStyleBackColor = true;
+            this.buttonOkCliente.Visible = false;
+            // 
+            // buttonCancelCliente
+            // 
+            this.buttonCancelCliente.Location = new System.Drawing.Point(267, 279);
+            this.buttonCancelCliente.Name = "buttonCancelCliente";
+            this.buttonCancelCliente.Size = new System.Drawing.Size(142, 42);
+            this.buttonCancelCliente.TabIndex = 42;
+            this.buttonCancelCliente.Text = "Cancel";
+            this.buttonCancelCliente.UseVisualStyleBackColor = true;
+            this.buttonCancelCliente.Visible = false;
+            // 
+            // buttonAddCliente
+            // 
+            this.buttonAddCliente.Location = new System.Drawing.Point(90, 231);
+            this.buttonAddCliente.Name = "buttonAddCliente";
+            this.buttonAddCliente.Size = new System.Drawing.Size(142, 42);
+            this.buttonAddCliente.TabIndex = 41;
+            this.buttonAddCliente.Text = "Add Cliente";
+            this.buttonAddCliente.UseVisualStyleBackColor = true;
+            // 
+            // buttonRemoveCliente
+            // 
+            this.buttonRemoveCliente.Location = new System.Drawing.Point(267, 231);
+            this.buttonRemoveCliente.Name = "buttonRemoveCliente";
+            this.buttonRemoveCliente.Size = new System.Drawing.Size(142, 42);
+            this.buttonRemoveCliente.TabIndex = 1;
+            this.buttonRemoveCliente.Text = "Remove Cliente";
+            this.buttonRemoveCliente.UseVisualStyleBackColor = true;
+            this.buttonRemoveCliente.Visible = false;
+            // 
+            // labelClienteNome
+            // 
+            this.labelClienteNome.AutoSize = true;
+            this.labelClienteNome.Location = new System.Drawing.Point(4, 81);
+            this.labelClienteNome.Name = "labelClienteNome";
+            this.labelClienteNome.Size = new System.Drawing.Size(92, 17);
+            this.labelClienteNome.TabIndex = 35;
+            this.labelClienteNome.Text = "Cliente Nome";
+            // 
+            // textBoxClienteNome
+            // 
+            this.textBoxClienteNome.Location = new System.Drawing.Point(7, 101);
+            this.textBoxClienteNome.Name = "textBoxClienteNome";
+            this.textBoxClienteNome.Size = new System.Drawing.Size(163, 22);
+            this.textBoxClienteNome.TabIndex = 34;
+            // 
+            // labelClienteNIF
+            // 
+            this.labelClienteNIF.AutoSize = true;
+            this.labelClienteNIF.Location = new System.Drawing.Point(4, 18);
+            this.labelClienteNIF.Name = "labelClienteNIF";
+            this.labelClienteNIF.Size = new System.Drawing.Size(76, 17);
+            this.labelClienteNIF.TabIndex = 2;
+            this.labelClienteNIF.Text = "Cliente NIF";
+            // 
+            // textBoxClienteNIF
+            // 
+            this.textBoxClienteNIF.Location = new System.Drawing.Point(7, 38);
+            this.textBoxClienteNIF.Name = "textBoxClienteNIF";
+            this.textBoxClienteNIF.Size = new System.Drawing.Size(163, 22);
+            this.textBoxClienteNIF.TabIndex = 1;
+            // 
+            // listBoxClientes
+            // 
+            this.listBoxClientes.FormattingEnabled = true;
+            this.listBoxClientes.ItemHeight = 16;
+            this.listBoxClientes.Location = new System.Drawing.Point(832, 16);
+            this.listBoxClientes.Name = "listBoxClientes";
+            this.listBoxClientes.Size = new System.Drawing.Size(411, 292);
+            this.listBoxClientes.TabIndex = 0;
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1342, 813);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonProd);
             this.Controls.Add(this.buttonCliente);
             this.Controls.Add(this.buttonEmp);
-            this.Controls.Add(this.panelProd);
             this.Controls.Add(this.panelAddEmp);
+            this.Controls.Add(this.panelProd);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdmin_FormClosed);
@@ -409,6 +518,8 @@
             this.panelAddEmp.PerformLayout();
             this.panelProd.ResumeLayout(false);
             this.panelProd.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -448,5 +559,15 @@
         private System.Windows.Forms.ListBox listBoxProds;
         private System.Windows.Forms.Button buttonEditProd;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonOkCliente;
+        private System.Windows.Forms.Button buttonCancelCliente;
+        private System.Windows.Forms.Button buttonAddCliente;
+        private System.Windows.Forms.Button buttonRemoveCliente;
+        private System.Windows.Forms.Label labelClienteNome;
+        private System.Windows.Forms.TextBox textBoxClienteNome;
+        private System.Windows.Forms.Label labelClienteNIF;
+        private System.Windows.Forms.TextBox textBoxClienteNIF;
+        private System.Windows.Forms.ListBox listBoxClientes;
     }
 }
