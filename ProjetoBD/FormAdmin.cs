@@ -81,10 +81,10 @@ namespace ProjetoBD
             SqlCommand cmd = new SqlCommand("insertEmpregado", cn);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@EmpNIF", SqlDbType.Int).Value = E.NIF;
-            cmd.Parameters.Add("@NIFcafe", SqlDbType.Int).Value = E.NIF_cafe;
+            cmd.Parameters.Add("@NIF", SqlDbType.Int).Value = E.NIF;
+            cmd.Parameters.Add("@NIF_cafe", SqlDbType.Int).Value = E.NIF_cafe;
             cmd.Parameters.Add("@idade", SqlDbType.Int).Value = E.idade;
-            cmd.Parameters.Add("@idade", SqlDbType.VarChar).Value = E.nome;
+            cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = E.nome;
             cmd.Parameters.Add("@data_inic_contrato", SqlDbType.Date).Value = E.dataInicContrato;
 
             try
@@ -461,6 +461,44 @@ namespace ProjetoBD
             textBoxProdPreco.Text = "";
         }
 
+        //hide/show Clientes
+        public void LockControlsCliente()
+        {
+            textBoxClienteNome.ReadOnly = true;
+            textBoxClienteNome.ReadOnly = true;
+        }
+        public void UnlockControlsCliente()
+        {
+            textBoxClienteNome.ReadOnly = false;
+            textBoxClienteNome.ReadOnly = false;
+        }
+        public void ShowButtonsChosenIdxCliente()
+        {
+            buttonRemoveCliente.Visible = true;
+            buttonAddCliente.Visible = false;
+            buttonCancelCliente.Visible = true;
+            buttonOkCliente.Visible = false;
+        }
+        public void ShowButtonsCliente()
+        {
+            buttonRemoveCliente.Visible = false;
+            buttonAddCliente.Visible = true;
+            buttonOkCliente.Visible = false;
+            buttonCancelCliente.Visible = false;
+        }
+        public void HideButtonsCliente()
+        {
+            buttonRemoveProd.Visible = false;
+            buttonAddProd.Visible = false;
+            buttonEditProd.Visible = false;
+            buttonOkProd.Visible = true;
+            buttonCancelProd.Visible = true;
+        }
+        public void ClearFieldsCliente()
+        {
+            textBoxClienteNome.Text = "";
+            textBoxClienteNIF.Text = "";
+        }
         //buttons
         //buttons Empregados
         private void buttonEmp_Click(object sender, EventArgs e)
