@@ -35,9 +35,8 @@ AS
 			END
 	END
 GO
-*/
-/*
-ALTER TRIGGER Cafes.checkInsertProduto ON Cafes.Compra
+
+CREATE TRIGGER Cafes.checkInsertProduto ON Cafes.Compra
 INSTEAD OF INSERT
 AS
 	BEGIN
@@ -57,4 +56,24 @@ AS
 			END
 	END
 GO
+
+ALTER TRIGGER Cafes.checkRemoveRecibo ON Cafes.Recibo
+INSTEAD OF DELETE
+AS
+	BEGIN
+		DECLARE @reciboID INT;
+		SELECT @reciboID = reciboID FROM DELETED;
+		IF (([dbo].[checkReciboInCompra](@reciboID) = 1) OR ([dbo].[checkReciboInRecibo](@reciboID) = 1))
+			BEGIN
+				--RAISERROR('Teste',16,1);
+				DELETE FROM Cafes.Compra WHERE [Recibo_ID] IN (SELECT reciboID FROM DELETED);
+				DELETE FROM Cafes.Recibo WHERE [reciboID] IN (SELECT reciboID FROM DELETED);
+			END
+		ELSE
+			BEGIN
+				RAISERROR('Esse recibo não existe',16,1);
+			END
+	END
+GO
 */
+
