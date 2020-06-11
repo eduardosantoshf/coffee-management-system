@@ -74,10 +74,11 @@ GO
 
 CREATE PROCEDURE [dbo].[getLastReciboID](@lastID INT OUTPUT)
 AS
-	BEGIN
-		SELECT @lastID = MAX(reciboID) FROM Cafes.Recibo;
-	END
-GO
+BEGIN
+	declare @lastID integer;
+	SET @lastID = (Select MAX(reciboID) FROM Cafes.Recibo);
+	return @lastID
+END
 
 --------------------------------------------------------
 
