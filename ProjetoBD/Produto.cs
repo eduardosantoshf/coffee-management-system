@@ -8,6 +8,7 @@ namespace ProjetoBD
         private float _prodPreco;
         private string _prodNome;
         private int _prodTipo;
+        private int _prodQuantidade=1;
 
         public Produto() { }
         public int ID
@@ -38,9 +39,14 @@ namespace ProjetoBD
             get { return _prodTipo; }
             set { _prodTipo = value; }
         }
+        public int quantidade
+        {
+            get { return _prodQuantidade; }
+            set { _prodQuantidade = value; }
+        }
         public override string ToString()
         {
-            return (String)String.Format("[ ID:"+_prodID + " ] " + _prodNome + " {0:0.00}", _prodPreco);
+            return (String)String.Format("[ ID:"+_prodID + " ] " + _prodNome + " {0:0.00}  Qty:"+_prodQuantidade, _prodPreco);
         }
 
     }
