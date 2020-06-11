@@ -1,11 +1,11 @@
-/*
+
 --Procedure to insert new administrator, hashing the password before inserting the hash into the password column 
 --on the table Cafes.Administrador
-
-CREATE PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30))
+/*
+ALTER PROCEDURE [dbo].[insertAdministrador](@username VARCHAR(30), @pwd VARCHAR(30), @NIF INT)
 AS
 	BEGIN
-		INSERT INTO Cafes.Administrador([username],[pwd]) VALUES (@username, HASHBYTES('MD5', @pwd));
+		INSERT INTO Cafes.Administrador([username],[pwd],[NIF]) VALUES (@username, HASHBYTES('MD5', @pwd), @NIF);
 	END
 GO
 
