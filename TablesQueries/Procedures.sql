@@ -39,6 +39,8 @@ AS
 	END
 GO
 
+--------------------------------------------------------
+
 Create PROCEDURE [dbo].[removeRecibo](@rID INT)
 AS
 	BEGIN
@@ -169,18 +171,16 @@ AS
 		INSERT INTO Cafes.Cliente([NIF], [nome]) VALUES (@NIF, @nome);
 	END
 GO
-*/
+
 --------------------------------------------------------
 
-ALTER PROCEDURE getProdutosInRecibo(@reciboID INT)
+CREATE PROCEDURE getProdutosInRecibo(@reciboID INT)
 AS
     BEGIN
         Select Produto. * from Cafes.Compra join Cafes.Recibo on Cafes.Compra.Recibo_ID = Cafes.Recibo.reciboID Join Cafes.Produto on Cafes.Produto.ID_P = Cafes.Compra.Produto_ID where Cafes.Recibo.reciboID = @reciboID
-		SELECT [quantidade] FROM Cafes.Compra WHERE [Recibo_ID] = @reciboID
     END
 GO
 
-/*
 --------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[removeEmpregado](@EmpNIF INT)
