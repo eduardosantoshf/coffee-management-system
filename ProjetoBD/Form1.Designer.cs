@@ -129,11 +129,12 @@
             // comboBoxPasteis
             // 
             this.comboBoxPasteis.FormattingEnabled = true;
-            this.comboBoxPasteis.Location = new System.Drawing.Point(333, 216);
+            this.comboBoxPasteis.Location = new System.Drawing.Point(332, 217);
             this.comboBoxPasteis.Name = "comboBoxPasteis";
-            this.comboBoxPasteis.Size = new System.Drawing.Size(184, 24);
+            this.comboBoxPasteis.Size = new System.Drawing.Size(243, 24);
             this.comboBoxPasteis.TabIndex = 4;
             this.comboBoxPasteis.Visible = false;
+            this.comboBoxPasteis.SelectedIndexChanged += new System.EventHandler(this.comboBoxPasteis_SelectedIndexChanged);
             // 
             // labelTodos
             // 
@@ -158,7 +159,7 @@
             this.comboBoxPastelaria.Size = new System.Drawing.Size(182, 24);
             this.comboBoxPastelaria.TabIndex = 2;
             this.comboBoxPastelaria.Visible = false;
-            this.comboBoxPastelaria.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBoxPastelaria.SelectedIndexChanged += new System.EventHandler(this.comboBoxPastelaria_SelectedIndexChanged);
             // 
             // labelBebidasGeral
             // 
@@ -174,12 +175,13 @@
             // comboBoxBebidasGeral
             // 
             this.comboBoxBebidasGeral.FormattingEnabled = true;
-            this.comboBoxBebidasGeral.Location = new System.Drawing.Point(333, 216);
+            this.comboBoxBebidasGeral.Location = new System.Drawing.Point(332, 217);
             this.comboBoxBebidasGeral.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxBebidasGeral.Name = "comboBoxBebidasGeral";
-            this.comboBoxBebidasGeral.Size = new System.Drawing.Size(184, 24);
+            this.comboBoxBebidasGeral.Size = new System.Drawing.Size(243, 24);
             this.comboBoxBebidasGeral.TabIndex = 0;
             this.comboBoxBebidasGeral.Visible = false;
+            this.comboBoxBebidasGeral.SelectedIndexChanged += new System.EventHandler(this.comboBoxBebidasGeral_SelectedIndexChanged);
             // 
             // listBoxRecibos
             // 
@@ -194,21 +196,22 @@
             // comboBoxAlmocos
             // 
             this.comboBoxAlmocos.FormattingEnabled = true;
-            this.comboBoxAlmocos.Location = new System.Drawing.Point(333, 216);
+            this.comboBoxAlmocos.Location = new System.Drawing.Point(332, 217);
             this.comboBoxAlmocos.Name = "comboBoxAlmocos";
-            this.comboBoxAlmocos.Size = new System.Drawing.Size(184, 24);
+            this.comboBoxAlmocos.Size = new System.Drawing.Size(243, 24);
             this.comboBoxAlmocos.TabIndex = 17;
             this.comboBoxAlmocos.Visible = false;
+            this.comboBoxAlmocos.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlmocos_SelectedIndexChanged);
             // 
             // comboBoxAlcool
             // 
             this.comboBoxAlcool.FormattingEnabled = true;
-            this.comboBoxAlcool.Location = new System.Drawing.Point(333, 216);
+            this.comboBoxAlcool.Location = new System.Drawing.Point(332, 217);
             this.comboBoxAlcool.Name = "comboBoxAlcool";
-            this.comboBoxAlcool.Size = new System.Drawing.Size(184, 24);
+            this.comboBoxAlcool.Size = new System.Drawing.Size(243, 24);
             this.comboBoxAlcool.TabIndex = 18;
             this.comboBoxAlcool.Visible = false;
-            this.comboBoxAlcool.SelectedIndexChanged += new System.EventHandler(this.comboBoxBebidas_SelectedIndexChanged);
+            this.comboBoxAlcool.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlcool_SelectedIndexChanged);
             // 
             // comboBoxCafes
             // 
@@ -311,8 +314,10 @@
             // 
             this.textBoxValor.Location = new System.Drawing.Point(192, 390);
             this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.ReadOnly = true;
             this.textBoxValor.Size = new System.Drawing.Size(184, 22);
             this.textBoxValor.TabIndex = 27;
+            this.textBoxValor.Text = "0,00";
             // 
             // labelValor
             // 
@@ -327,7 +332,7 @@
             // buttonAddFood
             // 
             this.buttonAddFood.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAddFood.Location = new System.Drawing.Point(539, 215);
+            this.buttonAddFood.Location = new System.Drawing.Point(582, 215);
             this.buttonAddFood.Name = "buttonAddFood";
             this.buttonAddFood.Size = new System.Drawing.Size(61, 25);
             this.buttonAddFood.TabIndex = 30;
