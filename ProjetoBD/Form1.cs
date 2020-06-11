@@ -42,7 +42,7 @@ namespace ProjetoBD
         {
             return new SqlConnection("Data Source=DESKTOP-B6II5UN;Initial Catalog=ProjetoBD;Integrated Security=True");
             //return new SqlConnection("Data Source=DESKTOP-AUG6BMB\\SQLEXPRESS;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            //return new SqlConnection("data Source=tcp:mednat.ieeta.pt\\SQLSERVER,8101N;initial catalog=p2g1;User id=p2g1;Password=Diogoedu232.");
+            //return new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER, 8101; Initial Catalog = p2g1; Persist Security Info = True; User ID = p2g1; Password = Diogoedu232.");
         }
         private bool verifyBDConnection()
         {   //used to connect to the DB
@@ -170,7 +170,7 @@ namespace ProjetoBD
             recibo = (Recibo)listBoxRecibos.Items[currentRecibo];
 
             using (SqlCommand cmd = new SqlCommand("getProdutosInRecibo", cn))
-            { //almocos
+            {
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@reciboID", recibo.reciboID);
@@ -184,11 +184,14 @@ namespace ProjetoBD
                     P.preco = float.Parse(reader["precoP"].ToString());
                     P.tipo = int.Parse(reader["tipoP"].ToString());
                     P.nome = reader["nomeP"].ToString();
+                    P.quantidade = int.Parse(reader["quantidade"].ToString());
+
                     listBoxProdutosRecibo.Items.Add(P);
                 }
                 reader.Close();
-            }
+            }       
         }
+        
         private bool SaveRecibo()
         {
             Recibo R = new Recibo();
@@ -246,19 +249,35 @@ namespace ProjetoBD
                 cmd.ExecuteNonQuery();
 
                 cmd = new SqlCommand("getLastReciboID", cn);
+                
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@lastID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
                 R.reciboID = (int)cmd.Parameters["@lastID"].Value;
 
                 cmd = new SqlCommand("insertCompra", cn);
+                
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ReciboID", R.reciboID);
 
                 foreach (Produto prod in reciboProds) {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@reciboID", R.reciboID);
                     cmd.Parameters.AddWithValue("@produtoID", prod.ID);
                     cmd.ExecuteNonQuery();
                 }
+                
+                foreach (Produto prod in reciboProds)
+                {
+                    cmd = new SqlCommand("getProdutoQ", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID_P", prod.ID);
+                    cmd.Parameters.Add("@prodQ", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                    cmd.ExecuteNonQuery();
+                    prod.quantidade = (int)cmd.Parameters["@prodQ"].Value;
+                    
+                }
+                reciboProds.Clear();
+
             }
             catch (Exception ex)
             {
@@ -351,13 +370,12 @@ namespace ProjetoBD
         {
             textBoxClienteNIF.Text = "";
             textBoxEmpNIF.Text = "";
-            textBoxValor.Text = "";
+            textBoxValor.Text = "0,00";
         }
         public void LockControls()
         {
             textBoxClienteNIF.ReadOnly = true;
             textBoxEmpNIF.ReadOnly = true;
-            textBoxValor.ReadOnly = true;
             dateTimePicker1.Enabled = false;
             BackToStart();
             comboBoxCafes.Enabled = false;
@@ -366,7 +384,6 @@ namespace ProjetoBD
         {
             textBoxClienteNIF.ReadOnly = false;
             textBoxEmpNIF.ReadOnly = false;
-            textBoxValor.ReadOnly = false;
             dateTimePicker1.Enabled = true;
             comboBoxCafes.Enabled = true;
         }
