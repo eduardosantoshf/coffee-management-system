@@ -1,12 +1,3 @@
---create Schema Cafes;
-
-/*
-CREATE TABLE Cafes.Administrador(
-	username	VARCHAR(30)		NOT NULL,
-	pwd			VARBINARY(36)		NOT NULL,
-);
-*/
-
 /*
 create table Cafes.Cafe(
     NIF	int not null,
@@ -22,7 +13,13 @@ create table Cafes.Pessoa(
     primary key(NIF,nome),
 );
 
-
+CREATE TABLE Cafes.Administrador(
+	username	VARCHAR(30)			NOT NULL,
+	pwd			VARBINARY(36)		NOT NULL,
+	NIF			INT					NOT NULL,
+	PRIMARY KEY(NIF, username),
+	FOREIGN KEY(NIF, username) REFERENCES Cafes.Pessoa(NIF, nome)
+);
 
 create table Cafes.Empregado(
     NIF int not null,
