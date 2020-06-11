@@ -72,13 +72,14 @@ GO
 --To get the ID from the last invoice, and because with each new inserted
 --the ID is the anterior ID +1, we only have to get the max ID
 
-CREATE PROCEDURE [dbo].[getLastReciboID](@lastID INT OUTPUT)
+ALTER PROCEDURE [dbo].[getLastReciboID]
 AS
-BEGIN
-	declare @lastID integer;
-	SET @lastID = (Select MAX(reciboID) FROM Cafes.Recibo);
-	return @lastID
-END
+	BEGIN
+		declare @lastID integer;
+		SET @lastID = (Select MAX(reciboID) FROM Cafes.Recibo);
+		return @lastID
+	END
+GO
 
 --------------------------------------------------------
 
@@ -133,7 +134,7 @@ GO
 --------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[getPasteis]
-AS
+AS 
 	BEGIN
 		SELECT * FROM Cafes.Produto WHERE tipoP = 4;
 	END
@@ -202,12 +203,28 @@ GO
 
 --------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[getProdutoQ](@ID_P INT)
+CREATE PROCEDURE [dbo].[getProdutoQ](@Produto_ID INT, @Recibo_ID INT)
 AS
     BEGIN
         DECLARE @quantidade INT;
-        SET @quantidade = (SELECT [quantidade] FROM Cafes.Compra WHERE [Produto_ID] = @ID_P);
+        SET @quantidade = (SELECT [quantidade] FROM Cafes.Compra WHERE (([Produto_ID] = @Produto_ID) AND [Recibo_ID] = @Recibo_ID));
         RETURN @quantidade;
     END
+GO
+
+CREATE PROCEDURE [dbo].[getEmps]
+AS
+	BEGIN
+		SELECT * FROM Cafes.Empregado
+		RETURN
+	END
+GO
+
+CREATE PROCEDURE [dbo].[getClientes]
+AS
+	BEGIN
+		SELECT * FROM Cafes.Cliente
+		RETURN
+	END
 GO
 */
