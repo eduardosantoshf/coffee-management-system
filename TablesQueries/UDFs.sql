@@ -8,16 +8,16 @@ AS
 	END
 GO
 
-
-CREATE FUNCTION [dbo].[checkQuantidadeProduto](@ID_P INT) RETURNS INT
+*/
+ALTER FUNCTION [dbo].[checkQuantidadeProduto](@Produto_ID INT, @Recibo_ID INT) RETURNS INT
 AS
 	BEGIN
-		IF EXISTS(SELECT * FROM Cafes.Compra AS C WHERE C.Produto_ID = @ID_P)
+		IF EXISTS(SELECT * FROM Cafes.Compra WHERE ([Produto_ID] = @Produto_ID))
 			RETURN 1;
 		RETURN 0;
 	END
 GO
-
+/*
 
 
 CREATE FUNCTION [dbo].[getProdutoQuantidade](@ID_P INT) RETURNS INT
