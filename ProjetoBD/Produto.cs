@@ -13,28 +13,12 @@ namespace ProjetoBD
         public int ID
         {
             get { return _prodID; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new Exception("ID do produto nao pode ser null");
-                    return;
-                }
-                _prodID = value;
-            }
+            set { _prodID = value; }
         }
         public float preco
         {
             get { return _prodPreco; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new Exception("preco do produto nao pode ser null");
-                    return;
-                }
-                _prodPreco = value;
-            }
+            set { _prodPreco = value; }
         }
         public string nome
         {
@@ -52,20 +36,12 @@ namespace ProjetoBD
         public int tipo
         {
             get { return _prodTipo; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new Exception("Tipo do produto nao pode ser null");
-                    return;
-                }
-                _prodTipo = value;
-            }
+            set { _prodTipo = value; }
         }
         public override string ToString()
         {
-            return (String)String.Format("{0,-20} {1 ,-40}", "ID: " + _prodID, "Nome: " + _prodNome);
+            return (String)String.Format("[ ID:"+_prodID + " ] " + _prodNome + " {0:0.00}", _prodPreco);
         }
-        
+
     }
 }
