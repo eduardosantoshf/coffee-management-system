@@ -371,6 +371,136 @@ namespace ProjetoBD
             }
         }
 
+        //functions Clientes
+        private void loadClientes(object sender, EventArgs e)
+        {   //loads all Clientes from the DB
+            if (!verifyBDConnection())
+                return;
+
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cafes.Cliente", cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBoxClientes.Items.Clear();
+
+                while (reader.Read())
+                {
+                    Cliente C = new Cliente();
+                    C.NIF = int.Parse(reader["NIF"].ToString());
+                    C.nome = reader["nome"].ToString();
+                    listBoxClientes.Items.Add(C);
+                }
+            }
+
+            cn.Close();
+            currentCliente = 0;
+        }
+        public void ShowCliente()
+        {   //shows information of Cliente
+            if (listBoxClientes.Items.Count == 0 | currentCliente < 0)
+                return;
+            Cliente client = new Cliente();
+            client = (Cliente)listBoxClientes.Items[currentCliente];
+
+            textBoxClienteNIF.Text = client.NIF.ToString();
+            textBoxClienteNome.Text = client.nome;
+            //used to show the information of the Cliente in the corresponding boxes
+        }
+        private bool SaveCliente()
+        {
+            Cliente C = new Cliente();
+            if (adding)
+            {
+                try
+                {
+                    C.NIF = int.Parse(textBoxClienteNIF.Text);
+                    C.nome = textBoxClienteNome.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+
+                SubmitCliente(C);
+                listBoxClientes.Items.Add(C);
+                adding = false;
+            }
+            if (removing)
+            {
+                try
+                {
+                    C = (Cliente)listBoxClientes.Items[currentCliente];
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+                RemoveCliente(C);
+                listBoxClientes.Items.Remove(C);
+                removing = false;
+            }
+            return true;
+        }
+        private void SubmitCliente(Cliente C)
+        {
+            //used to add a new empregado to the database
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("insertCliente", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@NIF", SqlDbType.Int).Value = C.NIF;
+            cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = C.nome;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update cliente in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        private void RemoveCliente(Cliente C)
+        {
+            //used to remove a Cliente from the database
+            if (!verifyBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("removeCliente", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ClienteNIF", SqlDbType.Int).Value = C.NIF;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update cliente in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        private void listBoxClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxClientes.SelectedIndex >= 0)
+            {
+                currentCliente = listBoxClientes.SelectedIndex;
+                ShowCliente();
+                LockControlsCliente();
+                ShowButtonsChosenIdxCliente();
+            }
+        }
         //hide/show 
         //hide/show Empregados
         public void LockControlsEmp()
@@ -465,12 +595,12 @@ namespace ProjetoBD
         public void LockControlsCliente()
         {
             textBoxClienteNome.ReadOnly = true;
-            textBoxClienteNome.ReadOnly = true;
+            textBoxClienteNIF.ReadOnly = true;
         }
         public void UnlockControlsCliente()
         {
             textBoxClienteNome.ReadOnly = false;
-            textBoxClienteNome.ReadOnly = false;
+            textBoxClienteNIF.ReadOnly = false;
         }
         public void ShowButtonsChosenIdxCliente()
         {
@@ -488,11 +618,10 @@ namespace ProjetoBD
         }
         public void HideButtonsCliente()
         {
-            buttonRemoveProd.Visible = false;
-            buttonAddProd.Visible = false;
-            buttonEditProd.Visible = false;
-            buttonOkProd.Visible = true;
-            buttonCancelProd.Visible = true;
+            buttonRemoveCliente.Visible = false;
+            buttonAddCliente.Visible = false;
+            buttonOkCliente.Visible = true;
+            buttonCancelCliente.Visible = true;
         }
         public void ClearFieldsCliente()
         {
@@ -505,6 +634,7 @@ namespace ProjetoBD
         {
             panelAddEmp.Visible = true;
             panelProd.Visible = false;
+            panelClientes.Visible = false;
             loadEmpregados(sender, e);
         }
         private void buttonCancelEmp_Click(object sender, EventArgs e)
@@ -547,6 +677,7 @@ namespace ProjetoBD
         {
             panelProd.Visible = true;
             panelAddEmp.Visible = false;
+            panelClientes.Visible = false;
             loadProdutos(sender,e);
         }
         private void buttonCancelProd_Click(object sender, EventArgs e)
@@ -590,6 +721,48 @@ namespace ProjetoBD
             UnlockControlsProd();
         }
 
+        //buttons Clientes
+        private void buttonCliente_Click(object sender, EventArgs e)
+        {
+            panelClientes.Visible = true;
+            panelAddEmp.Visible = false;
+            panelProd.Visible = false;
+            loadClientes(sender, e);
+        }
+        private void buttonCancelCliente_Click(object sender, EventArgs e)
+        {
+            listBoxClientes.Enabled = true;
+            ClearFieldsCliente();
+            ShowButtonsCliente();
+            UnlockControlsCliente();
+        }
+        private void buttonAddCliente_Click(object sender, EventArgs e)
+        {
+            adding = true;
+            HideButtonsCliente();
+            listBoxClientes.Enabled = false;
+        }
+        private void buttonRemoveCliente_Click(object sender, EventArgs e)
+        {
+            removing = true;
+            HideButtonsCliente();
+            listBoxClientes.Enabled = false;
+        }
+        private void buttonOkCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveCliente();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            listBoxEmpregados.Enabled = true;
+            ClearFieldsCliente();
+            ShowButtonsCliente();
+            UnlockControlsCliente();
+        }
         //form changes
         private void FormAdmin_FormClosed(object sender, FormClosedEventArgs e)
         {

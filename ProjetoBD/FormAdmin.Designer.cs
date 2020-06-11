@@ -61,7 +61,7 @@
             this.textBoxProdNome = new System.Windows.Forms.TextBox();
             this.listBoxProds = new System.Windows.Forms.ListBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelClientes = new System.Windows.Forms.Panel();
             this.buttonOkCliente = new System.Windows.Forms.Button();
             this.buttonCancelCliente = new System.Windows.Forms.Button();
             this.buttonAddCliente = new System.Windows.Forms.Button();
@@ -73,7 +73,7 @@
             this.listBoxClientes = new System.Windows.Forms.ListBox();
             this.panelAddEmp.SuspendLayout();
             this.panelProd.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelClientes.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonEmp
@@ -105,6 +105,7 @@
             this.buttonCliente.TabIndex = 2;
             this.buttonCliente.Text = "Cliente";
             this.buttonCliente.UseVisualStyleBackColor = true;
+            this.buttonCliente.Click += new System.EventHandler(this.buttonCliente_Click);
             // 
             // buttonProd
             // 
@@ -403,22 +404,22 @@
             this.listBoxProds.TabIndex = 0;
             this.listBoxProds.SelectedIndexChanged += new System.EventHandler(this.listBoxProds_SelectedIndexChanged);
             // 
-            // panel1
+            // panelClientes
             // 
-            this.panel1.Controls.Add(this.buttonOkCliente);
-            this.panel1.Controls.Add(this.buttonCancelCliente);
-            this.panel1.Controls.Add(this.buttonAddCliente);
-            this.panel1.Controls.Add(this.buttonRemoveCliente);
-            this.panel1.Controls.Add(this.labelClienteNome);
-            this.panel1.Controls.Add(this.textBoxClienteNome);
-            this.panel1.Controls.Add(this.labelClienteNIF);
-            this.panel1.Controls.Add(this.textBoxClienteNIF);
-            this.panel1.Controls.Add(this.listBoxClientes);
-            this.panel1.Location = new System.Drawing.Point(45, 513);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1255, 327);
-            this.panel1.TabIndex = 44;
-            this.panel1.Visible = false;
+            this.panelClientes.Controls.Add(this.buttonOkCliente);
+            this.panelClientes.Controls.Add(this.buttonCancelCliente);
+            this.panelClientes.Controls.Add(this.buttonAddCliente);
+            this.panelClientes.Controls.Add(this.buttonRemoveCliente);
+            this.panelClientes.Controls.Add(this.labelClienteNome);
+            this.panelClientes.Controls.Add(this.textBoxClienteNome);
+            this.panelClientes.Controls.Add(this.labelClienteNIF);
+            this.panelClientes.Controls.Add(this.textBoxClienteNIF);
+            this.panelClientes.Controls.Add(this.listBoxClientes);
+            this.panelClientes.Location = new System.Drawing.Point(45, 180);
+            this.panelClientes.Name = "panelClientes";
+            this.panelClientes.Size = new System.Drawing.Size(1255, 327);
+            this.panelClientes.TabIndex = 44;
+            this.panelClientes.Visible = false;
             // 
             // buttonOkCliente
             // 
@@ -429,6 +430,7 @@
             this.buttonOkCliente.Text = "OK";
             this.buttonOkCliente.UseVisualStyleBackColor = true;
             this.buttonOkCliente.Visible = false;
+            this.buttonOkCliente.Click += new System.EventHandler(this.buttonOkCliente_Click);
             // 
             // buttonCancelCliente
             // 
@@ -439,6 +441,7 @@
             this.buttonCancelCliente.Text = "Cancel";
             this.buttonCancelCliente.UseVisualStyleBackColor = true;
             this.buttonCancelCliente.Visible = false;
+            this.buttonCancelCliente.Click += new System.EventHandler(this.buttonCancelCliente_Click);
             // 
             // buttonAddCliente
             // 
@@ -448,6 +451,7 @@
             this.buttonAddCliente.TabIndex = 41;
             this.buttonAddCliente.Text = "Add Cliente";
             this.buttonAddCliente.UseVisualStyleBackColor = true;
+            this.buttonAddCliente.Click += new System.EventHandler(this.buttonAddCliente_Click);
             // 
             // buttonRemoveCliente
             // 
@@ -458,6 +462,7 @@
             this.buttonRemoveCliente.Text = "Remove Cliente";
             this.buttonRemoveCliente.UseVisualStyleBackColor = true;
             this.buttonRemoveCliente.Visible = false;
+            this.buttonRemoveCliente.Click += new System.EventHandler(this.buttonRemoveCliente_Click);
             // 
             // labelClienteNome
             // 
@@ -499,13 +504,14 @@
             this.listBoxClientes.Name = "listBoxClientes";
             this.listBoxClientes.Size = new System.Drawing.Size(411, 292);
             this.listBoxClientes.TabIndex = 0;
+            this.listBoxClientes.SelectedIndexChanged += new System.EventHandler(this.listBoxClientes_SelectedIndexChanged);
             // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1342, 813);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelClientes);
             this.Controls.Add(this.buttonProd);
             this.Controls.Add(this.buttonCliente);
             this.Controls.Add(this.buttonEmp);
@@ -518,8 +524,8 @@
             this.panelAddEmp.PerformLayout();
             this.panelProd.ResumeLayout(false);
             this.panelProd.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelClientes.ResumeLayout(false);
+            this.panelClientes.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -559,7 +565,7 @@
         private System.Windows.Forms.ListBox listBoxProds;
         private System.Windows.Forms.Button buttonEditProd;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelClientes;
         private System.Windows.Forms.Button buttonOkCliente;
         private System.Windows.Forms.Button buttonCancelCliente;
         private System.Windows.Forms.Button buttonAddCliente;
