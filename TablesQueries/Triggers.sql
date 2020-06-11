@@ -9,7 +9,10 @@ AS
 		DECLARE @data_inic_contrato DATE;
 		SELECT @NIF = NIF, @nome = nome, @NIF_cafe = NIF_cafe, @idade = idade, @nome = nome, @data_inic_contrato = data_inic_contrato  FROM inserted;
 		IF ([dbo].[checkPessoa](@NIF, @nome) = 1)
-			RAISERROR('Já existe',16,1);
+			IF (([dbo].[checkEmp](@NIF, @nome) = 0) AND ([dbo].[checkCl](@NIF, @nome) = 0))
+				INSERT INTO Cafes.Empregado([NIF], [NIF_cafe], [idade], [nome], [data_inic_contrato]) VALUES (@NIF, @NIF_cafe, @idade, @nome, @data_inic_contrato);;
+			ELSE
+				RAISERROR('Já existe!', 16, 1);
 		ELSE
 			BEGIN
 				INSERT INTO Cafes.Pessoa([NIF], [nome]) VALUES (@NIF, @nome);
@@ -26,7 +29,10 @@ AS
 		DECLARE @nome VARCHAR(30);;
 		SELECT @NIF = NIF, @nome = nome FROM inserted;
 		IF ([dbo].[checkPessoa](@NIF, @nome) = 1)
-			RAISERROR('Já existe',16,1);
+			IF (([dbo].[checkEmp](@NIF, @nome) = 0) AND ([dbo].[checkCl](@NIF, @nome) = 0))
+				INSERT INTO Cafes.Cliente([NIF], [nome]) VALUES (@NIF, @nome);
+			ELSE
+				RAISERROR('Já existe!',16,1);
 		ELSE
 			BEGIN
 				INSERT INTO Cafes.Pessoa([NIF], [nome]) VALUES (@NIF, @nome);
@@ -34,7 +40,6 @@ AS
 			END
 	END
 GO
-
 
 CREATE TRIGGER Cafes.checkInsertProduto ON [Cafes].[Compra]
 INSTEAD OF INSERT
@@ -54,8 +59,6 @@ AS
     END
 GO
 
-
-
 CREATE TRIGGER Cafes.checkRemoveRecibo ON Cafes.Recibo
 INSTEAD OF DELETE
 AS
@@ -74,4 +77,3 @@ AS
 			END
 	END
 GO
-
