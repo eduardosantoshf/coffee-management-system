@@ -84,12 +84,6 @@ create table Cafes.Cafe_Bar (
     foreign key(NIF) references Cafes.Cafe(NIF)
 );
 
-create table Cafes.Bar(
-    NIF_cafeB   int not null,
-    primary key(NIF_CafeB),
-    foreign key(NIF_CafeB) references Cafes.Cafe_Bar(NIF)
-);
-
 create table Cafes.Bartender(
     NIF int not null,
     NIF_cafeB    int not null,
