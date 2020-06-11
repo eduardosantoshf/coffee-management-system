@@ -28,4 +28,26 @@ AS
 		RETURN @quantidade;
 	END
 GO
+
+
+
+ALTER FUNCTION [dbo].[checkReciboInCompra](@Recibo_ID INT) RETURNS INT
+AS
+	BEGIN
+		IF EXISTS(SELECT * FROM Cafes.Compra AS C WHERE C.Recibo_ID = @Recibo_ID)
+			RETURN 1;
+		RETURN 0;
+	END
+GO
+
+
+ALTER FUNCTION [dbo].[checkReciboInRecibo](@Recibo_ID INT) RETURNS INT
+AS
+	BEGIN
+		IF EXISTS(SELECT * FROM Cafes.Recibo AS R WHERE R.reciboID = @Recibo_ID)
+			RETURN 1;
+		RETURN 0;
+	END
+GO
 */
+
