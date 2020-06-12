@@ -61,6 +61,8 @@
             this.dataGridViewEmps = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.listBoxProdutosRecibo = new System.Windows.Forms.ListBox();
+            this.textBoxSearchRecibo = new System.Windows.Forms.TextBox();
+            this.buttonSearchRecibo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmps)).BeginInit();
             this.SuspendLayout();
@@ -429,6 +431,25 @@
             this.listBoxProdutosRecibo.Size = new System.Drawing.Size(329, 276);
             this.listBoxProdutosRecibo.TabIndex = 38;
             // 
+            // textBoxSearchRecibo
+            // 
+            this.textBoxSearchRecibo.Location = new System.Drawing.Point(1044, 10);
+            this.textBoxSearchRecibo.Name = "textBoxSearchRecibo";
+            this.textBoxSearchRecibo.Size = new System.Drawing.Size(100, 22);
+            this.textBoxSearchRecibo.TabIndex = 39;
+            this.textBoxSearchRecibo.Text = "Recibo ID";
+            this.textBoxSearchRecibo.Click += new System.EventHandler(this.textBoxSearchRecibo_Click);
+            // 
+            // buttonSearchRecibo
+            // 
+            this.buttonSearchRecibo.Location = new System.Drawing.Point(1151, 10);
+            this.buttonSearchRecibo.Name = "buttonSearchRecibo";
+            this.buttonSearchRecibo.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchRecibo.TabIndex = 40;
+            this.buttonSearchRecibo.Text = "Search";
+            this.buttonSearchRecibo.UseVisualStyleBackColor = true;
+            this.buttonSearchRecibo.Click += new System.EventHandler(this.buttonSearchRecibo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -437,6 +458,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(1342, 813);
+            this.Controls.Add(this.buttonSearchRecibo);
+            this.Controls.Add(this.textBoxSearchRecibo);
             this.Controls.Add(this.labelAlmocos);
             this.Controls.Add(this.listBoxProdutosRecibo);
             this.Controls.Add(this.button1);
@@ -515,6 +538,8 @@
         private System.Windows.Forms.DataGridView dataGridViewEmps;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBoxProdutosRecibo;
+        private System.Windows.Forms.TextBox textBoxSearchRecibo;
+        private System.Windows.Forms.Button buttonSearchRecibo;
     }
 }
 

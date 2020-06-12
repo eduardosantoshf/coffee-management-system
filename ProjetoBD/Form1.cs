@@ -22,6 +22,9 @@ namespace ProjetoBD
         private bool removing;
         private Produto chosenProd;
         private ArrayList reciboProds=new ArrayList();
+        //after presentation
+        private int reciboSearchID;
+        //
 
         public Form1()
         {
@@ -183,7 +186,6 @@ namespace ProjetoBD
                     P.tipo = int.Parse(reader["tipoP"].ToString());
                     P.nome = reader["nomeP"].ToString();
                     P.quantidade = int.Parse(reader["quantidade"].ToString());
-
                     listBoxProdutosRecibo.Items.Add(P);
                 }
                 reader.Close();
@@ -562,6 +564,51 @@ namespace ProjetoBD
         {
             Form2 f2 = new Form2(this);
             f2.Show();
+        }
+
+        // search recibo (implemented after presentation)
+        private void textBoxSearchRecibo_Click(object sender, EventArgs e)
+        {
+            textBoxSearchRecibo.Clear();
+        }
+
+        private void buttonSearchRecibo_Click(object sender, EventArgs e)
+        {
+            if (!textBoxSearchRecibo.Text.Equals(""))
+            {
+                reciboSearchID = int.Parse(textBoxSearchRecibo.Text);
+                reciboSearch();
+            }
+            else
+            {
+                loadRecibos();
+            }
+        }
+
+        private void reciboSearch()
+        {
+            if (!verifyBDConnection())
+                return;
+
+            using (SqlCommand cmd = new SqlCommand("searchRecibo", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@reciboID", reciboSearchID);
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBoxRecibos.Items.Clear();
+                while (reader.Read())
+                {
+                    Recibo R = new Recibo();
+                    R.reciboID = int.Parse(reader["reciboID"].ToString());
+                    R.ClienteNIF = int.Parse(reader["ClienteNIF"].ToString());
+                    R.EmpNIF = int.Parse(reader["EmpNIF"].ToString());
+                    R.data_recibo = DateTime.Parse(reader["data_recibo"].ToString());
+                    R.valor = float.Parse(reader["valor"].ToString());
+                    listBoxRecibos.Items.Add(R);
+                }
+                reader.Close();
+            }
+
         }
     }
 
