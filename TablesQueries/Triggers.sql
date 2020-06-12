@@ -12,7 +12,7 @@ AS
 			IF (([dbo].[checkEmp](@NIF, @nome) = 0) AND ([dbo].[checkCl](@NIF, @nome) = 0))
 				INSERT INTO Cafes.Empregado([NIF], [NIF_cafe], [idade], [nome], [data_inic_contrato]) VALUES (@NIF, @NIF_cafe, @idade, @nome, @data_inic_contrato);
 			ELSE
-				RAISERROR('Já existe!', 16, 1);
+				RAISERROR('Ja existe!', 16, 1);
 		ELSE
 			BEGIN
 				INSERT INTO Cafes.Pessoa([NIF], [nome]) VALUES (@NIF, @nome);
