@@ -701,6 +701,8 @@ namespace ProjetoBD
         }
         private void buttonEditProd_Click(object sender, EventArgs e)
         {
+            adding = false;
+            removing = false;
             HideButtonsProd();
             textBoxProdPreco.ReadOnly = false;
             listBoxProds.Enabled = false;

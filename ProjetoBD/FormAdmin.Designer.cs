@@ -519,6 +519,7 @@
             this.Controls.Add(this.panelAddEmp);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdmin_FormClosed);
             this.panelAddEmp.ResumeLayout(false);
             this.panelAddEmp.PerformLayout();

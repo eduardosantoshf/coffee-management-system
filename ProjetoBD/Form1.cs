@@ -426,6 +426,7 @@ namespace ProjetoBD
             labelPastelariaPasteis.Visible = false;
             comboBoxAlmocos.Visible = false;
             labelAlmocos.Visible = false;
+            buttonAddFood.Visible = false;
         }
 
         private void comboBoxCafes_SelectedIndexChanged(object sender, EventArgs e)

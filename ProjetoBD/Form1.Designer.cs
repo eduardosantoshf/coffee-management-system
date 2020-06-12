@@ -361,6 +361,7 @@
             // 
             // dataGridViewClientes
             // 
+            this.dataGridViewClientes.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientes.Location = new System.Drawing.Point(830, 320);
             this.dataGridViewClientes.Name = "dataGridViewClientes";
@@ -397,6 +398,7 @@
             // 
             // dataGridViewEmps
             // 
+            this.dataGridViewEmps.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewEmps.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmps.Location = new System.Drawing.Point(830, 541);
             this.dataGridViewEmps.Name = "dataGridViewEmps";
