@@ -102,8 +102,6 @@ create Table Cafes.Recibo(
     data_recibo date,
     valor   float	not null,
     primary key(reciboID),
-    foreign key(EmpNIF) references Cafes.Empregado(NIF),
-    foreign key(ClienteNIF) references Cafes.Cliente(NIF)
 );
 
 CREATE TABLE Cafes.Produto(
