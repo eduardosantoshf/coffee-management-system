@@ -77,3 +77,21 @@ AS
 			END
 	END
 GO
+
+CREATE TRIGGER Cafes.checkNIFs ON Cafes.Recibo
+INSTEAD OF INSERT
+AS
+	BEGIN
+		DECLARE @ClienteNIF INT;
+		DECLARE @EmpNIF INT;
+		DECLARE @data_recibo DATE;
+		DECLARE @valor FLOAT;
+		SELECT @ClienteNIF = ClienteNIF, @EmpNIF = EmpNIF, @data_recibo = data_recibo, @valor = valor FROM INSERTED;
+		IF (([dbo].[checkEmpregadoByNIF](@EmpNIF) = 1) AND ([dbo].[checkClienteByNIF](@ClienteNIF) = 1))
+			BEGIN
+				INSERT INTO Cafes.Recibo([ClienteNIF],[EmpNIF],[data_recibo],[valor]) VALUES (@ClienteNIF, @EmpNIF, @data_recibo, @valor);
+			END
+		ELSE
+			RAISERROR('NIF não existe!', 16, 1);
+	END
+GO
