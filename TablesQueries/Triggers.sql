@@ -10,7 +10,7 @@ AS
 		SELECT @NIF = NIF, @nome = nome, @NIF_cafe = NIF_cafe, @idade = idade, @nome = nome, @data_inic_contrato = data_inic_contrato  FROM inserted;
 		IF ([dbo].[checkPessoa](@NIF, @nome) = 1)
 			IF (([dbo].[checkEmp](@NIF, @nome) = 0) AND ([dbo].[checkCl](@NIF, @nome) = 0))
-				INSERT INTO Cafes.Empregado([NIF], [NIF_cafe], [idade], [nome], [data_inic_contrato]) VALUES (@NIF, @NIF_cafe, @idade, @nome, @data_inic_contrato);;
+				INSERT INTO Cafes.Empregado([NIF], [NIF_cafe], [idade], [nome], [data_inic_contrato]) VALUES (@NIF, @NIF_cafe, @idade, @nome, @data_inic_contrato);
 			ELSE
 				RAISERROR('Já existe!', 16, 1);
 		ELSE
