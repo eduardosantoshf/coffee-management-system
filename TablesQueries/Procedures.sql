@@ -1,4 +1,3 @@
-
 --Procedure to insert new administrator, hashing the password before inserting the hash into the password column 
 --on the table Cafes.Administrador
 
@@ -225,5 +224,12 @@ AS
 	BEGIN
 		SELECT * FROM Cafes.Cliente
 		RETURN
+	END
+GO
+
+CREATE PROCEDURE [dbo].[searchRecibo](@reciboID INT)
+AS
+	BEGIN
+		SELECT * FROM Cafes.Recibo WHERE [reciboID] = @reciboID;
 	END
 GO
