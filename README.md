@@ -4,7 +4,7 @@ The objective of this project was to create a **coffee management system**, with
 
 ## Entity-Relationship Diagram
 <p align="center">
-    <img style="height: 400px" src="./Diagrams/DER.png">
+    <img style="height: 450px" src="./Diagrams/DER.png">
 </p>
 
 ## Course
