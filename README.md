@@ -7,12 +7,12 @@ This project was developed under the [Databases](https://www.ua.pt/en/uc/2238) c
 
 ## Entity-Relationship Diagram
 <p align="center">
-    <img style="height: 450px" src="./Diagrams/DER.png">
+    <img style="height: 300px" src="./Diagrams/DER.png">
 </p>
 
 ## Relational Schema
 <p align="center">
-    <img style="height: 450px" src="./Diagrams/ER.png">
+    <img style="height: 300px" src="./Diagrams/ER.png">
 </p>
 
 ## Authors
