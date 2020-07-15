@@ -7,10 +7,10 @@ This project was developed under the [Databases](https://www.ua.pt/en/uc/2238) c
 
 ## Admin accounts
 This are the predefined **admin accounts**:
-* Username: **profBD**; Password: **BD2020**
-* Username: **didi**; Password: **123**
-* Username: **dudu**; Password: **321**
-* Username: **quimf**; Password: **nice934**
+* Username: **profBD** ; Password: **BD2020**
+* Username: **didi** ; Password: **123**
+* Username: **dudu** ; Password: **321**
+* Username: **quimf** ; Password: **nice934**
 
 ## Entity-Relationship Diagram
 <p align="center">
