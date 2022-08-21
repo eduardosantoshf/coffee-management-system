@@ -22,6 +22,9 @@ This are the predefined **admin accounts**:
     <img style="height: 300px" src="./Diagrams/ER.png">
 </p>
 
+## Grade 
+This project's grade was **15** out of 20.
+
 ## Authors
 * **Diogo Moreira**: [diogoemoreira](https://github.com/diogoemoreira)
 * **Eduardo Santos**: [eduardosantoshf](https://github.com/eduardosantoshf)
