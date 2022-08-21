@@ -1,4 +1,4 @@
-# BDProject
+# BD Project
 
 The objective of this project was to create a **coffee management system**, with special importance in the development of the **database** for the system.
 
